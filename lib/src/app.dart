@@ -4,12 +4,10 @@ import 'package:myapp/src/screens/home.dart';
 class Pawprint extends StatefulWidget {
   const Pawprint({
     super.key,
-    required this.darkTheme,
-    required this.lightTheme,
+    required this.theme,
   });
 
-  final ThemeData darkTheme;
-  final ThemeData lightTheme;
+  final ThemeData theme;
 
   static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -31,8 +29,7 @@ class _Pawprint extends State<Pawprint> {
         debugShowCheckedModeBanner: false,
         navigatorKey: Pawprint.navigatorKey,
         title: "Supplyit!",
-        theme: widget.lightTheme,
-        darkTheme: widget.darkTheme,
+        theme: widget.theme,
         home: const Home());
   }
 }
