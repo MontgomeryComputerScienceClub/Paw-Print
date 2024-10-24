@@ -100,13 +100,13 @@ packages:
     source: hosted
     version: "4.0.2"
   intl:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: intl
-      sha256: "3bc132a9dbce73a7e4a21a17d06e1878839ffbf975568bc875c60537824b0c4d"
+      sha256: "910f85bce16fb5c6f614e117efa303e85a1731bb0081edf3604a2ae6e9a3cc91"
       url: "https://pub.dev"
     source: hosted
-    version: "0.18.1"
+    version: "0.17.0"
   js:
     dependency: transitive
     description:
@@ -119,26 +119,26 @@ packages:
     dependency: transitive
     description:
       name: json_class
-      sha256: fa872148b86bd2b706617e26ed80eeee292c31071b49cc728b368dd9b1fd0959
+      sha256: fb7a331d821ed03141f9dace30e51e6fb33ae1b0bff92dc7d88c9d1efdb557c8
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.2+1"
+    version: "2.1.2+14"
   json_schema2:
     dependency: transitive
     description:
       name: json_schema2
-      sha256: "094e60d3605333c0816eeb2e5310b4f71ffaea2c0abc026b27418c1ac41a5db3"
+      sha256: "52f05f85809704f693a9b20d5b4e2e1a5b3c25f6be881d4cd48af45547e1b010"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.4+9"
+    version: "2.0.2+18"
   json_theme:
     dependency: "direct main"
     description:
       name: json_theme
-      sha256: b80982abebaccbaf922a2b495828b3fced547efd9b6e499419a06c3a56f97e30
+      sha256: "282f68e90485d23330059d7b5add3091c43ae28dcbf7700233ddb03f992c23ef"
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.3+5"
+    version: "4.0.3+2"
   lints:
     dependency: transitive
     description:
@@ -199,10 +199,10 @@ packages:
     dependency: transitive
     description:
       name: rest_client
-      sha256: f788d489471b3c18641cc7ae32cde76ca9806075dda8b98e36bc479f118e6585
+      sha256: "2008dcee84d9bb0b099866da6341829d3eb87db5bf63eb325233c6130eb61ff3"
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.1+11"
+    version: "2.2.0+4"
   sky_engine:
     dependency: transitive
     description: flutter

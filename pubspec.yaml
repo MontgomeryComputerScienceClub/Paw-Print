@@ -33,6 +33,7 @@ dependencies:
 
   json_theme: ^4.0.0
   http: ^0.13.0
+  intl: ^0.17.0
 
   
 dev_dependencies:
