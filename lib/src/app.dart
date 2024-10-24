@@ -28,7 +28,7 @@ class _Pawprint extends State<Pawprint> {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         navigatorKey: Pawprint.navigatorKey,
-        title: "Supplyit!",
+        title: "Pawprint",
         theme: widget.theme,
         home: const Home());
   }
