@@ -5,9 +5,9 @@
     "titleTextStyle": {
       "color": "#ff0a0a0a",
       "decoration": "none",
-      "fontFamily": "Domine",
+      "fontFamily": "Merriweather",
       "fontFamilyFallback": [
-        "Domine"
+        "Merriweather"
       ],
       "fontSize": 24,
       "fontWeight": "w400",
@@ -18,9 +18,9 @@
     "toolbarTextStyle": {
       "color": "#ff0a0a0a",
       "decoration": "none",
-      "fontFamily": "Domine",
+      "fontFamily": "Merriweather",
       "fontFamilyFallback": [
-        "Domine"
+        "Merriweather"
       ],
       "fontSize": 14,
       "fontWeight": "w500",
@@ -36,9 +36,9 @@
     "selectedLabelStyle": {
       "color": "#ffffffff",
       "decoration": "none",
-      "fontFamily": "Domine",
+      "fontFamily": "Merriweather",
       "fontFamilyFallback": [
-        "Domine"
+        "Merriweather"
       ],
       "fontSize": 14,
       "fontWeight": "w500",
@@ -49,9 +49,9 @@
     "unselectedLabelStyle": {
       "color": "#ffffffff",
       "decoration": "none",
-      "fontFamily": "Domine",
+      "fontFamily": "Merriweather",
       "fontFamilyFallback": [
-        "Domine"
+        "Merriweather"
       ],
       "fontSize": 14,
       "fontWeight": "w500",
@@ -1257,9 +1257,9 @@
     "labelStyle": {
       "color": "#ff0a0a0a",
       "decoration": "none",
-      "fontFamily": "Domine",
+      "fontFamily": "Merriweather",
       "fontFamilyFallback": [
-        "Domine"
+        "Merriweather"
       ],
       "fontSize": 14,
       "fontWeight": "w500",
@@ -1271,9 +1271,9 @@
     "unselectedLabelStyle": {
       "color": "#ffffffff",
       "decoration": "none",
-      "fontFamily": "Domine",
+      "fontFamily": "Merriweather",
       "fontFamilyFallback": [
-        "Domine"
+        "Merriweather"
       ],
       "fontSize": 14,
       "fontWeight": "w500",
@@ -1668,9 +1668,9 @@
       "color": "#ff191d17",
       "decoration": "none",
       "decorationColor": "#ff191d17",
-      "fontFamily": "Domine",
+      "fontFamily": "Merriweather",
       "fontFamilyFallback": [
-        "Domine"
+        "Merriweather"
       ],
       "fontSize": 16,
       "fontWeight": "w400",
@@ -1682,9 +1682,9 @@
       "color": "#ff191d17",
       "decoration": "none",
       "decorationColor": "#ff191d17",
-      "fontFamily": "Domine",
+      "fontFamily": "Merriweather",
       "fontFamilyFallback": [
-        "Domine"
+        "Merriweather"
       ],
       "fontSize": 14,
       "fontWeight": "w400",
@@ -1696,9 +1696,9 @@
       "color": "#ff191d17",
       "decoration": "none",
       "decorationColor": "#ff191d17",
-      "fontFamily": "Domine",
+      "fontFamily": "Merriweather",
       "fontFamilyFallback": [
-        "Domine"
+        "Merriweather"
       ],
       "fontSize": 12,
       "fontWeight": "w400",
@@ -1710,9 +1710,9 @@
       "color": "#ff191d17",
       "decoration": "none",
       "decorationColor": "#ff191d17",
-      "fontFamily": "Domine",
+      "fontFamily": "Merriweather",
       "fontFamilyFallback": [
-        "Domine"
+        "Merriweather"
       ],
       "fontSize": 96,
       "fontWeight": "w300",
@@ -1724,9 +1724,9 @@
       "color": "#ff191d17",
       "decoration": "none",
       "decorationColor": "#ff191d17",
-      "fontFamily": "Domine",
+      "fontFamily": "Merriweather",
       "fontFamilyFallback": [
-        "Domine"
+        "Merriweather"
       ],
       "fontSize": 60,
       "fontWeight": "w300",
@@ -1738,9 +1738,9 @@
       "color": "#ff191d17",
       "decoration": "none",
       "decorationColor": "#ff191d17",
-      "fontFamily": "Domine",
+      "fontFamily": "Merriweather",
       "fontFamilyFallback": [
-        "Domine"
+        "Merriweather"
       ],
       "fontSize": 48,
       "fontWeight": "w400",
@@ -1752,9 +1752,9 @@
       "color": "#ff191d17",
       "decoration": "none",
       "decorationColor": "#ff191d17",
-      "fontFamily": "Domine",
+      "fontFamily": "Merriweather",
       "fontFamilyFallback": [
-        "Domine"
+        "Merriweather"
       ],
       "fontSize": 40,
       "fontWeight": "w400",
@@ -1766,9 +1766,9 @@
       "color": "#ff191d17",
       "decoration": "none",
       "decorationColor": "#ff191d17",
-      "fontFamily": "Domine",
+      "fontFamily": "Merriweather",
       "fontFamilyFallback": [
-        "Domine"
+        "Merriweather"
       ],
       "fontSize": 34,
       "fontWeight": "w400",
@@ -1780,9 +1780,9 @@
       "color": "#ff191d17",
       "decoration": "none",
       "decorationColor": "#ff191d17",
-      "fontFamily": "Domine",
+      "fontFamily": "Merriweather",
       "fontFamilyFallback": [
-        "Domine"
+        "Merriweather"
       ],
       "fontSize": 24,
       "fontWeight": "w400",
@@ -1794,9 +1794,9 @@
       "color": "#ff191d17",
       "decoration": "none",
       "decorationColor": "#ff191d17",
-      "fontFamily": "Domine_500",
+      "fontFamily": "Merriweather_500",
       "fontFamilyFallback": [
-        "Domine"
+        "Merriweather"
       ],
       "fontSize": 14,
       "fontWeight": "w500",
@@ -1808,9 +1808,9 @@
       "color": "#ff191d17",
       "decoration": "none",
       "decorationColor": "#ff191d17",
-      "fontFamily": "Domine",
+      "fontFamily": "Merriweather",
       "fontFamilyFallback": [
-        "Domine"
+        "Merriweather"
       ],
       "fontSize": 11,
       "fontWeight": "w400",
@@ -1822,9 +1822,9 @@
       "color": "#ff191d17",
       "decoration": "none",
       "decorationColor": "#ff191d17",
-      "fontFamily": "Domine",
+      "fontFamily": "Merriweather",
       "fontFamilyFallback": [
-        "Domine"
+        "Merriweather"
       ],
       "fontSize": 10,
       "fontWeight": "w400",
@@ -1836,9 +1836,9 @@
       "color": "#ff191d17",
       "decoration": "none",
       "decorationColor": "#ff191d17",
-      "fontFamily": "Domine_500",
+      "fontFamily": "Merriweather_500",
       "fontFamilyFallback": [
-        "Domine"
+        "Merriweather"
       ],
       "fontSize": 20,
       "fontWeight": "w500",
@@ -1850,9 +1850,9 @@
       "color": "#ff191d17",
       "decoration": "none",
       "decorationColor": "#ff191d17",
-      "fontFamily": "Domine",
+      "fontFamily": "Merriweather",
       "fontFamilyFallback": [
-        "Domine"
+        "Merriweather"
       ],
       "fontSize": 16,
       "fontWeight": "w400",
@@ -1864,9 +1864,9 @@
       "color": "#ff191d17",
       "decoration": "none",
       "decorationColor": "#ff191d17",
-      "fontFamily": "Domine_500",
+      "fontFamily": "Merriweather_500",
       "fontFamilyFallback": [
-        "Domine"
+        "Merriweather"
       ],
       "fontSize": 14,
       "fontWeight": "w500",
