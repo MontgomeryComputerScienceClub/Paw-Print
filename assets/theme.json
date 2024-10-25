@@ -1,7 +1,6 @@
 {
   "appBarTheme": {
     "backgroundColor": "#fff6f6f6",
-    "foregroundColor": "#ff000000",
     "titleTextStyle": {
       "color": "#ff0a0a0a",
       "decoration": "none",
@@ -85,16 +84,16 @@
       "outline": "#ff000000",
       "outlineVariant": "#ff000000",
       "primary": "#ff989897",
-      "primaryContainer": "#ff6200ee",
+      "primaryContainer": "#ffffffff",
       "scrim": "#ff000000",
       "secondary": "#ff989897",
-      "secondaryContainer": "#ff03dac6",
+      "secondaryContainer": "#ff000000",
       "shadow": "#ff000000",
       "surface": "#ffb7b7b6",
       "surfaceContainerHighest": "#ffffffff",
-      "surfaceTint": "#ff6200ee",
-      "tertiary": "#ff03dac6",
-      "tertiaryContainer": "#ff03dac6"
+      "surfaceTint": "#ffffffff",
+      "tertiary": "#ff000000",
+      "tertiaryContainer": "#ff000000"
     },
     "height": 36,
     "layoutBehavior": "padded",
@@ -163,16 +162,16 @@
     "outline": "#ff000000",
     "outlineVariant": "#ff000000",
     "primary": "#ff989897",
-    "primaryContainer": "#ff6200ee",
+    "primaryContainer": "#ff000000",
     "scrim": "#ff000000",
     "secondary": "#ff989897",
-    "secondaryContainer": "#ff03dac6",
+    "secondaryContainer": "#ff000000",
     "shadow": "#ff000000",
     "surface": "#ffb7b7b6",
     "surfaceContainerHighest": "#ffffffff",
-    "surfaceTint": "#ff6200ee",
-    "tertiary": "#ff03dac6",
-    "tertiaryContainer": "#ff03dac6"
+    "surfaceTint": "#ff000000",
+    "tertiary": "#ff000000",
+    "tertiaryContainer": "#ff000000"
   },
   "dialogBackgroundColor": "#fff6f6f6",
   "disabledColor": "#61000000",

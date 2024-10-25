@@ -21,31 +21,28 @@ class _HomeState extends State<Home> {
         ),
         body: SafeArea(
             child: SingleChildScrollView(
-          child: Column(
+          child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+            const Divider(),
+            Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              // crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Divider(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                        child: Text("Recent Stories",
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineMedium
-                                ?.copyWith(fontWeight: FontWeight.bold)
-                                .copyWith(fontSize: 40))),
-                  ],
-                ),
-                ArticlePreview(stories: [Story(), Story(), Story(), Story()]),
-                ElevatedButton(
-                    onPressed: () {
-                      print(Theme.of(context).textTheme.bodySmall?.fontFamily);
-                    },
-                    child: Text("helo"))
-              ]),
+                Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                    child: Text("Recent Stories",
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineMedium
+                            ?.copyWith(fontWeight: FontWeight.bold)
+                            .copyWith(fontSize: 40))),
+              ],
+            ),
+            ArticlePreview(stories: [Story(), Story(), Story(), Story()]),
+            ElevatedButton(
+                onPressed: () {
+                  print(Theme.of(context).textTheme.bodySmall?.fontFamily);
+                },
+                child: Text("helo"))
+          ]),
         )));
   }
 }

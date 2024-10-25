@@ -12,6 +12,7 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      surfaceTintColor: const Color.fromARGB(45, 158, 158, 158),
       leadingWidth: 300,
       toolbarHeight: height,
       actions: [
