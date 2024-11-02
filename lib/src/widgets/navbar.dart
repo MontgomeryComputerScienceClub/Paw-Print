@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/src/screens/home.dart';
+import 'package:myapp/src/screens/home/home.dart';
 // import 'package:myapp/src/screens/adminHome.dart';
 // import 'package:myapp/src/screens/clientHome.dart';
 // import 'package:myapp/src/screens/mapscreen.dart';
@@ -26,7 +26,7 @@ class NavBarState extends State<Navbar> {
   void _onItemTapped(int index) async {
     switch (index) {
       case 0:
-        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Home()));
+        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const Home()));
       case 1:
       // Navigator.of(context).pushReplacement(MaterialPageRoute(
       //     builder: (context) => AdminHome(

@@ -1,7 +1,8 @@
 class Story {
+  String title;
   // double unweighted;
   // double weighted;
-
+  Story({required this.title});
   // Gpa({required this.unweighted, required this.weighted});
 
   // Map<String, dynamic> toJson() {

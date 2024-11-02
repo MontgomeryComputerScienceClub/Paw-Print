@@ -14,25 +14,37 @@ class _ArticlePreviewState extends State<ArticlePreview> {
   List<Widget> generateContent() {
     List<Widget> ret = [];
     for (int i = 0; i < widget.stories.length; i++) {
-      Story s = widget.stories[i];
+      //  Story s = widget.stories[i];
       if (i == 0) {
         ret.add(Container(
-          width: 300,
-          height: 300,
-          color: Colors.red,
-        ));
+            height: 300,
+            color: Colors.red,
+            child: Column(
+              children: [
+                Container(
+                  height: 200,
+                  color: Colors.green,
+                ),
+                const ListTile(
+                  title: Text("Hello"),
+                )
+              ],
+            )));
       }
       if (i < 4) {
         ret.add(const ListTile(
-          title: Text("Hello"),
+          title: Text("The Recent News"),
+          subtitle: Text("Learn more"),
+          trailing: Icon(Icons.add_box),
         ));
       }
     }
-    ret.add(Center(
+    ret.add(Align(
+        alignment: Alignment.centerRight,
         child: TextButton(
             onPressed: () {},
             child: const Text(
-              "View More",
+              "View More Recents",
               style: TextStyle(fontSize: 12),
             ))));
 
