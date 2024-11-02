@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/src/routes/leftrightroute.dart';
+import 'package:myapp/src/routes/noanimation.dart';
+import 'package:myapp/src/screens/games/games.dart';
 import 'package:myapp/src/screens/home/home.dart';
-// import 'package:myapp/src/screens/adminHome.dart';
-// import 'package:myapp/src/screens/clientHome.dart';
-// import 'package:myapp/src/screens/mapscreen.dart';
 
 class Navbar extends StatefulWidget {
   final int selectedIndex;
@@ -26,18 +26,12 @@ class NavBarState extends State<Navbar> {
   void _onItemTapped(int index) async {
     switch (index) {
       case 0:
-        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const Home()));
+        Navigator.of(context).pushReplacement(NoAnimationRoute(child: const Home()));
       case 1:
-      // Navigator.of(context).pushReplacement(MaterialPageRoute(
-      //     builder: (context) => AdminHome(
-
-      //         )));
+        Navigator.of(context).pushReplacement(NoAnimationRoute(child: const GamesScreen()));
       case 2:
       //  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => MapScreen()));
     }
-
-    // if selectedIndex == indexof a page
-    // nav push
   }
 
   @override
@@ -59,8 +53,6 @@ class NavBarState extends State<Navbar> {
         ),
       ],
       currentIndex: _selectedIndex,
-      // backgroundColor: _isbday ? Colors.amber[700] : null,
-      // selectedItemColor: _isbday ? Colors.white : primaryColorColor,
       onTap: _onItemTapped,
     );
   }
