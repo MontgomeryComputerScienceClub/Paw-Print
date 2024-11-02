@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/src/models/story.dart';
-import 'package:myapp/src/screens/home/smallpreview.dart';
+import 'package:myapp/src/screens/home/multipreview.dart';
 import 'package:myapp/src/widgets/header.dart';
-import 'package:myapp/src/screens/home/preview.dart';
+import 'package:myapp/src/screens/home/frontpreview.dart';
 import 'package:myapp/src/widgets/navbar.dart';
 
 import 'sectionheader.dart';
@@ -30,21 +30,21 @@ class _HomeState extends State<Home> {
               text: "Recent Stories",
             ),
             ArticlePreview(stories: [
-              Story(title: "Story 1"),
-              Story(title: "Story 1"),
-              Story(title: "Story 1"),
-              Story(title: "Story 1")
+              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
+              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
+              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
+              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
             ]),
             const StoryHeader(
               text: "Life",
             ),
             MultiArticlePreview(column: "Life", stories: [
-              Story(title: "Story 1"),
-              Story(title: "Story 1"),
-              Story(title: "Story 1"),
-              Story(title: "Story 1"),
-              Story(title: "Story 1"),
-              Story(title: "Story 1")
+              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
+              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
+              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
+              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
+              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
+              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
             ]),
             const StoryHeader(
               text: 'Perspectives',

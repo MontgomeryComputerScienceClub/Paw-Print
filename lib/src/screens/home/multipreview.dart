@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/src/models/story.dart';
+import 'package:myapp/src/screens/home/previewCell.dart';
 
 class MultiArticlePreview extends StatefulWidget {
   const MultiArticlePreview({super.key, required this.stories, required this.column});
@@ -23,22 +24,8 @@ class _State extends State<MultiArticlePreview> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Expanded(
-                  child: Card(
-                child: Column(
-                  children: [
-                    Text(widget.stories[i].title),
-                  ],
-                ),
-              )),
-              Expanded(
-                  child: Card(
-                child: Column(
-                  children: [
-                    Text(widget.stories[i - 1].title),
-                  ],
-                ),
-              )),
+              ArticlePreviewCell(s: widget.stories[i]),
+              ArticlePreviewCell(s: widget.stories[i - 1]),
             ],
           ));
         } else if (i == widget.stories.length) {}

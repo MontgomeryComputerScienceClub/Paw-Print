@@ -56,9 +56,8 @@ class _ArticlePreviewState extends State<ArticlePreview> {
     return Row(children: [
       Expanded(
           child: Card(
-              surfaceTintColor: Colors.white,
               shadowColor: Colors.transparent,
-              color: Colors.transparent,
+              color: Colors.white70,
               child: Padding(
                   padding: const EdgeInsets.all(10),
                   child: Column(
