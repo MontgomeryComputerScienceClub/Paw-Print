@@ -3,8 +3,9 @@ import 'package:myapp/src/models/story.dart';
 import 'package:myapp/src/screens/home/previewCell.dart';
 
 class MultiArticlePreview extends StatefulWidget {
-  const MultiArticlePreview({super.key, required this.stories, required this.column});
+  const MultiArticlePreview({super.key, required this.stories, required this.column, required this.type});
 
+  final int type;
   final List<Story> stories;
   final String column;
 
@@ -13,9 +14,30 @@ class MultiArticlePreview extends StatefulWidget {
 }
 
 class _State extends State<MultiArticlePreview> {
-  List<Widget> genContentTypeOne() {
+  List<Widget> returnContent() {
     List<Widget> ret = [];
-    List<Widget> selected = [];
+
+    switch (widget.type) {
+      case 1:
+        ret = typeOne();
+      case 2:
+        ret = typeTwo();
+    }
+
+    ret.add(Align(
+        alignment: Alignment.centerRight,
+        child: TextButton(
+            onPressed: () {},
+            child: Text(
+              "View More on ${widget.column}",
+              style: TextStyle(fontSize: 12),
+            ))));
+
+    return ret;
+  }
+
+  List<Widget> typeOne() {
+    List<Widget> ret = [];
     List<Story> forViewMore = [];
     for (int i = 0; i < widget.stories.length; i++) {
       if (i < 6) {
@@ -28,24 +50,58 @@ class _State extends State<MultiArticlePreview> {
               ArticlePreviewCell(s: widget.stories[i - 1]),
             ],
           ));
-        } else if (i == widget.stories.length) {}
-        // ret.add(const Card(
-        //     child: Column(
-        //   children: [Text("hi")],
-        // )));
+        } else if (i == widget.stories.length - 1) {
+          ret.add(Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ArticlePreviewRow(s: widget.stories[i]),
+            ],
+          ));
+        }
       } else {
-        forViewMore.add(widget.stories.first);
+        forViewMore.add(widget.stories[i]);
       }
     }
 
-    ret.add(Align(
-        alignment: Alignment.centerRight,
-        child: TextButton(
-            onPressed: () {},
-            child: Text(
-              "View More on ${widget.column}",
-              style: TextStyle(fontSize: 12),
-            ))));
+    return ret;
+  }
+
+  List<Widget> typeTwo() {
+    List<Widget> ret = [];
+    List<Story> forViewMore = [];
+    for (int i = 0; i < widget.stories.length; i++) {
+      if (i == 0) {
+        ret.add(Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ArticlePreviewRow(s: widget.stories[i]),
+          ],
+        ));
+      } else if (i < 6) {
+        if (i % 2 == 0) {
+          ret.add(Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ArticlePreviewCell(s: widget.stories[i]),
+              ArticlePreviewCell(s: widget.stories[i - 1]),
+            ],
+          ));
+        } else if (i == widget.stories.length - 1) {
+          ret.add(Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ArticlePreviewRow(s: widget.stories[i]),
+            ],
+          ));
+        }
+      } else {
+        forViewMore.add(widget.stories[i]);
+      }
+    }
 
     return ret;
   }
@@ -63,7 +119,7 @@ class _State extends State<MultiArticlePreview> {
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
-                      children: genContentTypeOne()))))
+                      children: returnContent()))))
     ]);
   }
 }

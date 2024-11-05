@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/src/models/story.dart';
 
-class ArticlePreview extends StatefulWidget {
-  const ArticlePreview({super.key, required this.stories});
+class HomePagePreview extends StatefulWidget {
+  const HomePagePreview({super.key, required this.stories});
 
   final List<Story> stories;
 
   @override
-  State<ArticlePreview> createState() => _ArticlePreviewState();
+  State<HomePagePreview> createState() => _HomePagePreviewState();
 }
 
-class _ArticlePreviewState extends State<ArticlePreview> {
+class _HomePagePreviewState extends State<HomePagePreview> {
   List<Widget> generateContent() {
     List<Widget> ret = [];
     for (int i = 0; i < widget.stories.length; i++) {

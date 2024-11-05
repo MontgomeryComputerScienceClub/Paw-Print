@@ -29,7 +29,7 @@ class _HomeState extends State<Home> {
             const StoryHeader(
               text: "Recent Stories",
             ),
-            ArticlePreview(stories: [
+            HomePagePreview(stories: [
               Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
               Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
               Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
@@ -38,8 +38,7 @@ class _HomeState extends State<Home> {
             const StoryHeader(
               text: "Life",
             ),
-            MultiArticlePreview(column: "Life", stories: [
-              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
+            MultiArticlePreview(type: 2, column: "Life", stories: [
               Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
               Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
               Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
@@ -49,6 +48,14 @@ class _HomeState extends State<Home> {
             const StoryHeader(
               text: 'Perspectives',
             ),
+            MultiArticlePreview(type: 1, column: "Life", stories: [
+              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
+              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
+              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
+              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
+              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
+              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
+            ]),
             const StoryHeader(
               text: 'World/Politics',
             ),
