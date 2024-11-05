@@ -1,6 +1,7 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:myapp/src/models/story.dart';
+import 'package:myapp/src/painters/painter.dart';
 
 class ArticlePreviewCell extends StatelessWidget {
   const ArticlePreviewCell({super.key, required this.s});
@@ -46,5 +47,64 @@ class ArticlePreviewRow extends StatelessWidget {
                 ],
               ),
             )));
+  }
+}
+
+class HomeArticleFirstPreviewCell extends StatelessWidget {
+  const HomeArticleFirstPreviewCell({super.key, required this.s});
+
+  final Story s;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 10),
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          Positioned(
+              top: -20,
+              left: -20,
+              //https://api.flutter.dev/flutter/widgets/CustomPaint-class.html
+              child: CustomPaint(
+                size: Size(100, 100),
+                painter: MyPainter(),
+              )),
+          Column(children: [
+            SizedBox(height: 200, child: s.getImageWidget()),
+            ListTile(title: Text(s.title, style: Theme.of(context).textTheme.headlineLarge)),
+          ])
+        ],
+        /*
+      Positioned(
+            top: -20, // Adjust this for the overflow effect
+            left: -20, // Adjust this for horizontal overflow
+            child: OverflowBox(
+              maxWidth: 400, // Adjust width for desired overflow effect
+              maxHeight: 300, // Adjust height for desired overflow effect
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: s.getImageWidget(),
+              ),
+            ),
+          ),
+        */
+      ),
+    );
+  }
+}
+
+class HomeArticleRestPreviewCell extends StatelessWidget {
+  const HomeArticleRestPreviewCell({super.key, required this.s});
+
+  final Story s;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(s.title),
+      subtitle: Text("Learn more about the story here"),
+      trailing: const Icon(Icons.add_box),
+    );
   }
 }
