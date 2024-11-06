@@ -40,7 +40,7 @@ class ArticlePreviewRow extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.all(10),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(s.title),
                   SizedBox(height: 150, child: s.getImageWidget()),
@@ -77,20 +77,6 @@ class HomeArticleFirstPreviewCell extends StatelessWidget {
                         Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold, height: 1.2))),
           ])
         ],
-        /*
-      Positioned(
-            top: -20, // Adjust this for the overflow effect
-            left: -20, // Adjust this for horizontal overflow
-            child: OverflowBox(
-              maxWidth: 400, // Adjust width for desired overflow effect
-              maxHeight: 300, // Adjust height for desired overflow effect
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: s.getImageWidget(),
-              ),
-            ),
-          ),
-        */
       ),
     );
   }
