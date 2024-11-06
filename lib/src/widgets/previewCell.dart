@@ -63,8 +63,8 @@ class HomeArticleFirstPreviewCell extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           Positioned(
-              top: -20,
-              left: -20,
+              top: 0,
+              left: 0,
               //https://api.flutter.dev/flutter/widgets/CustomPaint-class.html
               child: CustomPaint(
                 size: Size(100, 100),
