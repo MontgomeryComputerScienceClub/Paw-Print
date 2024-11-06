@@ -48,16 +48,8 @@ class _State extends State<MultiArticlePreview> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ArticlePreviewCell(s: widget.stories[i - 1]),
-              ArticlePreviewCell(s: widget.stories[i]),
-            ],
-          ));
-        } else if (i == widget.stories.length - 1) {
-          ret.add(Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ArticlePreviewRow(s: widget.stories[i]),
+              ArticlePreviewCell(s: widget.stories[i - 1], index: i - 1),
+              ArticlePreviewCell(s: widget.stories[i], index: i),
             ],
           ));
         } else if (i == widget.previewLength - 1) {
@@ -65,7 +57,7 @@ class _State extends State<MultiArticlePreview> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ArticlePreviewRow(s: widget.stories[i]),
+              ArticlePreviewRow(s: widget.stories[i], index: i),
             ],
           ));
         }
@@ -86,7 +78,7 @@ class _State extends State<MultiArticlePreview> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ArticlePreviewRow(s: widget.stories[i]),
+            ArticlePreviewRow(s: widget.stories[i], index: i),
           ],
         ));
       } else if (i < widget.previewLength) {
@@ -95,16 +87,8 @@ class _State extends State<MultiArticlePreview> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ArticlePreviewCell(s: widget.stories[i - 1]),
-              ArticlePreviewCell(s: widget.stories[i]),
-            ],
-          ));
-        } else if (i == widget.stories.length - 1) {
-          ret.add(Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ArticlePreviewRow(s: widget.stories[i]),
+              ArticlePreviewCell(s: widget.stories[i - 1], index: i - 1),
+              ArticlePreviewCell(s: widget.stories[i], index: i),
             ],
           ));
         } else if (i == widget.previewLength - 1) {
@@ -112,7 +96,7 @@ class _State extends State<MultiArticlePreview> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ArticlePreviewRow(s: widget.stories[i]),
+              ArticlePreviewRow(s: widget.stories[i], index: i),
             ],
           ));
         }

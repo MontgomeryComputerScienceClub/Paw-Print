@@ -4,9 +4,10 @@ import 'package:myapp/src/models/story.dart';
 import 'package:myapp/src/painters/painter.dart';
 
 class ArticlePreviewCell extends StatelessWidget {
-  const ArticlePreviewCell({super.key, required this.s});
+  const ArticlePreviewCell({super.key, required this.s, required this.index});
 
   final Story s;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -15,21 +16,32 @@ class ArticlePreviewCell extends StatelessWidget {
             surfaceTintColor: Colors.transparent,
             color: Colors.white70,
             child: Padding(
-              padding: EdgeInsets.all(10),
-              child: Column(
-                children: [
-                  SizedBox(height: 150, child: s.getImageWidget()),
-                  Text(s.title),
-                ],
-              ),
-            )));
+                padding: EdgeInsets.all(10),
+                child: Stack(children: [
+                  index == 0
+                      ? Positioned(
+                          top: 0,
+                          left: 0,
+                          child: CustomPaint(
+                            size: Size(100, 100),
+                            painter: ArticlePreviewCellBanner(),
+                          ))
+                      : const SizedBox.shrink(),
+                  Column(
+                    children: [
+                      SizedBox(height: 150, child: s.getImageWidget()),
+                      Text(s.title),
+                    ],
+                  ),
+                ]))));
   }
 }
 
 class ArticlePreviewRow extends StatelessWidget {
-  const ArticlePreviewRow({super.key, required this.s});
+  const ArticlePreviewRow({super.key, required this.s, required this.index});
 
   final Story s;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -38,15 +50,25 @@ class ArticlePreviewRow extends StatelessWidget {
             surfaceTintColor: Colors.transparent,
             color: Colors.white70,
             child: Padding(
-              padding: EdgeInsets.all(10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(s.title),
-                  SizedBox(height: 150, child: s.getImageWidget()),
-                ],
-              ),
-            )));
+                padding: EdgeInsets.all(10),
+                child: Stack(children: [
+                  index == 0
+                      ? Positioned(
+                          top: 0,
+                          left: 0,
+                          child: CustomPaint(
+                            size: Size(100, 100),
+                            painter: ArticlePreviewRowBanner(),
+                          ))
+                      : const SizedBox.shrink(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text(s.title),
+                      SizedBox(height: 150, child: s.getImageWidget()),
+                    ],
+                  ),
+                ]))));
   }
 }
 
@@ -67,7 +89,7 @@ class HomeArticleFirstPreviewCell extends StatelessWidget {
               left: 0,
               child: CustomPaint(
                 size: Size(100, 100),
-                painter: MyPainter(),
+                painter: ArticleFirstPreviewCellBanner(),
               )),
           Column(children: [
             SizedBox(height: 200, child: s.getImageWidget()),

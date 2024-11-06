@@ -51,6 +51,11 @@ class _HomeState extends State<Home> {
             const StoryHeader(
               text: 'Perspectives',
             ),
+            MultiArticlePreview(previewLength: 1, type: 2, column: "Life", stories: [
+              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
+              Story(title: "Story 2", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
+              Story(title: "Story 3", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
+            ]),
             const StoryHeader(
               text: 'World/Politics',
             ),
