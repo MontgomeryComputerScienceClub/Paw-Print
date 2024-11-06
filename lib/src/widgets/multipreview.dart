@@ -3,11 +3,13 @@ import 'package:myapp/src/models/story.dart';
 import 'package:myapp/src/widgets/previewCell.dart';
 
 class MultiArticlePreview extends StatefulWidget {
-  const MultiArticlePreview({super.key, required this.stories, required this.column, required this.type});
+  const MultiArticlePreview(
+      {super.key, required this.stories, required this.column, required this.type, required this.previewLength});
 
   final int type;
   final List<Story> stories;
   final String column;
+  final int previewLength;
 
   @override
   State<MultiArticlePreview> createState() => _State();
@@ -40,17 +42,25 @@ class _State extends State<MultiArticlePreview> {
     List<Widget> ret = [];
     List<Story> forViewMore = [];
     for (int i = 0; i < widget.stories.length; i++) {
-      if (i < 6) {
+      if (i < widget.previewLength) {
         if (i % 2 == 1) {
           ret.add(Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ArticlePreviewCell(s: widget.stories[i]),
               ArticlePreviewCell(s: widget.stories[i - 1]),
+              ArticlePreviewCell(s: widget.stories[i]),
             ],
           ));
         } else if (i == widget.stories.length - 1) {
+          ret.add(Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ArticlePreviewRow(s: widget.stories[i]),
+            ],
+          ));
+        } else if (i == widget.previewLength - 1) {
           ret.add(Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -79,17 +89,25 @@ class _State extends State<MultiArticlePreview> {
             ArticlePreviewRow(s: widget.stories[i]),
           ],
         ));
-      } else if (i < 6) {
+      } else if (i < widget.previewLength) {
         if (i % 2 == 0) {
           ret.add(Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ArticlePreviewCell(s: widget.stories[i]),
               ArticlePreviewCell(s: widget.stories[i - 1]),
+              ArticlePreviewCell(s: widget.stories[i]),
             ],
           ));
         } else if (i == widget.stories.length - 1) {
+          ret.add(Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ArticlePreviewRow(s: widget.stories[i]),
+            ],
+          ));
+        } else if (i == widget.previewLength - 1) {
           ret.add(Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,

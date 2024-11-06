@@ -31,31 +31,23 @@ class _HomeState extends State<Home> {
             ),
             HomePagePreview(stories: [
               Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
-              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
-              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
-              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
+              Story(title: "Story 2", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
+              Story(title: "Story 3", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
+              Story(title: "Story 4", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
             ]),
             const StoryHeader(
               text: "Life",
             ),
-            MultiArticlePreview(type: 2, column: "Life", stories: [
+            MultiArticlePreview(previewLength: 3, type: 1, column: "Life", stories: [
               Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
-              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
-              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
-              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
-              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
+              Story(title: "Story 2", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
+              Story(title: "Story 3", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
+              Story(title: "Story 4", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
+              Story(title: "Story 5", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
             ]),
             const StoryHeader(
               text: 'Perspectives',
             ),
-            MultiArticlePreview(type: 1, column: "Life", stories: [
-              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
-              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
-              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
-              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
-              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
-              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
-            ]),
             const StoryHeader(
               text: 'World/Politics',
             ),
