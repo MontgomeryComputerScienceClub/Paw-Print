@@ -65,7 +65,6 @@ class HomeArticleFirstPreviewCell extends StatelessWidget {
           Positioned(
               top: 0,
               left: 0,
-              //https://api.flutter.dev/flutter/widgets/CustomPaint-class.html
               child: CustomPaint(
                 size: Size(100, 100),
                 painter: MyPainter(),
