@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/src/models/story.dart';
-import 'package:myapp/src/screens/home/previewCell.dart';
+import 'package:myapp/src/widgets/previewCell.dart';
 
 class HomePagePreview extends StatefulWidget {
   const HomePagePreview({super.key, required this.stories});

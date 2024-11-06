@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/src/models/story.dart';
-import 'package:myapp/src/screens/home/previewCell.dart';
+import 'package:myapp/src/widgets/previewCell.dart';
 
 class MultiArticlePreview extends StatefulWidget {
   const MultiArticlePreview({super.key, required this.stories, required this.column, required this.type});

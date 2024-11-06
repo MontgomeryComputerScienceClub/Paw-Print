@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/src/models/story.dart';
-import 'package:myapp/src/screens/home/multipreview.dart';
+import 'package:myapp/src/widgets/multipreview.dart';
 import 'package:myapp/src/widgets/header.dart';
-import 'package:myapp/src/screens/home/frontpreview.dart';
+import 'package:myapp/src/widgets/frontpreview.dart';
 import 'package:myapp/src/widgets/navbar.dart';
 
-import 'sectionheader.dart';
+import '../../widgets/sectionheader.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
