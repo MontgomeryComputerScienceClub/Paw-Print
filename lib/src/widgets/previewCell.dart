@@ -72,7 +72,10 @@ class HomeArticleFirstPreviewCell extends StatelessWidget {
               )),
           Column(children: [
             SizedBox(height: 200, child: s.getImageWidget()),
-            ListTile(title: Text(s.title, style: Theme.of(context).textTheme.headlineLarge)),
+            ListTile(
+                title: Text(s.title,
+                    style:
+                        Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold, height: 1.2))),
           ])
         ],
         /*
@@ -104,7 +107,7 @@ class HomeArticleRestPreviewCell extends StatelessWidget {
     return ListTile(
       title: Text(s.title),
       subtitle: Text("Learn more about the story here"),
-      trailing: const Icon(Icons.add_box),
+      trailing: const Icon(Icons.open_in_new),
     );
   }
 }

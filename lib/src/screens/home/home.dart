@@ -30,7 +30,10 @@ class _HomeState extends State<Home> {
               text: "Recent Stories",
             ),
             HomePagePreview(stories: [
-              Story(title: "Story 1", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
+              Story(
+                title: "Trump wins presidency",
+                imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png",
+              ),
               Story(title: "Story 2", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
               Story(title: "Story 3", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
               Story(title: "Story 4", imageUrl: "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
