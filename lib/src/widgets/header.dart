@@ -42,7 +42,7 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
                   ?.copyWith(fontWeight: FontWeight.bold)
                   .copyWith(fontSize: 30),
             ),
-            Text(DateFormat('yMd').format(DateTime.now())),
+            Text("${DateFormat('yMd').format(DateTime.now())} - Issue XX"),
           ],
         ),
       ),
