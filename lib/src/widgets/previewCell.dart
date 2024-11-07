@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/src/models/story.dart';
 import 'package:myapp/src/painters/painter.dart';
+import 'package:myapp/src/routes/noanimation.dart';
+import 'package:myapp/src/screens/article/entirearticle.dart';
 
 class ArticlePreviewCell extends StatelessWidget {
   const ArticlePreviewCell({super.key, required this.s, required this.index});
@@ -85,8 +87,8 @@ class HomeArticleFirstPreviewCell extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           Positioned(
-              top: 0,
-              left: 0,
+              top: 10,
+              left: 10,
               child: CustomPaint(
                 size: Size(100, 100),
                 painter: ArticleFirstPreviewCellBanner(),
@@ -94,9 +96,21 @@ class HomeArticleFirstPreviewCell extends StatelessWidget {
           Column(children: [
             SizedBox(height: 200, child: s.getImageWidget()),
             ListTile(
+                trailing: IconButton(
+                  icon: Icon(Icons.arrow_forward_ios),
+                  onPressed: () async {
+                    Navigator.of(context).push(NoAnimationRoute(
+                        child: EntireArticlePage(
+                      main: s,
+                      relatedStories: [],
+                    )));
+                  },
+                ),
                 title: Text(s.title,
-                    style:
-                        Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold, height: 1.2))),
+                    style: Theme.of(context)
+                        .textTheme
+                        .headlineLarge
+                        ?.copyWith(fontWeight: FontWeight.bold, height: 1.2))),
           ])
         ],
       ),
@@ -114,7 +128,10 @@ class HomeArticleRestPreviewCell extends StatelessWidget {
     return ListTile(
       title: Text(s.title),
       subtitle: Text("Learn more about the story here"),
-      trailing: const Icon(Icons.open_in_new),
+      trailing: IconButton(
+        icon: Icon(Icons.open_in_new),
+        onPressed: () {},
+      ),
     );
   }
 }

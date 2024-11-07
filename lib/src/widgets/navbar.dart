@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/src/routes/leftrightroute.dart';
+// import 'package:myapp/src/routes/leftrightroute.dart';
 import 'package:myapp/src/routes/noanimation.dart';
 import 'package:myapp/src/screens/games/games.dart';
 import 'package:myapp/src/screens/home/home.dart';
@@ -26,9 +26,11 @@ class NavBarState extends State<Navbar> {
   void _onItemTapped(int index) async {
     switch (index) {
       case 0:
-        Navigator.of(context).pushReplacement(NoAnimationRoute(child: const Home()));
+        Navigator.of(context)
+            .pushReplacement(NoAnimationRoute(child: const Home()));
       case 1:
-        Navigator.of(context).pushReplacement(NoAnimationRoute(child: const GamesScreen()));
+        Navigator.of(context)
+            .pushReplacement(NoAnimationRoute(child: const GamesScreen()));
       case 2:
       //  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => MapScreen()));
     }

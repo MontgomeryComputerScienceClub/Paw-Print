@@ -13,7 +13,9 @@ class _GamesScreenState extends State<GamesScreen> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-        appBar: Header(),
+        appBar: Header(
+          implyleading: false,
+        ),
         bottomNavigationBar: Navbar(
           selectedIndex: 0,
         ),

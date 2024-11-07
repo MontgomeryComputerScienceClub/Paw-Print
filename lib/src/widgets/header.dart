@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class Header extends StatelessWidget implements PreferredSizeWidget {
-  const Header({super.key});
+  const Header({super.key, required this.implyleading});
 
   final double height = 80;
+  final bool implyleading;
   // final String title;
   // final Color backgroundColor;
   // final List<Widget> actions;
@@ -26,26 +27,32 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
                 )))
       ],
       leading: Padding(
-        padding: const EdgeInsets.only(
-          left: 10,
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text("The"),
-            Text(
-              "PawPrint",
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineMedium
-                  ?.copyWith(fontWeight: FontWeight.bold)
-                  .copyWith(fontSize: 30),
+          padding: const EdgeInsets.only(
+            left: 10,
+          ),
+          child: Row(children: [
+            implyleading
+                ? IconButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    icon: const Icon(Icons.arrow_back_ios))
+                : const SizedBox.shrink(),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text("The"),
+                Text(
+                  "PawPrint",
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineMedium
+                      ?.copyWith(fontWeight: FontWeight.bold)
+                      .copyWith(fontSize: 30),
+                ),
+                Text("${DateFormat('yMd').format(DateTime.now())} - Issue XX"),
+              ],
             ),
-            Text("${DateFormat('yMd').format(DateTime.now())} - Issue XX"),
-          ],
-        ),
-      ),
+          ])),
     );
   }
 

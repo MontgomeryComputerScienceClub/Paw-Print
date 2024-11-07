@@ -4,7 +4,11 @@ import 'package:myapp/src/widgets/previewCell.dart';
 
 class MultiArticlePreview extends StatefulWidget {
   const MultiArticlePreview(
-      {super.key, required this.stories, required this.column, required this.type, required this.previewLength});
+      {super.key,
+      required this.stories,
+      required this.column,
+      required this.type,
+      required this.previewLength});
 
   final int type;
   final List<Story> stories;
@@ -110,18 +114,11 @@ class _State extends State<MultiArticlePreview> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(children: [
-      Expanded(
-          child: Card(
-              surfaceTintColor: Colors.white,
-              shadowColor: Colors.transparent,
-              color: Colors.transparent,
-              child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: returnContent()))))
-    ]);
+    return Padding(
+        padding: const EdgeInsets.all(10),
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: returnContent()));
   }
 }

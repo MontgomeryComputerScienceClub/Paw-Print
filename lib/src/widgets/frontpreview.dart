@@ -39,17 +39,14 @@ class _HomePagePreviewState extends State<HomePagePreview> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(children: [
-      Expanded(
-          child: Card(
-              shadowColor: Colors.transparent,
-              color: Colors.white70,
-              child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: generateContent()))))
-    ]);
+    return Padding(
+        padding: const EdgeInsets.all(10),
+        child: Card(
+            shadowColor: Colors.transparent,
+            color: Colors.white70,
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: generateContent())));
   }
 }
