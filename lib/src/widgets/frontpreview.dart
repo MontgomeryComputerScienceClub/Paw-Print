@@ -43,7 +43,7 @@ class _HomePagePreviewState extends State<HomePagePreview> {
         padding: const EdgeInsets.all(10),
         child: Card(
             shadowColor: Colors.transparent,
-            color: Colors.white70,
+            color: const Color.fromARGB(255, 243, 242, 242),
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,

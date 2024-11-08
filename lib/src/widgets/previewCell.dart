@@ -23,7 +23,10 @@ class ArticlePreviewCell extends StatelessWidget {
                   Column(
                     children: [
                       SizedBox(
-                          height: 150, width: 200, child: s.getImageWidget()),
+                          height: 150, width: 150, child: s.getImageWidget()),
+                      const SizedBox(
+                        height: 5,
+                      ),
                       Text(
                         s.title,
                         textAlign: TextAlign.center,
@@ -97,7 +100,8 @@ class HomeArticleFirstPreviewCell extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           Column(children: [
-            SizedBox(height: 200, width: 250, child: s.getImageWidget()),
+            SizedBox(height: 200, width: 275, child: s.getImageWidget()),
+            SizedBox(height: 10),
             ListTile(
                 trailing: IconButton(
                   icon: Icon(Icons.arrow_forward_ios),
