@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/src/constants.dart';
 import 'package:myapp/src/models/story.dart';
 import 'package:myapp/src/widgets/previewCell.dart';
 
@@ -29,10 +30,22 @@ class _HomePagePreviewState extends State<HomePagePreview> {
         alignment: Alignment.centerRight,
         child: TextButton(
             onPressed: () {},
-            child: const Text(
-              "View More Recents",
-              style: TextStyle(fontSize: 12),
-            ))));
+            child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text(
+                    "View More ",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 13),
+                  ),
+                  Text(
+                    "Recents",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 13, color: Constants.green, fontWeight: FontWeight.bold),
+                  )
+                ]))));
 
     return ret;
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:myapp/src/constants.dart';
 
 class Header extends StatelessWidget implements PreferredSizeWidget {
   const Header({super.key, required this.implyleading, this.title, required this.includeSearch});
@@ -52,15 +53,30 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: title == null
                     ? [
-                        const Text("The"),
                         Text(
-                          "PawPrint",
-                          style: Theme.of(context)
-                              .textTheme
-                              .headlineMedium
-                              ?.copyWith(fontWeight: FontWeight.bold)
-                              .copyWith(fontSize: 30),
+                          "The",
+                          style: TextStyle(color: Constants.black),
                         ),
+                        Row(
+                          children: [
+                            Text(
+                              "Paw",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineMedium
+                                  ?.copyWith(fontWeight: FontWeight.bold, fontSize: 30, color: Constants.darkGold),
+                            ),
+                            Text(
+                              "Print",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineMedium
+                                  ?.copyWith(fontWeight: FontWeight.bold, fontSize: 30, color: Constants.green),
+                            ),
+                          ],
+                        ),
+
+                        //TODO: Find a way to get issue XX done
                         Text("${DateFormat('yMd').format(DateTime.now())} - Issue XX"),
                       ]
                     : [
@@ -68,8 +84,7 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
                             style: Theme.of(context)
                                 .textTheme
                                 .headlineMedium
-                                ?.copyWith(fontWeight: FontWeight.bold)
-                                .copyWith(fontSize: 30)),
+                                ?.copyWith(fontWeight: FontWeight.bold, fontSize: 30)),
                         Text("${DateFormat('yMd').format(DateTime.now())} - Issue XX"),
                       ]),
           ])),

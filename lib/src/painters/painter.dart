@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/src/constants.dart';
 
 class ArticleFirstPreviewCellBanner extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    Paint _paint = Paint()..color = const Color.fromARGB(255, 255, 215, 0);
+    Paint _paint = Paint()..color = Constants.gold;
     var path = Path();
     path.moveTo(10, -21);
     path.lineTo(20, -21);
@@ -18,7 +19,7 @@ class ArticleFirstPreviewCellBanner extends CustomPainter {
     path.lineTo(50, -21);
     canvas.drawPath(path, _paint);
 
-    _paint = Paint()..color = Colors.green;
+    _paint = Paint()..color = Constants.green;
     path = Path();
     path.moveTo(30, -21);
     path.lineTo(40, -21);
@@ -38,7 +39,7 @@ class ArticleFirstPreviewCellBanner extends CustomPainter {
 class ArticlePreviewCellBanner extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    Paint _paint = Paint()..color = const Color.fromARGB(255, 255, 215, 0);
+    Paint _paint = Paint()..color = Constants.gold;
     var path = Path();
     path.moveTo(10, -10);
     path.lineTo(20, -10);
@@ -53,7 +54,7 @@ class ArticlePreviewCellBanner extends CustomPainter {
     path.lineTo(50, -10);
     canvas.drawPath(path, _paint);
 
-    _paint = Paint()..color = Colors.green;
+    _paint = Paint()..color = Constants.green;
     path = Path();
     path.moveTo(30, -10);
     path.lineTo(40, -10);
@@ -73,7 +74,7 @@ class ArticlePreviewCellBanner extends CustomPainter {
 class ArticlePreviewRowBanner extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    Paint _paint = Paint()..color = const Color.fromARGB(255, 255, 215, 0);
+    Paint _paint = Paint()..color = Constants.gold;
     var path = Path();
     path.moveTo(10, -10);
     path.lineTo(20, -10);
@@ -88,7 +89,7 @@ class ArticlePreviewRowBanner extends CustomPainter {
     path.lineTo(50, -10);
     canvas.drawPath(path, _paint);
 
-    _paint = Paint()..color = Colors.green;
+    _paint = Paint()..color = Constants.green;
     path = Path();
     path.moveTo(30, -10);
     path.lineTo(40, -10);

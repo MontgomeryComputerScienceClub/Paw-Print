@@ -67,11 +67,11 @@ class _HomeState extends State<Home> {
             const StoryHeader(
               text: 'Sports',
             ),
-            ElevatedButton(
-                onPressed: () {
-                  print(Theme.of(context).textTheme.bodySmall?.fontFamily);
-                },
-                child: Text("helo"))
+            // ElevatedButton(
+            //     onPressed: () {
+            //       print(Theme.of(context).textTheme.bodySmall?.fontFamily);
+            //     },
+            //     child: Text("helo"))
           ]),
         )));
   }

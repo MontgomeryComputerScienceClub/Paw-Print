@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/src/constants.dart';
 import 'package:myapp/src/models/story.dart';
 import 'package:myapp/src/widgets/previewCell.dart';
 
 class MultiArticlePreview extends StatefulWidget {
   const MultiArticlePreview(
-      {super.key,
-      required this.stories,
-      required this.column,
-      required this.type,
-      required this.previewLength});
+      {super.key, required this.stories, required this.column, required this.type, required this.previewLength});
 
   final int type;
   final List<Story> stories;
@@ -34,10 +31,22 @@ class _State extends State<MultiArticlePreview> {
         alignment: Alignment.centerRight,
         child: TextButton(
             onPressed: () {},
-            child: Text(
-              "View More on ${widget.column}",
-              style: TextStyle(fontSize: 12),
-            ))));
+            child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text(
+                    "View More on ",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 13),
+                  ),
+                  Text(
+                    widget.column,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 13, color: Constants.green, fontWeight: FontWeight.bold),
+                  )
+                ]))));
 
     return ret;
   }
