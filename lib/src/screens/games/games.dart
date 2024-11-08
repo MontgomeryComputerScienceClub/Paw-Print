@@ -15,6 +15,7 @@ class _GamesScreenState extends State<GamesScreen> {
     return const Scaffold(
         appBar: Header(
           implyleading: false,
+          includeSearch: false,
         ),
         bottomNavigationBar: Navbar(
           selectedIndex: 0,

@@ -21,6 +21,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
         appBar: const Header(
           implyleading: false,
+          includeSearch: true,
         ),
         bottomNavigationBar: const Navbar(
           selectedIndex: 0,
@@ -41,30 +42,22 @@ class _HomeState extends State<Home> {
             const StoryHeader(
               text: "Life",
             ),
-            MultiArticlePreview(
-                previewLength: 3,
-                type: 1,
-                column: "Life",
-                stories: [
-                  defaultStory,
-                  defaultStory2,
-                  defaultStory,
-                  defaultStory2,
-                  defaultStory,
-                  defaultStory2,
-                ]),
+            MultiArticlePreview(previewLength: 3, type: 1, column: "Life", stories: [
+              defaultStory,
+              defaultStory2,
+              defaultStory,
+              defaultStory2,
+              defaultStory,
+              defaultStory2,
+            ]),
             const StoryHeader(
               text: 'Perspectives',
             ),
-            MultiArticlePreview(
-                previewLength: 1,
-                type: 2,
-                column: "Life",
-                stories: [
-                  defaultStory,
-                  defaultStory2,
-                  defaultStory,
-                ]),
+            MultiArticlePreview(previewLength: 1, type: 2, column: "Life", stories: [
+              defaultStory,
+              defaultStory2,
+              defaultStory,
+            ]),
             const StoryHeader(
               text: 'World/Politics',
             ),

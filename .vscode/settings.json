@@ -5,6 +5,7 @@
         "frontpreview",
         "homearticlepreview",
         "horiz",
+        "implyleading",
         "Merriweather",
         "multipreview",
         "myapp",
@@ -12,6 +13,7 @@
         "Pawprint",
         "Recents",
         "sectionheader",
+        "sublist",
         "wght"
     ]
 }
