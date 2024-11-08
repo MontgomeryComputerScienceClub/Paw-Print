@@ -2,14 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class Header extends StatelessWidget implements PreferredSizeWidget {
-  const Header({super.key, required this.implyleading});
+  const Header({super.key, required this.implyleading, this.title});
 
   final double height = 80;
   final bool implyleading;
+  final String? title;
   // final String title;
   // final Color backgroundColor;
   // final List<Widget> actions;
   // Header({required this.title, required this.backgroundColor, required this.actions});
+
+  String _formatTitleForHeader(String paramtitle) {
+    String ret = paramtitle;
+    List<String> splitTitle = paramtitle.split(" ");
+    if (splitTitle.length > 2) {
+      ret = "${splitTitle.sublist(0, 2).join(" ")} ...";
+    }
+
+    return ret;
+  }
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -37,21 +49,35 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
                     icon: const Icon(Icons.arrow_back_ios))
                 : const SizedBox.shrink(),
             Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text("The"),
-                Text(
-                  "PawPrint",
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineMedium
-                      ?.copyWith(fontWeight: FontWeight.bold)
-                      .copyWith(fontSize: 30),
-                ),
-                Text("${DateFormat('yMd').format(DateTime.now())} - Issue XX"),
-              ],
-            ),
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: title == null
+                    ? [
+                        const Text("The"),
+                        Text(
+                          "PawPrint",
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineMedium
+                              ?.copyWith(fontWeight: FontWeight.bold)
+                              .copyWith(fontSize: 30),
+                        ),
+                        Text(
+                            "${DateFormat('yMd').format(DateTime.now())} - Issue XX"),
+                      ]
+                    : [
+                        SizedBox(
+                          width: 240,
+                          child: Text(_formatTitleForHeader(title ?? ""),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineMedium
+                                  ?.copyWith(fontWeight: FontWeight.bold)
+                                  .copyWith(fontSize: 30)),
+                        ),
+                        Text(
+                            "${DateFormat('yMd').format(DateTime.now())} - Issue XX"),
+                      ]),
           ])),
     );
   }

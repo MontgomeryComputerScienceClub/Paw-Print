@@ -36,8 +36,9 @@ class _EntireArticlePageState extends State<EntireArticlePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const Header(
+        appBar: Header(
           implyleading: true,
+          title: widget.main.title,
         ),
         body: SafeArea(
             child: SingleChildScrollView(
