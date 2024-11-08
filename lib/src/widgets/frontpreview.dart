@@ -35,6 +35,7 @@ class _HomePagePreviewState extends State<HomePagePreview> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  //TODO: view more page probbaly shouold be part of listarticles
                   const Text(
                     "View More ",
                     textAlign: TextAlign.center,
