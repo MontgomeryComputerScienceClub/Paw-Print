@@ -66,6 +66,13 @@ class _EntireArticlePageState extends State<EntireArticlePage> {
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 15),
             ),
           ),
+          const SizedBox(height: 10),
+          const Divider(),
+          Text(
+            "Related Articles",
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 20),
+          ),
+          //TODO: display related articles in horizontal scrol view thingy
         ]))));
   }
 }
