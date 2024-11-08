@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/src/models/story.dart';
+import 'package:myapp/src/models/test.dart';
 import 'package:myapp/src/widgets/multipreview.dart';
 import 'package:myapp/src/widgets/header.dart';
 import 'package:myapp/src/widgets/frontpreview.dart';
@@ -32,23 +33,10 @@ class _HomeState extends State<Home> {
               text: "Recent Stories",
             ),
             HomePagePreview(stories: [
-              Story(
-                title: "Trump wins presidency",
-                imageUrl:
-                    "https://thespokesman.net/wp-content/uploads/2024/05/class.png",
-              ),
-              Story(
-                  title: "Story 2",
-                  imageUrl:
-                      "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
-              Story(
-                  title: "Story 3",
-                  imageUrl:
-                      "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
-              Story(
-                  title: "Story 4",
-                  imageUrl:
-                      "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
+              defaultStory,
+              defaultStory2,
+              defaultStory2,
+              defaultStory2,
             ]),
             const StoryHeader(
               text: "Life",
@@ -58,26 +46,12 @@ class _HomeState extends State<Home> {
                 type: 1,
                 column: "Life",
                 stories: [
-                  Story(
-                      title: "Story 1",
-                      imageUrl:
-                          "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
-                  Story(
-                      title: "Story 2",
-                      imageUrl:
-                          "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
-                  Story(
-                      title: "Story 3",
-                      imageUrl:
-                          "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
-                  Story(
-                      title: "Story 4",
-                      imageUrl:
-                          "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
-                  Story(
-                      title: "Story 5",
-                      imageUrl:
-                          "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
+                  defaultStory,
+                  defaultStory2,
+                  defaultStory,
+                  defaultStory2,
+                  defaultStory,
+                  defaultStory2,
                 ]),
             const StoryHeader(
               text: 'Perspectives',
@@ -87,18 +61,9 @@ class _HomeState extends State<Home> {
                 type: 2,
                 column: "Life",
                 stories: [
-                  Story(
-                      title: "Story 1",
-                      imageUrl:
-                          "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
-                  Story(
-                      title: "Story 2",
-                      imageUrl:
-                          "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
-                  Story(
-                      title: "Story 3",
-                      imageUrl:
-                          "https://thespokesman.net/wp-content/uploads/2024/05/class.png"),
+                  defaultStory,
+                  defaultStory2,
+                  defaultStory,
                 ]),
             const StoryHeader(
               text: 'World/Politics',

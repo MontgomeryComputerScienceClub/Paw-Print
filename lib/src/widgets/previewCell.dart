@@ -20,6 +20,16 @@ class ArticlePreviewCell extends StatelessWidget {
             child: Padding(
                 padding: EdgeInsets.all(10),
                 child: Stack(children: [
+                  Column(
+                    children: [
+                      SizedBox(
+                          height: 150, width: 200, child: s.getImageWidget()),
+                      Text(
+                        s.title,
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
                   index == 0
                       ? Positioned(
                           top: 0,
@@ -29,12 +39,6 @@ class ArticlePreviewCell extends StatelessWidget {
                             painter: ArticlePreviewCellBanner(),
                           ))
                       : const SizedBox.shrink(),
-                  Column(
-                    children: [
-                      SizedBox(height: 150, child: s.getImageWidget()),
-                      Text(s.title),
-                    ],
-                  ),
                 ]))));
   }
 }
@@ -54,6 +58,19 @@ class ArticlePreviewRow extends StatelessWidget {
             child: Padding(
                 padding: EdgeInsets.all(10),
                 child: Stack(children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      SizedBox(
+                          width: 120,
+                          child: Text(
+                            s.title,
+                            textAlign: TextAlign.center,
+                          )),
+                      SizedBox(
+                          height: 150, width: 150, child: s.getImageWidget()),
+                    ],
+                  ),
                   index == 0
                       ? Positioned(
                           top: 0,
@@ -63,13 +80,6 @@ class ArticlePreviewRow extends StatelessWidget {
                             painter: ArticlePreviewRowBanner(),
                           ))
                       : const SizedBox.shrink(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text(s.title),
-                      SizedBox(height: 150, child: s.getImageWidget()),
-                    ],
-                  ),
                 ]))));
   }
 }
@@ -86,15 +96,8 @@ class HomeArticleFirstPreviewCell extends StatelessWidget {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          Positioned(
-              top: 10,
-              left: 10,
-              child: CustomPaint(
-                size: Size(100, 100),
-                painter: ArticleFirstPreviewCellBanner(),
-              )),
           Column(children: [
-            SizedBox(height: 200, child: s.getImageWidget()),
+            SizedBox(height: 200, width: 250, child: s.getImageWidget()),
             ListTile(
                 trailing: IconButton(
                   icon: Icon(Icons.arrow_forward_ios),
@@ -111,7 +114,14 @@ class HomeArticleFirstPreviewCell extends StatelessWidget {
                         .textTheme
                         .headlineLarge
                         ?.copyWith(fontWeight: FontWeight.bold, height: 1.2))),
-          ])
+          ]),
+          Positioned(
+              top: 10,
+              left: 10,
+              child: CustomPaint(
+                size: Size(100, 100),
+                painter: ArticleFirstPreviewCellBanner(),
+              )),
         ],
       ),
     );
