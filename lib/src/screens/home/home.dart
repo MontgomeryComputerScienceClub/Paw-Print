@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/src/models/story.dart';
 import 'package:myapp/src/models/test.dart';
-import 'package:myapp/src/widgets/multipreview.dart';
+import 'package:myapp/src/widgets/preview_groups.dart';
 import 'package:myapp/src/widgets/header.dart';
-import 'package:myapp/src/widgets/frontpreview.dart';
 import 'package:myapp/src/widgets/navbar.dart';
 
 import '../../widgets/sectionheader.dart';

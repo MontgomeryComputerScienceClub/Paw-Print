@@ -39,7 +39,7 @@ class _EntireArticlePageState extends State<EntireArticlePage> {
     return Scaffold(
         appBar: Header(
           implyleading: true,
-          title: widget.main.titleImageAndID.title,
+          title: "${widget.main.column} - ${widget.main.titleImageAndID.title}",
           includeSearch: false,
         ),
         body: SafeArea(

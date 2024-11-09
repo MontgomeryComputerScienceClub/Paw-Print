@@ -9,7 +9,7 @@ Map<String, dynamic> storyJson = {
   "authors": ["Eddie Tang", "Sourish Pramanik", "Joel Pulikan"],
   "month": 6,
   "year": 2024,
-  "column": "Sports",
+  "column": "Other",
   "imgUrl":
       "https://yusjougmsdnhcsksadaw.supabase.co/storage/v1/object/public/images/Screenshot_2024-06-13_at_6.49.44_PM.png",
 };
@@ -22,7 +22,7 @@ Map<String, dynamic> storyJson2 = {
   "month": 6,
   "year": 2024,
   "imgUrl": "https://thespokesman.net/wp-content/uploads/2024/05/class.png",
-  "column": "Life"
+  "column": "People"
 };
 
 Story defaultStory = Story.fromJson(storyJson);
