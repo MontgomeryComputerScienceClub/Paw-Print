@@ -1,7 +1,6 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:myapp/src/models/storypreview.dart';
-import 'package:myapp/src/models/test.dart';
 import 'package:myapp/src/painters/painter.dart';
 import 'package:myapp/src/routes/noanimation.dart';
 import 'package:myapp/src/screens/article/entirearticle.dart';
@@ -108,13 +107,13 @@ class HomeArticleFirstPreviewCell extends StatelessWidget {
                   icon: Icon(Icons.arrow_forward_ios),
                   onPressed: () async {
                     //TODO: Modify this to not delay and also get related stories
-                    Future.delayed(const Duration(milliseconds: 100), () async {
-                      Navigator.of(context).push(NoAnimationRoute(
-                          child: EntireArticlePage(
-                        main: await s.getStoryFromPreview(),
-                        relatedStories: [],
-                      )));
-                    });
+                    var story = await s.getStoryFromPreview();
+
+                    Navigator.of(context).push(NoAnimationRoute(
+                        child: EntireArticlePage(
+                      main: story,
+                      relatedStories: [],
+                    )));
                   },
                 ),
                 title: Text(s.title,
