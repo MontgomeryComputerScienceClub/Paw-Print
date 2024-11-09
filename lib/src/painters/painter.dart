@@ -39,7 +39,7 @@ class ArticleFirstPreviewCellBanner extends CustomPainter {
 class ArticlePreviewCellBanner extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    Paint _paint = Paint()..color = Constants.gold;
+    Paint paint = Paint()..color = Constants.gold;
     var path = Path();
     path.moveTo(10, -10);
     path.lineTo(20, -10);
@@ -52,16 +52,16 @@ class ArticlePreviewCellBanner extends CustomPainter {
     path.lineTo(-10, 60);
     path.lineTo(-10, 49);
     path.lineTo(50, -10);
-    canvas.drawPath(path, _paint);
+    canvas.drawPath(path, paint);
 
-    _paint = Paint()..color = Constants.green;
+    paint = Paint()..color = Constants.green;
     path = Path();
     path.moveTo(30, -10);
     path.lineTo(40, -10);
     path.lineTo(-10, 40);
     path.lineTo(-10, 29);
     path.lineTo(30, -10);
-    canvas.drawPath(path, _paint);
+    canvas.drawPath(path, paint);
     path.close();
   }
 
@@ -74,7 +74,7 @@ class ArticlePreviewCellBanner extends CustomPainter {
 class ArticlePreviewRowBanner extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    Paint _paint = Paint()..color = Constants.gold;
+    Paint paint = Paint()..color = Constants.gold;
     var path = Path();
     path.moveTo(10, -10);
     path.lineTo(20, -10);
@@ -87,16 +87,16 @@ class ArticlePreviewRowBanner extends CustomPainter {
     path.lineTo(-10, 60);
     path.lineTo(-10, 49);
     path.lineTo(50, -10);
-    canvas.drawPath(path, _paint);
+    canvas.drawPath(path, paint);
 
-    _paint = Paint()..color = Constants.green;
+    paint = Paint()..color = Constants.green;
     path = Path();
     path.moveTo(30, -10);
     path.lineTo(40, -10);
     path.lineTo(-10, 40);
     path.lineTo(-10, 29);
     path.lineTo(30, -10);
-    canvas.drawPath(path, _paint);
+    canvas.drawPath(path, paint);
     path.close();
   }
 

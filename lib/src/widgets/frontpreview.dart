@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/src/constants.dart';
-import 'package:myapp/src/models/story.dart';
-import 'package:myapp/src/widgets/previewCell.dart';
+import 'package:myapp/src/models/storypreview.dart';
+import 'package:myapp/src/widgets/preview_cell.dart';
 
 class HomePagePreview extends StatefulWidget {
   const HomePagePreview({super.key, required this.stories});
 
-  final List<Story> stories;
+  final List<StoryPreview> stories;
 
   @override
   State<HomePagePreview> createState() => _HomePagePreviewState();
@@ -44,7 +44,10 @@ class _HomePagePreviewState extends State<HomePagePreview> {
                   Text(
                     "Recents",
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 13, color: Constants.green, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: 13,
+                        color: Constants.green,
+                        fontWeight: FontWeight.bold),
                   )
                 ]))));
 

@@ -1,4 +1,5 @@
 import 'package:myapp/src/models/story.dart';
+import 'package:myapp/src/models/storypreview.dart';
 
 Map<String, dynamic> storyJson = {
   "id": 545,
@@ -8,7 +9,8 @@ Map<String, dynamic> storyJson = {
   "authors": ["Eddie Tang", "Sourish Pramanik", "Joel Pulikan"],
   "month": 6,
   "year": 2024,
-  "img":
+  "column": "Sports",
+  "imgUrl":
       "https://yusjougmsdnhcsksadaw.supabase.co/storage/v1/object/public/images/Screenshot_2024-06-13_at_6.49.44_PM.png",
 };
 
@@ -19,8 +21,12 @@ Map<String, dynamic> storyJson2 = {
   "authors": ["Kylie Sek"],
   "month": 6,
   "year": 2024,
-  "img": "https://thespokesman.net/wp-content/uploads/2024/05/class.png",
+  "imgUrl": "https://thespokesman.net/wp-content/uploads/2024/05/class.png",
+  "column": "Life"
 };
 
 Story defaultStory = Story.fromJson(storyJson);
 Story defaultStory2 = Story.fromJson(storyJson2);
+
+StoryPreview previewStory = StoryPreview.fromJson(storyJson);
+StoryPreview previewStory2 = StoryPreview.fromJson(storyJson2);

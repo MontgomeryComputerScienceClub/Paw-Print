@@ -6,4 +6,14 @@ class Constants {
   static Color green = Colors.green;
   static Color black = Colors.black;
   static Color red = Colors.red;
+
+  static String storyPreviewImageUrlKey = "";
+  static String storyPreviewTitleKey = "";
+  static String storyPreviewIDKey = "";
+
+  static String storyContentKey = "";
+  static String storyAuthorsKey = "";
+  static String storyMonthKey = "";
+  static String storyYearKey = "";
+  static String storyColumnKey = "";
 }

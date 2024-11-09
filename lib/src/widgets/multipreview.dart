@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/src/constants.dart';
-import 'package:myapp/src/models/story.dart';
-import 'package:myapp/src/widgets/previewCell.dart';
+import 'package:myapp/src/models/storypreview.dart';
+import 'package:myapp/src/widgets/preview_cell.dart';
 
 class MultiArticlePreview extends StatefulWidget {
   const MultiArticlePreview(
-      {super.key, required this.stories, required this.column, required this.type, required this.previewLength});
+      {super.key,
+      required this.stories,
+      required this.column,
+      required this.type,
+      required this.previewLength});
 
   final int type;
-  final List<Story> stories;
+  final List<StoryPreview> stories;
   final String column;
   final int previewLength;
 
@@ -44,7 +48,10 @@ class _State extends State<MultiArticlePreview> {
                   Text(
                     widget.column,
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 13, color: Constants.green, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: 13,
+                        color: Constants.green,
+                        fontWeight: FontWeight.bold),
                   )
                 ]))));
 
@@ -53,7 +60,7 @@ class _State extends State<MultiArticlePreview> {
 
   List<Widget> typeOne() {
     List<Widget> ret = [];
-    List<Story> forViewMore = [];
+    List<StoryPreview> forViewMore = [];
     for (int i = 0; i < widget.stories.length; i++) {
       if (i < widget.previewLength) {
         if (i % 2 == 1) {
@@ -84,7 +91,7 @@ class _State extends State<MultiArticlePreview> {
 
   List<Widget> typeTwo() {
     List<Widget> ret = [];
-    List<Story> forViewMore = [];
+    List<StoryPreview> forViewMore = [];
     for (int i = 0; i < widget.stories.length; i++) {
       if (i == 0) {
         ret.add(Row(

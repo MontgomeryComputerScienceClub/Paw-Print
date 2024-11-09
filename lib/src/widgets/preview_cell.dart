@@ -1,6 +1,7 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
-import 'package:myapp/src/models/story.dart';
+import 'package:myapp/src/models/storypreview.dart';
+import 'package:myapp/src/models/test.dart';
 import 'package:myapp/src/painters/painter.dart';
 import 'package:myapp/src/routes/noanimation.dart';
 import 'package:myapp/src/screens/article/entirearticle.dart';
@@ -8,7 +9,7 @@ import 'package:myapp/src/screens/article/entirearticle.dart';
 class ArticlePreviewCell extends StatelessWidget {
   const ArticlePreviewCell({super.key, required this.s, required this.index});
 
-  final Story s;
+  final StoryPreview s;
   final int index;
 
   @override
@@ -49,7 +50,7 @@ class ArticlePreviewCell extends StatelessWidget {
 class ArticlePreviewRow extends StatelessWidget {
   const ArticlePreviewRow({super.key, required this.s, required this.index});
 
-  final Story s;
+  final StoryPreview s;
   final int index;
 
   @override
@@ -90,7 +91,7 @@ class ArticlePreviewRow extends StatelessWidget {
 class HomeArticleFirstPreviewCell extends StatelessWidget {
   const HomeArticleFirstPreviewCell({super.key, required this.s});
 
-  final Story s;
+  final StoryPreview s;
 
   @override
   Widget build(BuildContext context) {
@@ -106,11 +107,14 @@ class HomeArticleFirstPreviewCell extends StatelessWidget {
                 trailing: IconButton(
                   icon: Icon(Icons.arrow_forward_ios),
                   onPressed: () async {
-                    Navigator.of(context).push(NoAnimationRoute(
-                        child: EntireArticlePage(
-                      main: s,
-                      relatedStories: [],
-                    )));
+                    //TODO: Modify this to not delay and also get related stories
+                    Future.delayed(const Duration(milliseconds: 100), () async {
+                      Navigator.of(context).push(NoAnimationRoute(
+                          child: EntireArticlePage(
+                        main: await s.getStoryFromPreview(),
+                        relatedStories: [],
+                      )));
+                    });
                   },
                 ),
                 title: Text(s.title,
@@ -135,7 +139,7 @@ class HomeArticleFirstPreviewCell extends StatelessWidget {
 class HomeArticleRestPreviewCell extends StatelessWidget {
   const HomeArticleRestPreviewCell({super.key, required this.s});
 
-  final Story s;
+  final StoryPreview s;
 
   @override
   Widget build(BuildContext context) {

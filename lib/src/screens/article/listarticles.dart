@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+//Used in searches?
+
 class ListArticlesOfCategory extends StatefulWidget {
   const ListArticlesOfCategory({super.key});
 

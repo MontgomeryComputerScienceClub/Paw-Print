@@ -4,7 +4,8 @@ import 'package:myapp/src/widgets/header.dart';
 import 'package:intl/intl.dart';
 
 class EntireArticlePage extends StatefulWidget {
-  const EntireArticlePage({super.key, required this.main, required this.relatedStories});
+  const EntireArticlePage(
+      {super.key, required this.main, required this.relatedStories});
 
   final Story main;
   final List<Story> relatedStories;
@@ -13,6 +14,7 @@ class EntireArticlePage extends StatefulWidget {
   State<EntireArticlePage> createState() => _EntireArticlePageState();
 }
 
+//TODO: display column
 class _EntireArticlePageState extends State<EntireArticlePage> {
   String _formatAuthors(List<String> authors) {
     if (authors.isEmpty) return '';
@@ -37,42 +39,59 @@ class _EntireArticlePageState extends State<EntireArticlePage> {
     return Scaffold(
         appBar: Header(
           implyleading: true,
-          title: widget.main.title,
+          title: widget.main.titleImageAndID.title,
           includeSearch: false,
         ),
         body: SafeArea(
             child: SingleChildScrollView(
-                child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-          const Divider(),
-          SizedBox(height: 200, child: widget.main.getImageWidget()),
-          const SizedBox(height: 10),
-          Text(
-            widget.main.title,
-            style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
-            textAlign: TextAlign.center,
-          ),
-          const Divider(),
-          Text("By ${_formatAuthors(widget.main.authors)}", style: Theme.of(context).textTheme.bodyMedium),
-          const SizedBox(height: 8),
-          Text(
-            _formatMonthYear(widget.main.month, widget.main.year),
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(fontStyle: FontStyle.italic),
-          ),
-          const Divider(),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Text(
-              _processContent(widget.main.content),
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 15),
-            ),
-          ),
-          const SizedBox(height: 10),
-          const Divider(),
-          Text(
-            "Related Articles",
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 20),
-          ),
-          //TODO: display related articles in horizontal scrol view thingy
-        ]))));
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+              const Divider(),
+              SizedBox(
+                  height: 200,
+                  child: widget.main.titleImageAndID.getImageWidget()),
+              const SizedBox(height: 10),
+              Text(
+                widget.main.titleImageAndID.title,
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineLarge
+                    ?.copyWith(fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
+              const Divider(),
+              Text("By ${_formatAuthors(widget.main.authors)}",
+                  style: Theme.of(context).textTheme.bodyMedium),
+              const SizedBox(height: 8),
+              Text(
+                _formatMonthYear(widget.main.month, widget.main.year),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodySmall
+                    ?.copyWith(fontStyle: FontStyle.italic),
+              ),
+              const Divider(),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Text(
+                  _processContent(widget.main.content),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium
+                      ?.copyWith(fontSize: 15),
+                ),
+              ),
+              const SizedBox(height: 10),
+              const Divider(),
+              Text(
+                "Related Articles",
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium
+                    ?.copyWith(fontSize: 20),
+              ),
+              //TODO: display related articles in horizontal scrol view thingy
+            ]))));
   }
 }

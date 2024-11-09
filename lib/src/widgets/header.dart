@@ -3,7 +3,11 @@ import 'package:intl/intl.dart';
 import 'package:myapp/src/constants.dart';
 
 class Header extends StatelessWidget implements PreferredSizeWidget {
-  const Header({super.key, required this.implyleading, this.title, required this.includeSearch});
+  const Header(
+      {super.key,
+      required this.implyleading,
+      this.title,
+      required this.includeSearch});
 
   final double height = 80;
   final bool implyleading;
@@ -13,10 +17,9 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
 
   String _formatTitleForHeader(String paramtitle) {
     String ret = paramtitle;
-    List<String> splitTitle = paramtitle.split(" ");
-
     if (paramtitle.characters.length > headerTextLength) {
-      ret = "${paramtitle.characters.toList().sublist(0, headerTextLength).join("")} ...";
+      ret =
+          "${paramtitle.characters.toList().sublist(0, headerTextLength).join("")} ...";
     }
 
     return ret;
@@ -46,7 +49,9 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
           ),
           child: Row(children: [
             implyleading
-                ? IconButton(onPressed: () => Navigator.of(context).pop(), icon: const Icon(Icons.arrow_back_ios))
+                ? IconButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    icon: const Icon(Icons.arrow_back_ios))
                 : const SizedBox.shrink(),
             Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -64,28 +69,37 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
                               style: Theme.of(context)
                                   .textTheme
                                   .headlineMedium
-                                  ?.copyWith(fontWeight: FontWeight.bold, fontSize: 30, color: Constants.darkGold),
+                                  ?.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 30,
+                                      color: Constants.darkGold),
                             ),
                             Text(
                               "Print",
                               style: Theme.of(context)
                                   .textTheme
                                   .headlineMedium
-                                  ?.copyWith(fontWeight: FontWeight.bold, fontSize: 30, color: Constants.green),
+                                  ?.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 30,
+                                      color: Constants.green),
                             ),
                           ],
                         ),
 
                         //TODO: Find a way to get issue XX done
-                        Text("${DateFormat('yMd').format(DateTime.now())} - Issue XX"),
+                        Text(
+                            "${DateFormat('yMd').format(DateTime.now())} - Issue XX"),
                       ]
                     : [
                         Text(_formatTitleForHeader(title ?? ""),
                             style: Theme.of(context)
                                 .textTheme
                                 .headlineMedium
-                                ?.copyWith(fontWeight: FontWeight.bold, fontSize: 30)),
-                        Text("${DateFormat('yMd').format(DateTime.now())} - Issue XX"),
+                                ?.copyWith(
+                                    fontWeight: FontWeight.bold, fontSize: 30)),
+                        Text(
+                            "${DateFormat('yMd').format(DateTime.now())} - Issue XX"),
                       ]),
           ])),
     );
