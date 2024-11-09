@@ -32,8 +32,8 @@ class _HomeState extends State<Home> {
               text: "Recent Stories",
             ),
             HomePagePreview(stories: [
-              previewStory,
               previewStory2,
+              previewStory,
               previewStory,
               previewStory2,
             ]),

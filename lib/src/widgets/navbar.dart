@@ -43,7 +43,7 @@ class NavBarState extends State<Navbar> {
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.newspaper),
-          label: 'News',
+          label: 'Home',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.games),

@@ -72,16 +72,18 @@ class _EntireArticlePageState extends State<EntireArticlePage> {
                     ?.copyWith(fontStyle: FontStyle.italic),
               ),
               const Divider(),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Text(
-                  _processContent(widget.main.content),
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyMedium
-                      ?.copyWith(fontSize: 15),
-                ),
-              ),
+              Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Text(
+                      _processContent(widget.main.content),
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyMedium
+                          ?.copyWith(fontSize: 15),
+                    ),
+                  )),
               const SizedBox(height: 10),
               const Divider(),
               Text(

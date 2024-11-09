@@ -5,7 +5,7 @@ import 'package:myapp/src/models/test.dart';
 
 class StoryPreview {
   String title;
-  String imageUrl;
+  String? imageUrl;
   int id;
 
   StoryPreview({
@@ -22,8 +22,11 @@ class StoryPreview {
   }
 
   Widget getImageWidget() {
+    if (imageUrl == null) {
+      return Image.asset("assets/paw.png");
+    }
     return Image.network(
-      imageUrl,
+      imageUrl ?? "",
       loadingBuilder: (BuildContext context, Widget child,
           ImageChunkEvent? loadingProgress) {
         if (loadingProgress == null) return child;

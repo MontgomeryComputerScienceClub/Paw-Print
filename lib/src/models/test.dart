@@ -9,15 +9,13 @@ Map<String, dynamic> storyJson = {
   "authors": ["Eddie Tang", "Sourish Pramanik", "Joel Pulikan"],
   "month": 6,
   "year": 2024,
-  "column": "Other",
-  "imgUrl":
-      "https://yusjougmsdnhcsksadaw.supabase.co/storage/v1/object/public/images/Screenshot_2024-06-13_at_6.49.44_PM.png",
+  "column": "Other"
 };
 
 Map<String, dynamic> storyJson2 = {
   "id": 696,
   "title": "PHS Profile: Eddie Tang",
-  "content": "Eddie is hot \r\n yipee!!",
+  "content": "Eddie is hot \r\nyipee!!",
   "authors": ["Kylie Sek"],
   "month": 6,
   "year": 2024,

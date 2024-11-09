@@ -5,9 +5,6 @@
       "color": "#ff0a0a0a",
       "decoration": "none",
       "fontFamily": "Merriweather",
-      "fontFamilyFallback": [
-        "Merriweather"
-      ],
       "fontSize": 24,
       "fontWeight": "w400",
       "inherit": false,
@@ -18,9 +15,6 @@
       "color": "#ff0a0a0a",
       "decoration": "none",
       "fontFamily": "Merriweather",
-      "fontFamilyFallback": [
-        "Merriweather"
-      ],
       "fontSize": 14,
       "fontWeight": "w500",
       "inherit": false,
