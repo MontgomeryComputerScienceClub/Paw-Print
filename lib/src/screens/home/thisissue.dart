@@ -17,6 +17,7 @@ class _ThisIssueState extends State<ThisIssue> {
         child: SingleChildScrollView(
       child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
         //  const Divider(),
+        const SizedBox(height: 10),
         const StoryHeader(
           text: "Featured",
         ),

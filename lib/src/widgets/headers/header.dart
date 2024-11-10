@@ -17,7 +17,7 @@ class Header extends StatefulWidget implements PreferredSizeWidget {
   final String? title;
   final bool includeSearch;
   final bool includeColumns;
-  final double height = 120;
+  final double height = 70;
   final int headerTextLength = 16;
 
   @override
@@ -28,19 +28,30 @@ class Header extends StatefulWidget implements PreferredSizeWidget {
       Size.fromHeight(includeColumns ? height : height - 40);
 }
 
-//TODO: the issue date thing looks ugly - move to thing
-//TODO: test the tab bar scorll feature
 class _HeaderState extends State<Header> with SingleTickerProviderStateMixin {
   Info info = Info(issue: 0);
+  late final TabController _tabController;
 
   @override
   void initState() {
     super.initState();
+    _tabController = TabController(
+      length: Constants.columns.length,
+      initialIndex: Constants.columnsThisIssueIndex,
+      vsync: this,
+    );
+
     Info.syncInfo().then((value) {
       setState(() {
         info = value;
       });
     });
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
   }
 
   String _formatTitleForHeader(String paramtitle) {
@@ -57,9 +68,26 @@ class _HeaderState extends State<Header> with SingleTickerProviderStateMixin {
     List<Widget> ret = [];
 
     for (int i = 0; i < Constants.columns.length; i++) {
-      ret.add(Tab(
-        text: Constants.columns[i],
-      ));
+      if (i != Constants.columnsThisIssueIndex) {
+        ret.add(Tab(
+          height: 23,
+          child: Text(Constants.columns[i], style: GoogleFonts.aBeeZee()),
+        ));
+      } else {
+        ret.add(Tab(
+            height: 23,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text("Issue ", style: GoogleFonts.aBeeZee()),
+                Text(info.issueToNumeral(),
+                    style: GoogleFonts.aBeeZee(
+                        textStyle: TextStyle(
+                      color: Constants.red.withAlpha(200),
+                    )))
+              ],
+            )));
+      }
     }
     return ret;
   }
@@ -72,80 +100,42 @@ class _HeaderState extends State<Header> with SingleTickerProviderStateMixin {
       toolbarHeight: widget.height,
       actions: [
         widget.includeSearch
-            ? Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.search,
-                      size: 40,
-                    )))
+            ? IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.search,
+                  size: 25,
+                ))
             : const SizedBox.shrink(),
       ],
-      leading: Padding(
-        padding: const EdgeInsets.only(
-          left: 10,
-        ),
-        child: Row(children: [
-          widget.implyleading
-              ? IconButton(
-                  onPressed: () => Navigator.of(context).pop(),
-                  icon: const Icon(Icons.arrow_back_ios))
-              : const SizedBox.shrink(),
-          Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: widget.title == null
-                  ? [
-                      Text(
-                        "The",
-                        style: GoogleFonts.aBeeZee(
-                            textStyle: TextStyle(color: Constants.black)),
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            "Paw",
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineMedium
-                                ?.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 30,
-                                    color: Constants.darkGold),
-                          ),
-                          Text(
-                            "Print",
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineMedium
-                                ?.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 30,
-                                    color: Constants.green),
-                          ),
-                        ],
-                      ),
-                      Text(
-                        "${DateFormat('yMd').format(DateTime.now())} - Issue ${info.issueToNumeral()}",
-                        style: GoogleFonts.aBeeZee(),
-                      ),
-                    ]
-                  : [
-                      Text(_formatTitleForHeader(widget.title ?? ""),
-                          style: Theme.of(context)
-                              .textTheme
-                              .headlineMedium
-                              ?.copyWith(
-                                  fontWeight: FontWeight.bold, fontSize: 30)),
-                      Text(
-                          "${DateFormat('yMd').format(DateTime.now())} - Issue ${info.issueToNumeral()}"),
-                    ]),
-        ]),
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            "Paw",
+            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                fontWeight: FontWeight.bold,
+                fontSize: 30,
+                color: Constants.darkGold),
+          ),
+          Text(
+            "Print",
+            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                fontWeight: FontWeight.bold,
+                fontSize: 30,
+                color: Constants.green),
+          ),
+        ],
       ),
+      centerTitle: true,
       bottom: widget.includeColumns
           ? TabBar(
+              isScrollable: true,
+              // unselectedLabelColor: Colors.white.withOpacity(0.3),
+              // indicatorColor: Colors.white,
               tabs: _generateColumns(),
+              controller: _tabController,
             )
           : null,
     );
