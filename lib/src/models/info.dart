@@ -30,7 +30,7 @@ class Info {
     prefs.setString(Constants.diskInfoKey, toJsonString());
   }
 
-  Future<Info?> fromDisk() async {
+  static Future<Info?> fromDisk() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var jsonString = prefs.getString(Constants.diskInfoKey);
     if (jsonString == null) {
@@ -40,15 +40,15 @@ class Info {
     return info;
   }
 
-  Future<Info?> fetchCurrentInfo() async {
+  static Future<Info?> fetchCurrentInfo() async {
     //TODO: api get request or database read?
     return currentPaper;
   }
 
   static Future<Info> syncInfo() async {
     Info info;
-    Info? serverNews = await Info(issue: 0).fetchCurrentInfo();
-    Info? localNews = await Info(issue: 0).fromDisk();
+    Info? serverNews = await Info.fetchCurrentInfo();
+    Info? localNews = await Info.fromDisk();
     if (serverNews != null) {
       if (localNews != null) {
         if (serverNews != localNews) {

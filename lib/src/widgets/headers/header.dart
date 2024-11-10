@@ -3,7 +3,6 @@ import 'package:intl/intl.dart';
 import 'package:myapp/src/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/src/models/info.dart';
-import 'package:myapp/src/models/test.dart';
 
 class Header extends StatefulWidget implements PreferredSizeWidget {
   const Header(
