@@ -1,3 +1,4 @@
+import 'package:myapp/src/models/info.dart';
 import 'package:myapp/src/models/story.dart';
 import 'package:myapp/src/models/storypreview.dart';
 
@@ -28,3 +29,5 @@ Story defaultStory2 = Story.fromJson(storyJson2);
 
 StoryPreview previewStory = StoryPreview.fromJson(storyJson);
 StoryPreview previewStory2 = StoryPreview.fromJson(storyJson2);
+
+Info currentPaper = Info.fromJson({"issue": 12});

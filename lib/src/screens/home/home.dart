@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/src/constants.dart';
 import 'package:myapp/src/models/test.dart';
 import 'package:myapp/src/widgets/headers/columns.dart';
 import 'package:myapp/src/widgets/preview_groups.dart';
@@ -29,7 +30,10 @@ class _HomeState extends State<Home> {
             child: SingleChildScrollView(
           child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
             const Divider(),
-            const Columns(),
+            Columns(
+              columns: Constants.columns,
+              selectedIndex: currentPaper.issue,
+            ),
             const Divider(),
             const StoryHeader(
               text: "Featured",

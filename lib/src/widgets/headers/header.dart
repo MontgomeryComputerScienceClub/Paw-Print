@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:myapp/src/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp/src/models/info.dart';
+import 'package:myapp/src/models/test.dart';
 
 class Header extends StatefulWidget implements PreferredSizeWidget {
   const Header(
@@ -24,6 +26,16 @@ class Header extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _HeaderState extends State<Header> with SingleTickerProviderStateMixin {
+  late Info info;
+
+  @override
+  void initState() {
+    super.initState();
+    Info.syncInfo().then((value) {
+      info = value;
+    });
+  }
+
   String _formatTitleForHeader(String paramtitle) {
     String ret = paramtitle;
     if (paramtitle.characters.length > widget.headerTextLength) {

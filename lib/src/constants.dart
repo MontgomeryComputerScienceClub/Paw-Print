@@ -16,4 +16,16 @@ class Constants {
   static String storyMonthKey = "month";
   static String storyYearKey = "year";
   static String storyColumnKey = "column";
+
+  static String infoIssueKey = "issue";
+
+  static List<String> columns = [
+    "Life",
+    "Perspectives",
+    "World/Politics",
+    "Entertainment",
+    "Sports"
+  ];
+
+  static String diskInfoKey = "pawprint-infoclass-dump";
 }
