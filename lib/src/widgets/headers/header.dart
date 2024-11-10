@@ -31,7 +31,9 @@ class _HeaderState extends State<Header> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     Info.syncInfo().then((value) {
-      info = value;
+      setState(() {
+        info = value;
+      });
     });
   }
 

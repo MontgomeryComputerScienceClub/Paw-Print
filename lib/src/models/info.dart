@@ -13,21 +13,17 @@ class Info {
     return Info(issue: json[Constants.infoIssueKey]);
   }
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     return {Constants.infoIssueKey: issue};
   }
 
-  String toJsonString() {
-    return jsonEncode(toMap());
-  }
-
   String issueToNumeral() {
-    return issue.toRomanNumeralString() ?? "XX";
+    return issue.toRomanNumeralString() ?? "";
   }
 
   Future<void> toDisk() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString(Constants.diskInfoKey, toJsonString());
+    prefs.setString(Constants.diskInfoKey, jsonEncode(toJson()));
   }
 
   static Future<Info?> fromDisk() async {
@@ -36,7 +32,7 @@ class Info {
     if (jsonString == null) {
       return null;
     }
-    Info info = Info.fromJson(null);
+    Info info = Info.fromJson(jsonDecode(jsonString));
     return info;
   }
 
