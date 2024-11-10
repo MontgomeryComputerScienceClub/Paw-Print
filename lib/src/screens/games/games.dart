@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/src/widgets/header.dart';
+import 'package:myapp/src/widgets/headers/header.dart';
 import 'package:myapp/src/widgets/navbar.dart';
 
 class GamesScreen extends StatefulWidget {

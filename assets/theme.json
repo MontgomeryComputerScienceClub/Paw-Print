@@ -29,10 +29,7 @@
     "selectedLabelStyle": {
       "color": "#ffffffff",
       "decoration": "none",
-      "fontFamily": "Merriweather",
-      "fontFamilyFallback": [
-        "Merriweather"
-      ],
+      "fontFamily": "aBeeZee",
       "fontSize": 14,
       "fontWeight": "w500",
       "inherit": false,

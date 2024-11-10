@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/src/models/story.dart';
-import 'package:myapp/src/widgets/header.dart';
+import 'package:myapp/src/widgets/headers/header.dart';
 import 'package:intl/intl.dart';
 
 class EntireArticlePage extends StatefulWidget {

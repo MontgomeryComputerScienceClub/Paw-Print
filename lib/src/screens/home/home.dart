@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/src/models/test.dart';
+import 'package:myapp/src/widgets/headers/columns.dart';
 import 'package:myapp/src/widgets/preview_groups.dart';
-import 'package:myapp/src/widgets/header.dart';
+import 'package:myapp/src/widgets/headers/header.dart';
 import 'package:myapp/src/widgets/navbar.dart';
 
 import '../../widgets/sectionheader.dart';
@@ -28,8 +29,10 @@ class _HomeState extends State<Home> {
             child: SingleChildScrollView(
           child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
             const Divider(),
+            const Columns(),
+            const Divider(),
             const StoryHeader(
-              text: "Recent Stories",
+              text: "Featured",
             ),
             HomePagePreview(stories: [
               previewStory2,

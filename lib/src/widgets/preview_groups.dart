@@ -178,7 +178,7 @@ class _HomePagePreviewState extends State<HomePagePreview> {
                     style: TextStyle(fontSize: 13),
                   ),
                   Text(
-                    "Recents",
+                    "Featured",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize: 13,
