@@ -22,7 +22,9 @@ class _GamesScreenState extends State<GamesScreen> {
         ),
         body: SafeArea(
             child: SingleChildScrollView(
-          child: Column(children: []),
+          child: Column(children: [
+            Divider(),
+          ]),
         )));
   }
 }

@@ -15,6 +15,7 @@ class EntireArticlePage extends StatefulWidget {
 }
 
 //TODO: display column
+//TODO: ISSUE XX NOT WORKING??
 class _EntireArticlePageState extends State<EntireArticlePage> {
   String _formatAuthors(List<String> authors) {
     if (authors.isEmpty) return '';

@@ -25,7 +25,7 @@ class Header extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _HeaderState extends State<Header> with SingleTickerProviderStateMixin {
-  late Info info;
+  Info info = Info(issue: 0);
 
   @override
   void initState() {
@@ -122,7 +122,7 @@ class _HeaderState extends State<Header> with SingleTickerProviderStateMixin {
                               ?.copyWith(
                                   fontWeight: FontWeight.bold, fontSize: 30)),
                       Text(
-                          "${DateFormat('yMd').format(DateTime.now())} - Issue XX"),
+                          "${DateFormat('yMd').format(DateTime.now())} - Issue ${info.issueToNumeral()}"),
                     ]),
         ]),
       ),
