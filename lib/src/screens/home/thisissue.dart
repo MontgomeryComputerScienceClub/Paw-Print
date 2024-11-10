@@ -31,8 +31,7 @@ class _HomeState extends State<Home> {
           child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
             const Divider(),
             Columns(
-              columns: Constants.columns,
-              selectedIndex: currentPaper.issue,
+              selectedIndex: Constants.columnsThisIssueIndex,
             ),
             const Divider(),
             const StoryHeader(

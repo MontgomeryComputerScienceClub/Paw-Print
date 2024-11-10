@@ -21,12 +21,21 @@ class Constants {
   static String infoIssueKey = "issue";
 
   static List<String> columns = [
+    "Print Editions",
     "Life",
     "Perspectives",
+    "This Issue",
     "World/Politics",
     "Entertainment",
-    "Sports"
+    "Sports",
   ];
+  static int columnsPrintEditionsIndex = 0;
+  static int columnsLifeIndex = 1;
+  static int columnsPerspectivesIndex = 2;
+  static int columnsThisIssueIndex = 3;
+  static int columnsWorldPoliticsIndex = 4;
+  static int columnsEntertainmentIndex = 5;
+  static int columnsSportsIndex = 6;
 
   static String diskInfoKey = "pawprint-infoclass-dump";
 }

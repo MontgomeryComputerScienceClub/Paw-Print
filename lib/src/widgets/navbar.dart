@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 // import 'package:myapp/src/routes/leftrightroute.dart';
 import 'package:myapp/src/routes/noanimation.dart';
 import 'package:myapp/src/screens/games/games.dart';
-import 'package:myapp/src/screens/home/home.dart';
+import 'package:myapp/src/screens/home/thisissue.dart';
 
 class Navbar extends StatefulWidget {
   final int selectedIndex;

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp/src/constants.dart';
 
 class Columns extends StatefulWidget {
-  const Columns(
-      {super.key, required this.columns, required this.selectedIndex});
+  const Columns({super.key, required this.selectedIndex});
 
-  final List<String> columns;
   final int selectedIndex;
 
   @override
@@ -12,27 +12,54 @@ class Columns extends StatefulWidget {
 }
 
 class _ColumnsState extends State<Columns> {
+  final ScrollController _scrollController = ScrollController();
+
+  // void _scrollToIndex() {
+  //   _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+  //   _scrollController.
+  // }
+  void jumpToItem(int index) {
+    _scrollController.animateTo(
+      index * 55,
+      duration: Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+  }
+
+  List<Widget> _generateColumns() {
+    List<Widget> ret = [];
+
+    for (int i = 0; i < Constants.columns.length; i++) {
+      String col = Constants.columns[i];
+
+      if (i != widget.selectedIndex) {
+        ret.add(TextButton(
+            onPressed: () {}, child: Text(col, style: GoogleFonts.aBeeZee())));
+      } else {
+        //do some special processing here
+        ret.add(TextButton(
+            onPressed: () {},
+            child: Text(
+              col,
+              style: TextStyle(decoration: TextDecoration.underline),
+            )));
+      }
+    }
+
+    return ret;
+  }
+
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => jumpToItem(widget.selectedIndex));
     return SizedBox(
         //TODO: Remove the height and put it in constants
         height: 20,
-        child: Row(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ListView(
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                children: [
-                  TextButton(onPressed: () {}, child: Text("hello")),
-                  TextButton(onPressed: () {}, child: Text("hello")),
-                  TextButton(onPressed: () {}, child: Text("This Issue")),
-                  TextButton(onPressed: () {}, child: Text("hello")),
-                  TextButton(onPressed: () {}, child: Text("hello")),
-                ],
-              )
-            ]));
+        child: ListView(
+            shrinkWrap: true,
+            controller: _scrollController,
+            scrollDirection: Axis.horizontal,
+            children: _generateColumns()));
   }
 }
