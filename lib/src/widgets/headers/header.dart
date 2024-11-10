@@ -28,6 +28,8 @@ class Header extends StatefulWidget implements PreferredSizeWidget {
       Size.fromHeight(includeColumns ? height : height - 40);
 }
 
+//TODO: the issue date thing looks ugly - move to thing
+//TODO: test the tab bar scorll feature
 class _HeaderState extends State<Header> with SingleTickerProviderStateMixin {
   Info info = Info(issue: 0);
 
@@ -124,8 +126,6 @@ class _HeaderState extends State<Header> with SingleTickerProviderStateMixin {
                           ),
                         ],
                       ),
-
-                      //TODO: Find a way to get issue XX done
                       Text(
                         "${DateFormat('yMd').format(DateTime.now())} - Issue ${info.issueToNumeral()}",
                         style: GoogleFonts.aBeeZee(),
