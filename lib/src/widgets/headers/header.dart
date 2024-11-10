@@ -83,7 +83,7 @@ class _HeaderState extends State<Header> with SingleTickerProviderStateMixin {
                 Text(info.issueToNumeral(),
                     style: GoogleFonts.aBeeZee(
                         textStyle: TextStyle(
-                      color: Constants.red.withAlpha(200),
+                      color: Constants.green,
                     )))
               ],
             )));
@@ -112,20 +112,27 @@ class _HeaderState extends State<Header> with SingleTickerProviderStateMixin {
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            "Paw",
-            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-                fontSize: 30,
-                color: Constants.darkGold),
-          ),
-          Text(
-            "Print",
-            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-                fontSize: 30,
-                color: Constants.green),
-          ),
+          Text("The ",
+              style: GoogleFonts.unifrakturMaguntia(
+                textStyle: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                    color: Constants.black),
+              )),
+          Text("Paw",
+              style: GoogleFonts.unifrakturMaguntia(
+                textStyle: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                    color: Constants.black),
+              )),
+          Text("Print",
+              style: GoogleFonts.unifrakturMaguntia(
+                textStyle: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                    color: Constants.black),
+              )),
         ],
       ),
       centerTitle: true,
