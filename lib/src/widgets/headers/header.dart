@@ -110,7 +110,7 @@ class _HeaderState extends State<Header> with SingleTickerProviderStateMixin {
 
                       //TODO: Find a way to get issue XX done
                       Text(
-                        "${DateFormat('yMd').format(DateTime.now())} - Issue XX",
+                        "${DateFormat('yMd').format(DateTime.now())} - Issue ${info.issueToNumeral()}",
                         style: GoogleFonts.aBeeZee(),
                       ),
                     ]
