@@ -10,6 +10,7 @@ class Constants {
   static String storyPreviewImageUrlKey = "imgUrl";
   static String storyPreviewTitleKey = "title";
   static String storyPreviewIDKey = "id";
+  static String storyPreviewBlurbKey = "blurb";
 
   static String storyContentKey = "content";
   static String storyAuthorsKey = "authors";

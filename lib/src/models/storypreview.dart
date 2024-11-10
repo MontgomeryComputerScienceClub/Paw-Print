@@ -7,18 +7,20 @@ class StoryPreview {
   String title;
   String? imageUrl;
   int id;
+  String blurb;
 
-  StoryPreview({
-    required this.title,
-    required this.imageUrl,
-    required this.id,
-  });
+  StoryPreview(
+      {required this.title,
+      required this.imageUrl,
+      required this.id,
+      required this.blurb});
 
   factory StoryPreview.fromJson(Map<String, dynamic> json) {
     return StoryPreview(
         id: json[Constants.storyPreviewIDKey],
         imageUrl: json[Constants.storyPreviewImageUrlKey],
-        title: json[Constants.storyPreviewTitleKey]);
+        title: json[Constants.storyPreviewTitleKey],
+        blurb: json[Constants.storyPreviewBlurbKey]);
   }
 
   Widget getImageWidget() {

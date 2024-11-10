@@ -21,8 +21,7 @@ class Story {
     List<String> authors = json["authors"] as List<String>;
 
     if (!json.containsKey(Constants.storyPreviewTitleKey) ||
-        !json.containsKey(Constants.storyPreviewIDKey) ||
-        !json.containsKey(Constants.storyPreviewImageUrlKey)) {
+        !json.containsKey(Constants.storyPreviewIDKey)) {
       throw Error();
     }
 
