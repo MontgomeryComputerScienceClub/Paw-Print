@@ -16,6 +16,7 @@ class _GamesScreenState extends State<GamesScreen> {
         appBar: Header(
           implyleading: false,
           includeSearch: false,
+          includeColumns: false,
         ),
         bottomNavigationBar: Navbar(
           selectedIndex: 0,

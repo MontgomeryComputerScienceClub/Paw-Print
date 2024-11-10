@@ -5,23 +5,27 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/src/models/info.dart';
 
 class Header extends StatefulWidget implements PreferredSizeWidget {
-  const Header(
-      {super.key,
-      required this.implyleading,
-      this.title,
-      required this.includeSearch});
+  const Header({
+    super.key,
+    required this.implyleading,
+    this.title,
+    required this.includeSearch,
+    this.includeColumns = true,
+  });
 
   final bool implyleading;
   final String? title;
   final bool includeSearch;
-  final double height = 80;
+  final bool includeColumns;
+  final double height = 120;
   final int headerTextLength = 16;
 
   @override
   State<Header> createState() => _HeaderState();
 
   @override
-  Size get preferredSize => Size.fromHeight(height);
+  Size get preferredSize =>
+      Size.fromHeight(includeColumns ? height : height - 40);
 }
 
 class _HeaderState extends State<Header> with SingleTickerProviderStateMixin {
@@ -44,6 +48,17 @@ class _HeaderState extends State<Header> with SingleTickerProviderStateMixin {
           "${paramtitle.characters.toList().sublist(0, widget.headerTextLength).join("")} ...";
     }
 
+    return ret;
+  }
+
+  List<Widget> _generateColumns() {
+    List<Widget> ret = [];
+
+    for (int i = 0; i < Constants.columns.length; i++) {
+      ret.add(Tab(
+        text: Constants.columns[i],
+      ));
+    }
     return ret;
   }
 
@@ -128,6 +143,11 @@ class _HeaderState extends State<Header> with SingleTickerProviderStateMixin {
                     ]),
         ]),
       ),
+      bottom: widget.includeColumns
+          ? TabBar(
+              tabs: _generateColumns(),
+            )
+          : null,
     );
   }
 }

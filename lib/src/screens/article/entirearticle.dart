@@ -42,6 +42,7 @@ class _EntireArticlePageState extends State<EntireArticlePage> {
           implyleading: true,
           title: "${widget.main.column} - ${widget.main.titleImageAndID.title}",
           includeSearch: false,
+          includeColumns: false,
         ),
         body: SafeArea(
             child: SingleChildScrollView(
