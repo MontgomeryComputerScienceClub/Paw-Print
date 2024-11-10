@@ -7,13 +7,10 @@ class StoryPreview {
   String title;
   String? imageUrl;
   int id;
-  String blurb;
+  String? blurb;
 
   StoryPreview(
-      {required this.title,
-      required this.imageUrl,
-      required this.id,
-      required this.blurb});
+      {required this.title, this.imageUrl, required this.id, this.blurb});
 
   factory StoryPreview.fromJson(Map<String, dynamic> json) {
     return StoryPreview(
