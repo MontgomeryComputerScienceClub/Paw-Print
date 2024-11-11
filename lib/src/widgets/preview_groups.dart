@@ -5,11 +5,7 @@ import 'package:myapp/src/widgets/preview_cell.dart';
 
 class MultiArticlePreview extends StatefulWidget {
   const MultiArticlePreview(
-      {super.key,
-      required this.stories,
-      required this.column,
-      required this.type,
-      required this.previewLength});
+      {super.key, required this.stories, required this.column, required this.type, required this.previewLength});
 
   final int type;
   final List<StoryPreview> stories;
@@ -48,10 +44,7 @@ class _State extends State<MultiArticlePreview> {
                   Text(
                     widget.column,
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 13,
-                        color: Constants.green,
-                        fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 13, color: Constants.green, fontWeight: FontWeight.bold),
                   )
                 ]))));
 
@@ -162,30 +155,6 @@ class _HomePagePreviewState extends State<HomePagePreview> {
         ));
       }
     }
-    ret.add(Align(
-        alignment: Alignment.centerRight,
-        child: TextButton(
-            onPressed: () {},
-            child: Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  //TODO: view more page probbaly shouold be part of listarticles
-                  const Text(
-                    "View More ",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 13),
-                  ),
-                  Text(
-                    "Featured",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 13,
-                        color: Constants.green,
-                        fontWeight: FontWeight.bold),
-                  )
-                ]))));
 
     return ret;
   }
@@ -194,12 +163,35 @@ class _HomePagePreviewState extends State<HomePagePreview> {
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(10),
-        child: Card(
-            shadowColor: Colors.transparent,
-            color: const Color.fromARGB(255, 243, 242, 242),
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: generateContent())));
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Card(
+                  shadowColor: Colors.transparent,
+                  color: const Color.fromARGB(255, 243, 242, 242),
+                  child: Column(children: generateContent())),
+              Align(
+                  alignment: Alignment.centerRight,
+                  child: TextButton(
+                      onPressed: () {},
+                      child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            //TODO: view more page probbaly shouold be part of listarticles
+                            const Text(
+                              "View More on ",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize: 13),
+                            ),
+                            Text(
+                              "Featured",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize: 13, color: Constants.green, fontWeight: FontWeight.bold),
+                            )
+                          ])))
+            ]));
   }
 }

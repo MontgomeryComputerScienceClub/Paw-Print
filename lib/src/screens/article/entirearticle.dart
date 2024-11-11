@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:myapp/src/models/story.dart';
-import 'package:myapp/src/widgets/headers/header.dart';
+import 'package:myapp/src/widgets/headers/bottom.dart';
 import 'package:intl/intl.dart';
 
 class EntireArticlePage extends StatefulWidget {
-  const EntireArticlePage(
-      {super.key, required this.main, required this.relatedStories});
+  const EntireArticlePage({super.key, required this.main, required this.relatedStories});
 
   final Story main;
   final List<Story> relatedStories;
@@ -14,9 +14,10 @@ class EntireArticlePage extends StatefulWidget {
   State<EntireArticlePage> createState() => _EntireArticlePageState();
 }
 
-//TODO: display column
-//TODO: ISSUE XX NOT WORKING??
 class _EntireArticlePageState extends State<EntireArticlePage> {
+  final ScrollController _scrollController = ScrollController();
+  bool showBtmAppBr = true;
+
   String _formatAuthors(List<String> authors) {
     if (authors.isEmpty) return '';
     if (authors.length == 1) return authors[0];
@@ -36,66 +37,86 @@ class _EntireArticlePageState extends State<EntireArticlePage> {
   }
 
   @override
+  void initState() {
+    _scrollController.addListener(() {
+      if (_scrollController.position.userScrollDirection == ScrollDirection.reverse) {
+        showBtmAppBr = false;
+        setState(() {});
+      } else {
+        showBtmAppBr = true;
+        setState(() {});
+      }
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: Header(
-          implyleading: true,
-          title: "${widget.main.column} - ${widget.main.titleImageAndID.title}",
-          includeSearch: false,
-          includeColumns: false,
+      body: SafeArea(
+          child: SingleChildScrollView(
+              controller: _scrollController,
+              child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+                const SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    widget.main.titleImageAndID.title,
+                    style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    widget.main.titleImageAndID.blurb ?? "",
+                    style: Theme.of(context).textTheme.bodyMedium,
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                SizedBox(height: 200, child: widget.main.titleImageAndID.getImageWidget()),
+
+                const Divider(),
+                Text("By ${_formatAuthors(widget.main.authors)}", style: Theme.of(context).textTheme.bodyMedium),
+                const SizedBox(height: 8),
+                Text(
+                  _formatMonthYear(widget.main.month, widget.main.year),
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(fontStyle: FontStyle.italic),
+                ),
+                const Divider(),
+                Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Text(
+                        _processContent(widget.main.content),
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 17),
+                      ),
+                    )),
+                const SizedBox(height: 10),
+                const Divider(),
+                Text(
+                  "Related Articles",
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 20),
+                ),
+
+                //TODO: display related articles in horizontal scrol view thingy
+              ]))),
+      bottomNavigationBar: AnimatedContainer(
+        duration: const Duration(
+          milliseconds: 800,
         ),
-        body: SafeArea(
-            child: SingleChildScrollView(
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-              const Divider(),
-              SizedBox(
-                  height: 200,
-                  child: widget.main.titleImageAndID.getImageWidget()),
-              const SizedBox(height: 10),
-              Text(
-                widget.main.titleImageAndID.title,
-                style: Theme.of(context)
-                    .textTheme
-                    .headlineLarge
-                    ?.copyWith(fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
-              ),
-              const Divider(),
-              Text("By ${_formatAuthors(widget.main.authors)}",
-                  style: Theme.of(context).textTheme.bodyMedium),
-              const SizedBox(height: 8),
-              Text(
-                _formatMonthYear(widget.main.month, widget.main.year),
-                style: Theme.of(context)
-                    .textTheme
-                    .bodySmall
-                    ?.copyWith(fontStyle: FontStyle.italic),
-              ),
-              const Divider(),
-              Align(
-                  alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Text(
-                      _processContent(widget.main.content),
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium
-                          ?.copyWith(fontSize: 15),
-                    ),
-                  )),
-              const SizedBox(height: 10),
-              const Divider(),
-              Text(
-                "Related Articles",
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyMedium
-                    ?.copyWith(fontSize: 20),
-              ),
-              //TODO: display related articles in horizontal scrol view thingy
-            ]))));
+        curve: Curves.easeInOutSine,
+        height: showBtmAppBr ? 100 : 0,
+        child: const CustomBottomAppBar(),
+      ),
+    );
   }
 }

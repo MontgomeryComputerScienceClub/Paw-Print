@@ -6,6 +6,7 @@ class Constants {
   static Color green = Colors.green;
   static Color black = Colors.black;
   static Color red = Colors.red;
+  static Color bottomAppBarColor = const Color.fromARGB(255, 251, 251, 249);
 
   static String storyPreviewImageUrlKey = "imgUrl";
   static String storyPreviewTitleKey = "title";

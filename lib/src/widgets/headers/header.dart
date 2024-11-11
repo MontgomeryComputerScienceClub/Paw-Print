@@ -16,15 +16,14 @@ class Header extends StatefulWidget implements PreferredSizeWidget {
   final String? title;
   final bool includeSearch;
   final bool includeColumns;
-  final double height = 70;
+  final double height = 80;
   final int headerTextLength = 16;
 
   @override
   State<Header> createState() => _HeaderState();
 
   @override
-  Size get preferredSize =>
-      Size.fromHeight(includeColumns ? height : height - 40);
+  Size get preferredSize => Size.fromHeight(includeColumns ? height : height - 40);
 }
 
 class _HeaderState extends State<Header> with SingleTickerProviderStateMixin {
@@ -56,8 +55,7 @@ class _HeaderState extends State<Header> with SingleTickerProviderStateMixin {
   String _formatTitleForHeader(String paramtitle) {
     String ret = paramtitle;
     if (paramtitle.characters.length > widget.headerTextLength) {
-      ret =
-          "${paramtitle.characters.toList().sublist(0, widget.headerTextLength).join("")} ...";
+      ret = "${paramtitle.characters.toList().sublist(0, widget.headerTextLength).join("")} ...";
     }
 
     return ret;
@@ -95,7 +93,6 @@ class _HeaderState extends State<Header> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return AppBar(
       surfaceTintColor: const Color.fromARGB(45, 158, 158, 158),
-      leadingWidth: 400,
       toolbarHeight: widget.height,
       actions: [
         widget.includeSearch
@@ -110,29 +107,37 @@ class _HeaderState extends State<Header> with SingleTickerProviderStateMixin {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
-        children: [
-          Text("The ",
-              style: GoogleFonts.unifrakturMaguntia(
-                textStyle: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25,
-                    color: Constants.black),
-              )),
-          Text("Paw",
-              style: GoogleFonts.unifrakturMaguntia(
-                textStyle: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25,
-                    color: Constants.black),
-              )),
-          Text("Print",
-              style: GoogleFonts.unifrakturMaguntia(
-                textStyle: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25,
-                    color: Constants.black),
-              )),
-        ],
+        children: widget.title != null
+            ? [
+                Text(_formatTitleForHeader(widget.title ?? ""),
+                    style: Theme.of(context)
+                        .textTheme
+                        .headlineMedium
+                        ?.copyWith(fontWeight: FontWeight.bold, fontSize: 25)),
+              ]
+            : [
+                Text("The ",
+                    style: GoogleFonts.unifrakturMaguntia(
+                      textStyle: Theme.of(context)
+                          .textTheme
+                          .headlineMedium
+                          ?.copyWith(fontWeight: FontWeight.bold, fontSize: 25, color: Constants.black),
+                    )),
+                Text("Paw",
+                    style: GoogleFonts.unifrakturMaguntia(
+                      textStyle: Theme.of(context)
+                          .textTheme
+                          .headlineMedium
+                          ?.copyWith(fontWeight: FontWeight.bold, fontSize: 25, color: Constants.black),
+                    )),
+                Text("Print",
+                    style: GoogleFonts.unifrakturMaguntia(
+                      textStyle: Theme.of(context)
+                          .textTheme
+                          .headlineMedium
+                          ?.copyWith(fontWeight: FontWeight.bold, fontSize: 25, color: Constants.black),
+                    )),
+              ],
       ),
       centerTitle: true,
       bottom: widget.includeColumns
