@@ -22,8 +22,7 @@ class ArticlePreviewCell extends StatelessWidget {
                 child: Stack(children: [
                   Column(
                     children: [
-                      SizedBox(
-                          height: 150, width: 150, child: s.getImageWidget()),
+                      SizedBox(height: 150, width: 150, child: s.getImageWidget()),
                       const SizedBox(
                         height: 5,
                       ),
@@ -70,8 +69,7 @@ class ArticlePreviewRow extends StatelessWidget {
                             s.title,
                             textAlign: TextAlign.center,
                           )),
-                      SizedBox(
-                          height: 150, width: 150, child: s.getImageWidget()),
+                      SizedBox(height: 150, width: 150, child: s.getImageWidget()),
                     ],
                   ),
                   index == 0
@@ -120,7 +118,7 @@ class HomeArticleFirstPreviewCell extends StatelessWidget {
                     style: Theme.of(context)
                         .textTheme
                         .headlineLarge
-                        ?.copyWith(fontWeight: FontWeight.bold, height: 1.2))),
+                        ?.copyWith(fontWeight: FontWeight.bold, height: 1.2, fontSize: 30))),
           ]),
           Positioned(
               top: 10,
