@@ -10,6 +10,7 @@ class Header extends StatefulWidget implements PreferredSizeWidget {
     this.title,
     required this.includeSearch,
     this.includeColumns = true,
+    this.tabController,
   });
 
   final bool implyleading;
@@ -18,6 +19,7 @@ class Header extends StatefulWidget implements PreferredSizeWidget {
   final bool includeColumns;
   final double height = 80;
   final int headerTextLength = 16;
+  final TabController? tabController;
 
   @override
   State<Header> createState() => _HeaderState();
@@ -26,30 +28,18 @@ class Header extends StatefulWidget implements PreferredSizeWidget {
   Size get preferredSize => Size.fromHeight(includeColumns ? height : height - 40);
 }
 
-class _HeaderState extends State<Header> with SingleTickerProviderStateMixin {
+class _HeaderState extends State<Header> {
   Info info = Info(issue: 0);
-  late final TabController _tabController;
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(
-      length: Constants.columns.length,
-      initialIndex: Constants.columnsThisIssueIndex,
-      vsync: this,
-    );
 
     Info.syncInfo().then((value) {
       setState(() {
         info = value;
       });
     });
-  }
-
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
   }
 
   String _formatTitleForHeader(String paramtitle) {
@@ -146,7 +136,7 @@ class _HeaderState extends State<Header> with SingleTickerProviderStateMixin {
               // unselectedLabelColor: Colors.white.withOpacity(0.3),
               // indicatorColor: Colors.white,
               tabs: _generateColumns(),
-              controller: _tabController,
+              controller: widget.tabController,
             )
           : null,
     );

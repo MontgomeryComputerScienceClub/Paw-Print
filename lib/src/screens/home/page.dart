@@ -11,31 +11,47 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
+  late final TabController _tabController;
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(
+      length: Constants.columns.length,
+      initialIndex: Constants.columnsThisIssueIndex,
+      vsync: this,
+    );
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-        //TODO: for later: https://www.youtube.com/watch?v=gBQmI1kBHC0
-        length: Constants.columns.length,
-        child: const Scaffold(
-          appBar: Header(
-            implyleading: false,
-            includeSearch: true,
-          ),
-          bottomNavigationBar: Navbar(
-            selectedIndex: 0,
-          ),
-          body: TabBarView(
-            children: [
-              ThisIssue(),
-              ThisIssue(),
-              ThisIssue(),
-              ThisIssue(),
-              ThisIssue(),
-              ThisIssue(),
-              ThisIssue(),
-            ],
-          ),
-        ));
+    return Scaffold(
+      appBar: Header(
+        tabController: _tabController,
+        implyleading: false,
+        includeSearch: true,
+      ),
+      bottomNavigationBar: const Navbar(
+        selectedIndex: 0,
+      ),
+      body: TabBarView(
+        controller: _tabController,
+        children: const [
+          ThisIssue(),
+          ThisIssue(),
+          ThisIssue(),
+          ThisIssue(),
+          ThisIssue(),
+          ThisIssue(),
+          ThisIssue(),
+        ],
+      ),
+    );
   }
 }
