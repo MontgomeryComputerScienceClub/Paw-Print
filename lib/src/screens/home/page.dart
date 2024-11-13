@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/src/constants.dart';
+import 'package:myapp/src/models/test.dart';
+import 'package:myapp/src/screens/home/perspectives.dart';
 import 'package:myapp/src/screens/home/thisissue.dart';
 import 'package:myapp/src/widgets/headers/header.dart';
 import 'package:myapp/src/widgets/navbar.dart';
@@ -13,6 +15,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   late final TabController _tabController;
+
   @override
   void initState() {
     super.initState();
@@ -21,6 +24,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       initialIndex: Constants.columnsThisIssueIndex,
       vsync: this,
     );
+    //TODO: gather data here i think.
   }
 
   @override
@@ -42,14 +46,16 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       ),
       body: TabBarView(
         controller: _tabController,
-        children: const [
-          ThisIssue(),
-          ThisIssue(),
-          ThisIssue(),
-          ThisIssue(),
-          ThisIssue(),
-          ThisIssue(),
-          ThisIssue(),
+        children: [
+          const ThisIssue(),
+          const ThisIssue(),
+          Perspectives(
+            stories: [previewStory2],
+          ),
+          const ThisIssue(),
+          const ThisIssue(),
+          const ThisIssue(),
+          const ThisIssue(),
         ],
       ),
     );
