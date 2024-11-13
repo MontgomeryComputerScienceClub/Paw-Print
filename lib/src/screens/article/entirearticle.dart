@@ -63,23 +63,25 @@ class _EntireArticlePageState extends State<EntireArticlePage> {
               controller: _scrollController,
               child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
                 const SizedBox(height: 10),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Text(
-                    widget.main.titleImageAndID.title,
-                    style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
+                Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Text(
+                        widget.main.titleImageAndID.title,
+                        style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
+                      ),
+                    )),
                 const SizedBox(height: 10),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Text(
-                    widget.main.titleImageAndID.blurb ?? "",
-                    style: Theme.of(context).textTheme.bodyMedium,
-                    textAlign: TextAlign.left,
-                  ),
-                ),
+                Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Text(
+                        widget.main.titleImageAndID.blurb ?? "",
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                    )),
                 const SizedBox(height: 10),
                 SizedBox(height: 200, child: widget.main.titleImageAndID.getImageWidget()),
 

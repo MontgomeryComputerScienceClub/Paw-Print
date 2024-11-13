@@ -9,8 +9,7 @@ class StoryPreview {
   int id;
   String? blurb;
 
-  StoryPreview(
-      {required this.title, this.imageUrl, required this.id, this.blurb});
+  StoryPreview({required this.title, this.imageUrl, required this.id, this.blurb});
 
   factory StoryPreview.fromJson(Map<String, dynamic> json) {
     return StoryPreview(
@@ -26,14 +25,12 @@ class StoryPreview {
     }
     return Image.network(
       imageUrl ?? "",
-      loadingBuilder: (BuildContext context, Widget child,
-          ImageChunkEvent? loadingProgress) {
+      loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
         if (loadingProgress == null) return child;
         return Center(
           child: CircularProgressIndicator(
             value: loadingProgress.expectedTotalBytes != null
-                ? loadingProgress.cumulativeBytesLoaded /
-                    (loadingProgress.expectedTotalBytes ?? 1)
+                ? loadingProgress.cumulativeBytesLoaded / (loadingProgress.expectedTotalBytes ?? 1)
                 : null,
           ),
         );
@@ -46,7 +43,8 @@ class StoryPreview {
 
   Future<Story> getStoryFromPreview() async {
     //TODO: implement story getting logic
-    if (id == 545) {
+    print(id);
+    if (id == 696) {
       return defaultStory;
     } else {
       return defaultStory2;

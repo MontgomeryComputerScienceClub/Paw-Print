@@ -22,38 +22,30 @@ class _ThisIssueState extends State<ThisIssue> {
           text: "Featured",
         ),
         HomePagePreview(stories: [
-          previewStory2,
           previewStory,
+          previewStory2,
           previewStory,
           previewStory2,
         ]),
         const StoryHeader(
           text: "Life",
         ),
-        MultiArticlePreview(
-            previewLength: 3,
-            type: 1,
-            column: "Life",
-            stories: [
-              previewStory,
-              previewStory2,
-              previewStory,
-              previewStory2,
-              previewStory,
-              previewStory2,
-            ]),
+        MultiArticlePreview(previewLength: 3, type: 1, column: "Life", stories: [
+          previewStory,
+          previewStory2,
+          previewStory,
+          previewStory2,
+          previewStory,
+          previewStory2,
+        ]),
         const StoryHeader(
           text: 'Perspectives',
         ),
-        MultiArticlePreview(
-            previewLength: 1,
-            type: 2,
-            column: "Life",
-            stories: [
-              previewStory,
-              previewStory2,
-              previewStory,
-            ]),
+        MultiArticlePreview(previewLength: 1, type: 2, column: "Life", stories: [
+          previewStory,
+          previewStory2,
+          previewStory,
+        ]),
         const StoryHeader(
           text: 'World/Politics',
         ),
