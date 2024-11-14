@@ -19,6 +19,8 @@ class StoryPreview {
         blurb: json[Constants.storyPreviewBlurbKey]);
   }
 
+
+  //TODO: try to implement Cached network image  with cached image network library
   Widget getImageWidget() {
     if (imageUrl == null) {
       return Image.asset("assets/paw.png");
