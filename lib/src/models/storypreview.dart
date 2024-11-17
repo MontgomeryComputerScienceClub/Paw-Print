@@ -21,6 +21,8 @@ class StoryPreview {
         readTime: json[Constants.storyPreviewReadTimeKey]);
   }
 
+
+  //TODO: try to implement Cached network image  with cached image network library
   Widget getImageWidget() {
     if (imageUrl == null) {
       return Image.asset("assets/paw.png");
