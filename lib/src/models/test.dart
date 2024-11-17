@@ -36,6 +36,7 @@ Map<String, dynamic> pawprintex = {
   "month": 11,
   "year": 2025,
   "column": "People",
+  "readTime": 6,
   "blurb":
       "Oscar nominations spark debate over snubs and sexism allegations, with Oppenheimer and Poor Things leading the pack for Best Picture, while fans lament the absence of Margot Robbie and Greta Gerwig.",
 };

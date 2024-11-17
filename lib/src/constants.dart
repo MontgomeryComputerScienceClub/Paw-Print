@@ -6,12 +6,14 @@ class Constants {
   static Color green = Colors.green;
   static Color black = Colors.black;
   static Color red = Colors.red;
+  static Color listArticleBlurbColor = const Color.fromARGB(255, 100, 100, 100);
   static Color bottomAppBarColor = const Color.fromARGB(255, 251, 251, 249);
 
   static String storyPreviewImageUrlKey = "imgUrl";
   static String storyPreviewTitleKey = "title";
   static String storyPreviewIDKey = "id";
   static String storyPreviewBlurbKey = "blurb";
+  static String storyPreviewReadTimeKey = "readTime";
 
   static String storyContentKey = "content";
   static String storyAuthorsKey = "authors";

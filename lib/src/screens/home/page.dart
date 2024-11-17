@@ -50,7 +50,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           const ThisIssue(),
           const ThisIssue(),
           Perspectives(
-            stories: [previewStory2],
+            stories: [previewStory2, previewStory, previewStory2],
           ),
           const ThisIssue(),
           const ThisIssue(),
