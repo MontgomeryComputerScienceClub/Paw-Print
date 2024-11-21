@@ -6,11 +6,6 @@ class CustomBottomAppBar extends StatelessWidget {
     super.key,
   });
 
-  static final List<FloatingActionButtonLocation> centerLocations = <FloatingActionButtonLocation>[
-    FloatingActionButtonLocation.centerDocked,
-    FloatingActionButtonLocation.centerFloat,
-  ];
-
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
