@@ -17,7 +17,7 @@ Map<String, dynamic> storyJson = {
 
 Map<String, dynamic> storyJson2 = {
   "id": 696,
-  "title": "PHS Profile: Eddie Tang",
+  "title": "MHS Profile: Eddie Tang",
   "content": "Eddie is hot \r\nyipee!!",
   "authors": ["Kylie Sek"],
   "month": 6,
