@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/src/constants.dart';
+import 'package:myapp/src/models/story.dart';
+import 'package:share_plus/share_plus.dart';
 
 class CustomBottomAppBar extends StatelessWidget {
   const CustomBottomAppBar({
     super.key,
+    required this.linkedStory,
   });
+
+  final Story linkedStory;
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +29,18 @@ class CustomBottomAppBar extends StatelessWidget {
             tooltip: 'Share',
             icon: const Icon(Icons.ios_share),
             onPressed: () {
-              //TODO: implement this
+              //TODO: implement share url
+              // has to link to website url somehow?
+              // so modify model later
+              Share.share('check out my website https://example.com', subject: 'Look what I made!');
             },
           ),
           IconButton(
             tooltip: 'Save',
             icon: const Icon(Icons.save_alt),
-            onPressed: () {},
+            onPressed: () {
+              //TODO: implement saving article
+            },
           ),
         ],
       ),

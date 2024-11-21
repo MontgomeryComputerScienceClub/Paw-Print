@@ -117,7 +117,7 @@ class _EntireArticlePageState extends State<EntireArticlePage> {
         ),
         curve: Curves.easeInOutSine,
         height: showBtmAppBr ? 100 : 0,
-        child: const CustomBottomAppBar(),
+        child: CustomBottomAppBar(linkedStory: widget.main),
       ),
     );
   }
