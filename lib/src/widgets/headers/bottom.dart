@@ -32,7 +32,7 @@ class CustomBottomAppBar extends StatelessWidget {
               //TODO: implement share url
               // has to link to website url somehow?
               // so modify model later
-              Share.share('check out my website https://example.com', subject: 'Look what I made!');
+              Share.share('https://example.com', subject: 'Look what I made!');
             },
           ),
           IconButton(
