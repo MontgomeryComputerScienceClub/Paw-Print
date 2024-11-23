@@ -1,5 +1,6 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
+import 'package:myapp/src/constants.dart';
 import 'package:myapp/src/models/storypreview.dart';
 import 'package:myapp/src/painters/painter.dart';
 import 'package:myapp/src/routes/noanimation.dart';
@@ -37,7 +38,7 @@ class ArticlePreviewCell extends StatelessWidget {
                           top: 0,
                           left: 0,
                           child: CustomPaint(
-                            size: Size(100, 100),
+                            size: Constants.bannerPaintSize,
                             painter: ArticlePreviewCellBanner(),
                           ))
                       : const SizedBox.shrink(),
@@ -77,7 +78,7 @@ class ArticlePreviewRow extends StatelessWidget {
                           top: 0,
                           left: 0,
                           child: CustomPaint(
-                            size: Size(100, 100),
+                            size: Constants.bannerPaintSize,
                             painter: ArticlePreviewRowBanner(),
                           ))
                       : const SizedBox.shrink(),
@@ -124,7 +125,7 @@ class HomeArticleFirstPreviewCell extends StatelessWidget {
               top: 10,
               left: 10,
               child: CustomPaint(
-                size: Size(100, 100),
+                size: Constants.bannerPaintSize,
                 painter: ArticleFirstPreviewCellBanner(),
               )),
         ],

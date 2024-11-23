@@ -4,6 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:myapp/src/constants.dart';
 import 'package:myapp/src/models/author.dart';
 import 'package:myapp/src/models/story.dart';
+import 'package:myapp/src/painters/painter.dart';
 import 'package:myapp/src/widgets/headers/bottom.dart';
 import 'package:intl/intl.dart';
 
@@ -147,57 +148,65 @@ class _EntireArticlePageState extends State<EntireArticlePage> {
       body: SafeArea(
           child: SingleChildScrollView(
               controller: _scrollController,
-              child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-                const SizedBox(height: 10),
+              child: Stack(clipBehavior: Clip.none, children: [
                 Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Text(
-                        widget.main.titleImageAndID.title,
-                        style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
-                      ),
-                    )),
-                const SizedBox(height: 10),
-                Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Text(
-                        widget.main.titleImageAndID.blurb ?? "",
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                    )),
-                const SizedBox(height: 10),
-                SizedBox(height: 200, child: widget.main.titleImageAndID.getImageWidget()),
+                    alignment: Alignment.topRight,
+                    child: CustomPaint(
+                        size: Constants.bannerPaintSize,
+                        painter: EntireArticleBanner(
+                            w: Constants.bannerPaintSize.width, h: Constants.bannerPaintSize.height))),
+                Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+                  const SizedBox(height: 10),
+                  Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Text(
+                          widget.main.titleImageAndID.title,
+                          style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
+                        ),
+                      )),
+                  const SizedBox(height: 10),
+                  Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Text(
+                          widget.main.titleImageAndID.blurb ?? "",
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                      )),
+                  const SizedBox(height: 10),
+                  SizedBox(height: 200, child: widget.main.titleImageAndID.getImageWidget()),
 
-                const Divider(),
-                RichText(
-                  text: TextSpan(children: _formatAuthorsLinkStyle(widget.main.authors)),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  _formatMonthYear(widget.main.month, widget.main.year),
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(fontStyle: FontStyle.italic),
-                ),
-                const Divider(),
-                Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Text(
-                        _processContent(widget.main.content),
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 17),
-                      ),
-                    )),
-                const SizedBox(height: 10),
-                const Divider(),
-                Text(
-                  "Related Articles",
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 20),
-                ),
+                  const Divider(),
+                  RichText(
+                    text: TextSpan(children: _formatAuthorsLinkStyle(widget.main.authors)),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    _formatMonthYear(widget.main.month, widget.main.year),
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(fontStyle: FontStyle.italic),
+                  ),
+                  const Divider(),
+                  Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Text(
+                          _processContent(widget.main.content),
+                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 17),
+                        ),
+                      )),
+                  const SizedBox(height: 10),
+                  const Divider(),
+                  Text(
+                    "Related Articles",
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 20),
+                  ),
 
-                //TODO: display related articles in horizontal scrol view thingy
+                  //TODO: display related articles in horizontal scrol view thingy
+                ])
               ]))),
       bottomNavigationBar: AnimatedContainer(
         duration: const Duration(

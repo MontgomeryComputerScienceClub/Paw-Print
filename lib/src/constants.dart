@@ -9,6 +9,8 @@ class Constants {
   static Color listArticleBlurbColor = const Color.fromARGB(255, 100, 100, 100);
   static Color bottomAppBarColor = const Color.fromARGB(255, 251, 251, 249);
 
+  static Size bannerPaintSize = const Size(100, 100);
+
   static String storyPreviewImageUrlKey = "imgUrl";
   static String storyPreviewTitleKey = "title";
   static String storyPreviewIDKey = "id";
