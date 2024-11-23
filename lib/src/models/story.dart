@@ -1,4 +1,5 @@
 import 'package:myapp/src/constants.dart';
+import 'package:myapp/src/models/author.dart';
 import 'package:myapp/src/models/storypreview.dart';
 
 class Story {
@@ -7,7 +8,7 @@ class Story {
   int month;
   int year;
   String column;
-  List<String> authors;
+  List<Author> authors;
 
   Story(
       {required this.titleImageAndID,
@@ -18,10 +19,14 @@ class Story {
       required this.authors});
 
   factory Story.fromJson(Map<String, dynamic> json) {
-    List<String> authors = json["authors"] as List<String>;
+    List<dynamic> authorsJson = json[Constants.storyAuthorsKey] as List<dynamic>;
 
-    if (!json.containsKey(Constants.storyPreviewTitleKey) ||
-        !json.containsKey(Constants.storyPreviewIDKey)) {
+    List<Author> authors = [];
+    for (dynamic authorJson in authorsJson) {
+      authors.add(Author.fromJson(authorJson));
+    }
+
+    if (!json.containsKey(Constants.storyPreviewTitleKey) || !json.containsKey(Constants.storyPreviewIDKey)) {
       throw Error();
     }
 

@@ -21,6 +21,12 @@ class Constants {
   static String storyYearKey = "year";
   static String storyColumnKey = "column";
 
+  static String authorNameKey = "name";
+  static String authorBioKey = "bio";
+  static String authorGradYearKey = "gradYear";
+  static String authorProfilePicUrl = "picUrl";
+  static String authorStoryPreviewKey = "storyIDs";
+
   static String infoIssueKey = "issue";
 
   static List<String> columns = [
