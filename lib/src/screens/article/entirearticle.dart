@@ -22,13 +22,6 @@ class _EntireArticlePageState extends State<EntireArticlePage> {
   final ScrollController _scrollController = ScrollController();
   bool showBtmAppBr = true;
 
-  String _formatAuthors(List<Author> authors) {
-    if (authors.isEmpty) return '';
-    if (authors.length == 1) return "${authors[0]}";
-    if (authors.length == 2) return "${authors[0]} and ${authors[1]}";
-    return "${authors.sublist(0, authors.length - 1).join(", ")}, and ${authors.last}";
-  }
-
   List<TextSpan> _formatAuthorsLinkStyle(List<Author> authors) {
     List<TextSpan> ret = [];
     ret.add(
