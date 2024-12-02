@@ -6,7 +6,7 @@ Map<String, dynamic> author1 = {
   "name": "Eddie",
   "bio": "Passionate programmer",
   "gradYear": 2024,
-  "picUrl": "https://parents.mtsd.k12.nj.us/genesis/sis/photos?type=student&studentID=107604",
+  "picUrl": "https://thespokesman.net/wp-content/uploads/2024/05/class.png",
   "storyIDs": [545, 696],
 };
 

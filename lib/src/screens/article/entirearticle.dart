@@ -5,6 +5,8 @@ import 'package:myapp/src/constants.dart';
 import 'package:myapp/src/models/author.dart';
 import 'package:myapp/src/models/story.dart';
 import 'package:myapp/src/painters/painter.dart';
+import 'package:myapp/src/routes/noanimation.dart';
+import 'package:myapp/src/screens/profiles/authorpage.dart';
 import 'package:myapp/src/widgets/headers/bottom.dart';
 import 'package:intl/intl.dart';
 
@@ -21,6 +23,16 @@ class EntireArticlePage extends StatefulWidget {
 class _EntireArticlePageState extends State<EntireArticlePage> {
   final ScrollController _scrollController = ScrollController();
   bool showBtmAppBr = true;
+
+  TapGestureRecognizer _pushToAuthorPage(Author a) {
+    return TapGestureRecognizer()
+      ..onTap = () {
+        Navigator.of(context).push(NoAnimationRoute(
+            child: AuthorDisplayScreen(
+          author: a,
+        )));
+      };
+  }
 
   List<TextSpan> _formatAuthorsLinkStyle(List<Author> authors) {
     List<TextSpan> ret = [];
@@ -41,7 +53,7 @@ class _EntireArticlePageState extends State<EntireArticlePage> {
                 color: Constants.black,
                 decoration: TextDecoration.underline,
               ),
-          recognizer: TapGestureRecognizer()..onTap = () {},
+          recognizer: _pushToAuthorPage(authors[0]),
         ),
       );
     } else if (authors.length == 2) {
@@ -52,7 +64,7 @@ class _EntireArticlePageState extends State<EntireArticlePage> {
                 color: Constants.black,
                 decoration: TextDecoration.underline,
               ),
-          recognizer: TapGestureRecognizer()..onTap = () {},
+          recognizer: _pushToAuthorPage(authors[0]),
         ),
       );
       ret.add(
@@ -60,12 +72,12 @@ class _EntireArticlePageState extends State<EntireArticlePage> {
       );
       ret.add(
         TextSpan(
-          text: authors[0].toString(),
+          text: authors[1].toString(),
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: Constants.black,
                 decoration: TextDecoration.underline,
               ),
-          recognizer: TapGestureRecognizer()..onTap = () {},
+          recognizer: _pushToAuthorPage(authors[1]),
         ),
       );
     } else {
@@ -77,7 +89,7 @@ class _EntireArticlePageState extends State<EntireArticlePage> {
                   color: Constants.black,
                   decoration: TextDecoration.underline,
                 ),
-            recognizer: TapGestureRecognizer()..onTap = () {},
+            recognizer: _pushToAuthorPage(author),
           ),
         );
         ret.add(
@@ -89,16 +101,12 @@ class _EntireArticlePageState extends State<EntireArticlePage> {
       );
       ret.add(
         TextSpan(
-          text: authors.last.toString(),
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Constants.black,
-                decoration: TextDecoration.underline,
-              ),
-          recognizer: TapGestureRecognizer()
-            ..onTap = () {
-              //TODO: push to author page!
-            },
-        ),
+            text: authors.last.toString(),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: Constants.black,
+                  decoration: TextDecoration.underline,
+                ),
+            recognizer: _pushToAuthorPage(authors.last)),
       );
     }
 
