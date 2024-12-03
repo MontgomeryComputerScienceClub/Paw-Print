@@ -3,10 +3,11 @@ import 'package:myapp/src/models/story.dart';
 import 'package:myapp/src/models/storypreview.dart';
 
 Map<String, dynamic> author1 = {
-  "name": "Eddie",
-  "bio": "Passionate programmer",
+  "name": "Eddie Tang",
+  "bio":
+      "I'm the Seoul bureau chief for The PawPrint, reporting on South and North Korea and their relations with other nations.",
   "gradYear": 2024,
-  "picUrl": "https://thespokesman.net/wp-content/uploads/2024/05/class.png",
+  "picUrl": "https://static01.nyt.com/images/2018/04/03/opinion/ross-douthat/ross-douthat-thumbLarge-v2.png",
   "storyIDs": [545, 696],
 };
 

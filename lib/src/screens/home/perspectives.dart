@@ -39,11 +39,18 @@ class _PerspectivesState extends State<Perspectives> {
           Align(
               alignment: Alignment.bottomRight,
               child: widget.stories[i].readTime != null
-                  ? Row(mainAxisAlignment: MainAxisAlignment.end, mainAxisSize: MainAxisSize.min, children: [
-                      Text((widget.stories[i].readTime ?? "").toString(),
-                          style: TextStyle(fontSize: 13, color: Constants.green, fontWeight: FontWeight.bold)),
-                      const Text(" min read", style: TextStyle(fontSize: 13)),
-                    ])
+                  ? RichText(
+                      text: TextSpan(children: [
+                        TextSpan(
+                            text: (widget.stories[i].readTime ?? "").toString(),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.copyWith(fontSize: 13, color: Constants.green, fontWeight: FontWeight.bold)),
+                        TextSpan(
+                            text: " min read", style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 13)),
+                      ]),
+                    )
                   : const SizedBox.shrink()),
         ]),
         onTap: () async {

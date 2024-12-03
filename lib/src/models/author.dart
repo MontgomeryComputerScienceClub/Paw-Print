@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/src/constants.dart';
 import 'package:myapp/src/models/storypreview.dart';
+import 'package:myapp/src/models/test.dart';
 
 class Author {
   String name;
@@ -35,7 +36,7 @@ class Author {
 
   List<StoryPreview> getStories() {
     //TODO implement logic here
-    return [];
+    return [StoryPreview.fromJson(storyJson), StoryPreview.fromJson(pawprintex), StoryPreview.fromJson(storyJson2)];
   }
 
   Widget getProfileImageWidget() {

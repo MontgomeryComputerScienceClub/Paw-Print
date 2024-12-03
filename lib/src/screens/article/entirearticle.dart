@@ -181,9 +181,12 @@ class _EntireArticlePageState extends State<EntireArticlePage> {
                   SizedBox(height: 200, child: widget.main.titleImageAndID.getImageWidget()),
 
                   const Divider(),
-                  RichText(
-                    text: TextSpan(children: _formatAuthorsLinkStyle(widget.main.authors)),
-                  ),
+                  SizedBox(
+                      width: 300,
+                      child: RichText(
+                        textAlign: TextAlign.center,
+                        text: TextSpan(children: _formatAuthorsLinkStyle(widget.main.authors)),
+                      )),
                   const SizedBox(height: 8),
                   Text(
                     _formatMonthYear(widget.main.month, widget.main.year),
