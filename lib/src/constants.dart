@@ -50,4 +50,5 @@ class Constants {
   static int columnsSportsIndex = 6;
 
   static String diskInfoKey = "pawprint-infoclass-dump";
+  static String diskStoryPreviewKey = "pawprint-storypreviewclass-dump";
 }

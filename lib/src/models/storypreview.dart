@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:myapp/src/constants.dart';
 import 'package:myapp/src/models/story.dart';
 import 'package:myapp/src/models/test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class StoryPreview {
   String title;
@@ -19,6 +22,28 @@ class StoryPreview {
         title: json[Constants.storyPreviewTitleKey],
         blurb: json[Constants.storyPreviewBlurbKey],
         readTime: json[Constants.storyPreviewReadTimeKey]);
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      Constants.storyPreviewBlurbKey: blurb,
+      Constants.storyPreviewImageUrlKey: imageUrl,
+      Constants.storyPreviewIDKey: id,
+      Constants.storyPreviewReadTimeKey: readTime,
+      Constants.storyPreviewTitleKey: title,
+    };
+  }
+
+  factory StoryPreview.fromDisk(int a) {
+    //TODO adsfjadsf
+    return StoryPreview(title: "", id: a);
+  }
+
+  Future<void> toDisk() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> savedStories = prefs.getStringList(Constants.diskStoryPreviewKey) ?? [];
+    savedStories.add(jsonEncode(toJson()));
+    prefs.setStringList(Constants.diskStoryPreviewKey, savedStories);
   }
 
   //TODO: try to implement Cached network image  with cached image network library
