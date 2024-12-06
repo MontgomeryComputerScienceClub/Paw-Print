@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/src/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/src/models/info.dart';
+import 'package:myapp/src/widgets/search/searchdelegate.dart';
 
 class Header extends StatefulWidget implements PreferredSizeWidget {
   const Header({
@@ -87,7 +88,9 @@ class _HeaderState extends State<Header> {
       actions: [
         widget.includeSearch
             ? IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  showSearch(context: context, delegate: PaperSearchDelegate());
+                },
                 icon: const Icon(
                   Icons.search,
                   size: 25,
