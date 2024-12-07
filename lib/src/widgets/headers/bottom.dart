@@ -38,8 +38,14 @@ class CustomBottomAppBar extends StatelessWidget {
           IconButton(
             tooltip: 'Save',
             icon: const Icon(Icons.save_alt),
-            onPressed: () {
-              //TODO: implement saving article
+            onPressed: () async {
+              await linkedStory.titleImageAndID.toDisk();
+              showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog();
+                  });
+              //display that saved successful
             },
           ),
         ],

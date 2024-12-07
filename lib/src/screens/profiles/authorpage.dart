@@ -4,6 +4,7 @@ import 'package:myapp/src/models/author.dart';
 import 'package:myapp/src/models/storypreview.dart';
 import 'package:myapp/src/routes/noanimation.dart';
 import 'package:myapp/src/screens/article/entirearticle.dart';
+import 'package:myapp/src/widgets/preview_cell.dart';
 
 class AuthorDisplayScreen extends StatefulWidget {
   const AuthorDisplayScreen({super.key, required this.author});
@@ -18,39 +19,8 @@ class _AuthorDisplayScreenState extends State<AuthorDisplayScreen> {
   List<Widget> _buildPreviews(List<StoryPreview> stories) {
     List<Widget> ret = [];
     for (StoryPreview story in stories) {
-      ret.add(
-        ListTile(
-          contentPadding: EdgeInsets.zero,
-          trailing: SizedBox(
-            child: Padding(
-              padding: EdgeInsets.only(right: 10),
-              child: story.getImageWidget(),
-            ),
-          ),
-          title: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: Text(
-                story.title,
-                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              )),
-          subtitle: Text(
-            story.blurb ?? "",
-            style: TextStyle(fontSize: 15, color: Constants.listArticleBlurbColor, height: 1.4),
-          ),
-          onTap: () async {
-            //TODO: modify this and the one in preview cell to actually get the story
-            var entireStory = await story.getStoryFromPreview();
-
-            Navigator.of(context).push(NoAnimationRoute(
-                child: EntireArticlePage(
-              main: entireStory,
-              relatedStories: [],
-            )));
-          },
-        ),
-      );
+      ret.add(ImagedPreviewCell(s: story));
     }
-
     return ret;
   }
 

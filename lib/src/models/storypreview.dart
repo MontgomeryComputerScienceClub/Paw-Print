@@ -34,9 +34,15 @@ class StoryPreview {
     };
   }
 
-  factory StoryPreview.fromDisk(int a) {
-    //TODO adsfjadsf
-    return StoryPreview(title: "", id: a);
+  static Future<List<StoryPreview>> fromDisk() async {
+    List<StoryPreview> ret = [];
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> savedStories = prefs.getStringList(Constants.diskStoryPreviewKey) ?? [];
+    for (String storyJson in savedStories) {
+      ret.add(StoryPreview.fromJson(jsonDecode(storyJson)));
+    }
+
+    return ret;
   }
 
   Future<void> toDisk() async {

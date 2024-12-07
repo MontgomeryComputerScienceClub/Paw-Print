@@ -19,7 +19,7 @@ class _GamesScreenState extends State<GamesScreen> {
           includeColumns: false,
         ),
         bottomNavigationBar: Navbar(
-          selectedIndex: 0,
+          selectedIndex: 1,
         ),
         body: SafeArea(
             child: SingleChildScrollView(
