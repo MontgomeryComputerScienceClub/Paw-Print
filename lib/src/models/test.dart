@@ -20,6 +20,7 @@ Map<String, dynamic> storyJson = {
   "month": 6,
   "year": 2024,
   "column": "Other",
+  "saved": false,
   "blurb":
       "Oscar nominations spark debate over snubs and sexism allegations, with Oppenheimer and Poor Things leading the pack for Best Picture, while fans lament the absence of Margot Robbie and Greta Gerwig.",
 };
@@ -31,6 +32,7 @@ Map<String, dynamic> storyJson2 = {
   "authors": [author1],
   "month": 6,
   "year": 2024,
+  "saved": false,
   "imgUrl": "https://thespokesman.net/wp-content/uploads/2024/05/class.png",
   "column": "People",
   "blurb": "Eddie is hot",
@@ -43,6 +45,7 @@ Map<String, dynamic> pawprintex = {
       "The recently announced Oscar nominations have stirred both positive and negative reactions online, with fans busy debating both the controversial snubs and potential winners, while also questioning whether sexism was a factor in the selection process. \r\nThe nominations were announced on January 23, 2024, and the 96th annual Academy Awards will be hosted on March 10, 2024. This year, the Academy selected a wide variety of films as nominees for its best picture award, which includes American Fiction, Anatomy of a Fall, Barbie, The Holdovers, Killers of the Flower Moon, Maestro, Oppenheimer, Past Lives, Poor Things, and Zone of Interest. \r\nMany predict that the winner of the best picture award will ultimately be between Oppenheimer and Poor Things, two films with the most nominations; Oppenheimer has 13 nominations, while Poor Things chases close behind with 11. In acting, directing, writing, and technical categories, both films dominated.\r\nOther highly nominated films include Killers of the Flower Moon, Barbie, and American Fiction, with 10, 8, and 7 nominations respectively.\r\nDespite relative agreement and lack of controversy among fans compared to recent years, this year's nominations are not without dispute either. Mainly, fans are upset over Margot Robbie and Greta Gerwig not being nominated for best actress in a leading role and best director, respectively, with some even going as far as to say that it's a matter of sexism. While Ryan Gosling and America Ferrera were both nominated for their roles in Barbie, equal respect for the leading lady, Margot Robbie, is nowhere to be found amongst the nominations. A similar situation arose regarding Greta Gerwig: despite Barbie being nominated for best picture, she wasn’t dominated for her contribution as the director.\r\nSome fans say that the lack of a nomination for Robbie and Gerwig exemplifies the themes of Barbie itself, with many noting the irony that Gosling was nominated for an award, while Robbie and Gerwig, despite having a greater contribution to the film, were not. After the announcement, Gosling said, \"there is no Ken without Barbie, and there is no Barbie movie without Greta Gerwig and Margot Robbie.\"\r\nOthers had a much different stance. Oscar-winner Whoppi Goldberg said, \"there are no snubs ... not everybody gets a prize.\" Many on X and other social media platforms shared this sentiment. Whatever the case, the majority found middle ground: regardless if they were nominated or not, Greta Gerwig and Margot Robbie are both great at what they do and deserve to be recognized. even if it isn’t in the form of an Oscar.\r\nWith the Academy Awards coming up, this is the perfect time to view any films that you haven't yet experienced. If you want to catch any of these movies, there's no time like now.",
   "authors": [author1, author1, author1],
   "month": 11,
+  "saved": false,
   "year": 2025,
   "column": "People",
   "readTime": 6,

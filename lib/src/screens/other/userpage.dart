@@ -4,24 +4,25 @@ import 'package:myapp/src/widgets/headers/header.dart';
 import 'package:myapp/src/widgets/navbar.dart';
 import 'package:myapp/src/widgets/preview_cell.dart';
 
+// ignore: must_be_immutable
 class UserPage extends StatefulWidget {
-  const UserPage({super.key});
+  UserPage({super.key, required this.previews});
+
+  List<StoryPreview> previews;
 
   @override
   State<UserPage> createState() => _UserPageState();
 }
 
 class _UserPageState extends State<UserPage> {
-  List<StoryPreview> previews = [];
   @override
   void initState() {
     super.initState();
-    StoryPreview.fromDisk().then((value) => previews = value);
   }
 
   List<Widget> _genSavedStories(BuildContext context) {
     List<Widget> ret = [];
-    for (StoryPreview prev in previews) {
+    for (StoryPreview prev in widget.previews) {
       ret.add(Padding(padding: const EdgeInsets.symmetric(horizontal: 10), child: ImagedPreviewCell(s: prev)));
     }
     return ret;
@@ -35,7 +36,7 @@ class _UserPageState extends State<UserPage> {
           padding: const EdgeInsets.all(10),
           child: Text(
             "Your Saved Stories",
-            style: Theme.of(context).textTheme.headlineSmall,
+            style: Theme.of(context).textTheme.labelLarge?.copyWith(fontWeight: FontWeight.bold),
           )),
     ];
 
@@ -47,6 +48,11 @@ class _UserPageState extends State<UserPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              StoryPreview.clearDisk();
+            },
+            child: const Icon(Icons.delete)),
         appBar: const Header(
           implyleading: false,
           includeSearch: false,

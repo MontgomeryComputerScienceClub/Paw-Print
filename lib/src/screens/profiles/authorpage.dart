@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:myapp/src/constants.dart';
 import 'package:myapp/src/models/author.dart';
 import 'package:myapp/src/models/storypreview.dart';
-import 'package:myapp/src/routes/noanimation.dart';
-import 'package:myapp/src/screens/article/entirearticle.dart';
 import 'package:myapp/src/widgets/preview_cell.dart';
 
 class AuthorDisplayScreen extends StatefulWidget {

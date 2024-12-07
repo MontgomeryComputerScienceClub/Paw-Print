@@ -12,8 +12,9 @@ class StoryPreview {
   int id;
   String? blurb;
   int? readTime;
+  bool saved = false;
 
-  StoryPreview({required this.title, this.imageUrl, required this.id, this.blurb, this.readTime});
+  StoryPreview({required this.title, this.imageUrl, required this.id, this.blurb, this.readTime, required this.saved});
 
   factory StoryPreview.fromJson(Map<String, dynamic> json) {
     return StoryPreview(
@@ -21,7 +22,8 @@ class StoryPreview {
         imageUrl: json[Constants.storyPreviewImageUrlKey],
         title: json[Constants.storyPreviewTitleKey],
         blurb: json[Constants.storyPreviewBlurbKey],
-        readTime: json[Constants.storyPreviewReadTimeKey]);
+        readTime: json[Constants.storyPreviewReadTimeKey],
+        saved: json[Constants.storyPreviewSavedKey] ?? false);
   }
 
   Map<String, dynamic> toJson() {
@@ -31,7 +33,13 @@ class StoryPreview {
       Constants.storyPreviewIDKey: id,
       Constants.storyPreviewReadTimeKey: readTime,
       Constants.storyPreviewTitleKey: title,
+      Constants.storyPreviewSavedKey: saved,
     };
+  }
+
+  static void clearDisk() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setStringList(Constants.diskStoryPreviewKey, []);
   }
 
   static Future<List<StoryPreview>> fromDisk() async {
@@ -41,13 +49,14 @@ class StoryPreview {
     for (String storyJson in savedStories) {
       ret.add(StoryPreview.fromJson(jsonDecode(storyJson)));
     }
-
+    print(ret);
     return ret;
   }
 
   Future<void> toDisk() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     List<String> savedStories = prefs.getStringList(Constants.diskStoryPreviewKey) ?? [];
+    saved = true;
     savedStories.add(jsonEncode(toJson()));
     prefs.setStringList(Constants.diskStoryPreviewKey, savedStories);
   }

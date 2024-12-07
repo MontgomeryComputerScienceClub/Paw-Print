@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/src/models/storypreview.dart';
 // import 'package:myapp/src/routes/leftrightroute.dart';
 import 'package:myapp/src/routes/noanimation.dart';
 import 'package:myapp/src/screens/games/games.dart';
@@ -31,7 +32,8 @@ class NavBarState extends State<Navbar> {
       case 1:
         Navigator.of(context).pushReplacement(NoAnimationRoute(child: const GamesScreen()));
       case 2:
-        Navigator.of(context).pushReplacement(NoAnimationRoute(child: const UserPage()));
+        StoryPreview.fromDisk()
+            .then((value) => Navigator.of(context).pushReplacement(NoAnimationRoute(child: UserPage(previews: value))));
     }
   }
 
