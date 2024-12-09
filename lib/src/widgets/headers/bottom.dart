@@ -45,7 +45,11 @@ class _CustomBottomAppBarState extends State<CustomBottomAppBar> {
               future: isSaved,
               builder: ((context, snapshot) {
                 return IconButton(
-                    tooltip: 'Save',
+                    tooltip: snapshot.hasData
+                        ? snapshot.data ?? false
+                            ? 'Article already saved'
+                            : 'Save'
+                        : 'Error',
                     icon: const Icon(Icons.save_alt),
                     onPressed: snapshot.hasData
                         ? snapshot.data ?? false
