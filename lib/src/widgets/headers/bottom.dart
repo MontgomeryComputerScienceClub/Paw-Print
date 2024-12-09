@@ -16,6 +16,16 @@ class CustomBottomAppBar extends StatefulWidget {
 }
 
 class _CustomBottomAppBarState extends State<CustomBottomAppBar> {
+  bool isSaved = false;
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      widget.linkedStory.titleImageAndID.isSaved().then((value) => isSaved = value);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
@@ -41,17 +51,17 @@ class _CustomBottomAppBarState extends State<CustomBottomAppBar> {
           IconButton(
               tooltip: 'Save',
               icon: const Icon(Icons.save_alt),
-              onPressed: widget.linkedStory.titleImageAndID.saved
+              onPressed: isSaved
                   ? null
                   : () async {
                       await widget.linkedStory.titleImageAndID.toDisk();
-                      setState(() {});
+
                       // ignore: use_build_context_synchronously
                       showDialog(
                           context: context,
                           builder: (context) {
-                            return const AlertDialog(
-                              title: Text("Story saved"),
+                            return AlertDialog(
+                              title: Text("Yes"),
                             );
                           });
                     }),
