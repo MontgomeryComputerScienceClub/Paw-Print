@@ -50,7 +50,10 @@ class _UserPageState extends State<UserPage> {
     return Scaffold(
         floatingActionButton: FloatingActionButton(
             onPressed: () {
-              StoryPreview.clearDisk();
+              setState(() {
+                StoryPreview.clearDisk();
+                widget.previews = [];
+              });
             },
             child: const Icon(Icons.delete)),
         appBar: const Header(

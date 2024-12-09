@@ -56,7 +56,6 @@ class StoryPreview {
     for (String storyJson in savedStories) {
       ret.add(StoryPreview.fromJson(jsonDecode(storyJson)));
     }
-    print(ret);
     return ret;
   }
 

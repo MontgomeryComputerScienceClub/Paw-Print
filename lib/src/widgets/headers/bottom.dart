@@ -3,6 +3,8 @@ import 'package:myapp/src/constants.dart';
 import 'package:myapp/src/models/story.dart';
 import 'package:share_plus/share_plus.dart';
 
+import 'saved_success_widget.dart';
+
 class CustomBottomAppBar extends StatefulWidget {
   const CustomBottomAppBar({
     super.key,
@@ -16,18 +18,9 @@ class CustomBottomAppBar extends StatefulWidget {
 }
 
 class _CustomBottomAppBarState extends State<CustomBottomAppBar> {
-  bool isSaved = false;
-
-  @override
-  void initState() {
-    super.initState();
-    setState(() {
-      widget.linkedStory.titleImageAndID.isSaved().then((value) => isSaved = value);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    Future<bool> isSaved = widget.linkedStory.titleImageAndID.isSaved();
     return BottomAppBar(
       color: Constants.bottomAppBarColor,
       child: Row(
@@ -48,23 +41,29 @@ class _CustomBottomAppBarState extends State<CustomBottomAppBar> {
               Share.share('https://example.com', subject: 'Share article');
             },
           ),
-          IconButton(
-              tooltip: 'Save',
-              icon: const Icon(Icons.save_alt),
-              onPressed: isSaved
-                  ? null
-                  : () async {
-                      await widget.linkedStory.titleImageAndID.toDisk();
-
-                      // ignore: use_build_context_synchronously
-                      showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              title: Text("Yes"),
-                            );
-                          });
-                    }),
+          FutureBuilder<bool>(
+              future: isSaved,
+              builder: ((context, snapshot) {
+                return IconButton(
+                    tooltip: 'Save',
+                    icon: const Icon(Icons.save_alt),
+                    onPressed: snapshot.hasData
+                        ? snapshot.data ?? false
+                            ? null
+                            : () async {
+                                await widget.linkedStory.titleImageAndID.toDisk();
+                                setState(() {
+                                  isSaved = widget.linkedStory.titleImageAndID.isSaved();
+                                });
+                                // ignore: use_build_context_synchronously
+                                showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return SavedSuccessfully(story: widget.linkedStory);
+                                    });
+                              }
+                        : null);
+              })),
         ],
       ),
     );
