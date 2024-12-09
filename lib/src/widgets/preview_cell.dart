@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/src/constants.dart';
 import 'package:myapp/src/models/storypreview.dart';
 import 'package:myapp/src/painters/painter.dart';
-import 'package:myapp/src/routes/noanimation.dart';
-import 'package:myapp/src/screens/article/entirearticle.dart';
+import 'package:myapp/src/utils/stories.dart';
 
 class ArticlePreviewCell extends StatelessWidget {
   const ArticlePreviewCell({super.key, required this.s, required this.index});
@@ -18,31 +17,33 @@ class ArticlePreviewCell extends StatelessWidget {
         child: Card(
             surfaceTintColor: Colors.transparent,
             color: Colors.white70,
-            child: Padding(
-                padding: EdgeInsets.all(10),
-                child: Stack(children: [
-                  Column(
-                    children: [
-                      SizedBox(height: 150, width: 150, child: s.getImageWidget()),
-                      const SizedBox(
-                        height: 5,
+            child: InkWell(
+                onTap: () => pushFromPreviewToStory(s, context),
+                child: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Stack(children: [
+                      Column(
+                        children: [
+                          SizedBox(height: 150, width: 150, child: s.getImageWidget()),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            s.title,
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
                       ),
-                      Text(
-                        s.title,
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                  index == 0
-                      ? Positioned(
-                          top: 0,
-                          left: 0,
-                          child: CustomPaint(
-                            size: Constants.bannerPaintSize,
-                            painter: ArticlePreviewCellBanner(),
-                          ))
-                      : const SizedBox.shrink(),
-                ]))));
+                      index == 0
+                          ? Positioned(
+                              top: 0,
+                              left: 0,
+                              child: CustomPaint(
+                                size: Constants.bannerPaintSize,
+                                painter: ArticlePreviewCellBanner(),
+                              ))
+                          : const SizedBox.shrink(),
+                    ])))));
   }
 }
 
@@ -58,31 +59,33 @@ class ArticlePreviewRow extends StatelessWidget {
         child: Card(
             surfaceTintColor: Colors.transparent,
             color: Colors.white70,
-            child: Padding(
-                padding: EdgeInsets.all(10),
-                child: Stack(children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      SizedBox(
-                          width: 120,
-                          child: Text(
-                            s.title,
-                            textAlign: TextAlign.center,
-                          )),
-                      SizedBox(height: 150, width: 150, child: s.getImageWidget()),
-                    ],
-                  ),
-                  index == 0
-                      ? Positioned(
-                          top: 0,
-                          left: 0,
-                          child: CustomPaint(
-                            size: Constants.bannerPaintSize,
-                            painter: ArticlePreviewRowBanner(),
-                          ))
-                      : const SizedBox.shrink(),
-                ]))));
+            child: InkWell(
+                onTap: () => pushFromPreviewToStory(s, context),
+                child: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Stack(children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          SizedBox(
+                              width: 120,
+                              child: Text(
+                                s.title,
+                                textAlign: TextAlign.center,
+                              )),
+                          SizedBox(height: 150, width: 150, child: s.getImageWidget()),
+                        ],
+                      ),
+                      index == 0
+                          ? Positioned(
+                              top: 0,
+                              left: 0,
+                              child: CustomPaint(
+                                size: Constants.bannerPaintSize,
+                                painter: ArticlePreviewRowBanner(),
+                              ))
+                          : const SizedBox.shrink(),
+                    ])))));
   }
 }
 
@@ -104,15 +107,8 @@ class HomeArticleFirstPreviewCell extends StatelessWidget {
             ListTile(
                 trailing: IconButton(
                   icon: Icon(Icons.arrow_forward_ios),
-                  onPressed: () async {
-                    //TODO: Modify this to not delay and also get related stories
-                    var story = await s.getStoryFromPreview();
-
-                    Navigator.of(context).push(NoAnimationRoute(
-                        child: EntireArticlePage(
-                      main: story,
-                      relatedStories: [],
-                    )));
+                  onPressed: () {
+                    pushFromPreviewToStory(s, context);
                   },
                 ),
                 title: Text(s.title,
@@ -146,7 +142,9 @@ class HomeArticleRestPreviewCell extends StatelessWidget {
       subtitle: Text("Learn more about the story here"),
       trailing: IconButton(
         icon: Icon(Icons.open_in_new),
-        onPressed: () {},
+        onPressed: () {
+          pushFromPreviewToStory(s, context);
+        },
       ),
     );
   }
@@ -177,15 +175,8 @@ class ImagedPreviewCell extends StatelessWidget {
         s.blurb ?? "",
         style: TextStyle(fontSize: 15, color: Constants.listArticleBlurbColor, height: 1.4),
       ),
-      onTap: () async {
-        var entireStory = await s.getStoryFromPreview();
-
-        Navigator.of(context).push(NoAnimationRoute(
-            child: EntireArticlePage(
-          main: entireStory,
-          //TODO: get related stories function implemrtantion?
-          relatedStories: [],
-        )));
+      onTap: () {
+        pushFromPreviewToStory(s, context);
       },
     );
   }

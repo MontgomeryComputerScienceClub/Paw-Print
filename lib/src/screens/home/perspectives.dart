@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/src/constants.dart';
 import 'package:myapp/src/models/storypreview.dart';
-import 'package:myapp/src/routes/noanimation.dart';
-import 'package:myapp/src/screens/article/entirearticle.dart';
+import 'package:myapp/src/utils/stories.dart';
 
 class Perspectives extends StatefulWidget {
   const Perspectives({super.key, required this.stories});
@@ -19,51 +18,47 @@ class _PerspectivesState extends State<Perspectives> {
     ret.add(const SizedBox(height: 10));
     for (int i = 0; i < widget.stories.length; i++) {
       if (i == 0) {
-        ret.add(SizedBox(width: MediaQuery.of(context).size.width, child: widget.stories[i].getImageWidget()));
+        ret.add(InkWell(
+            onTap: () {
+              pushFromPreviewToStory(widget.stories[i], context);
+            },
+            child: SizedBox(width: MediaQuery.of(context).size.width, child: widget.stories[i].getImageWidget())));
       }
       ret.add(ListTile(
-        title: Padding(
-            padding: EdgeInsets.symmetric(vertical: 10),
-            child: Text(
-              widget.stories[i].title,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
-            )),
-        subtitle: Column(children: [
-          Align(
-              alignment: Alignment.centerLeft,
+          title: Padding(
+              padding: EdgeInsets.symmetric(vertical: 10),
               child: Text(
-                widget.stories[i].blurb ?? "",
-                style: TextStyle(fontSize: 15, color: Constants.listArticleBlurbColor),
+                widget.stories[i].title,
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
               )),
-          widget.stories[i].readTime != null ? const SizedBox(height: 10) : const SizedBox.shrink(),
-          Align(
-              alignment: Alignment.bottomRight,
-              child: widget.stories[i].readTime != null
-                  ? RichText(
-                      text: TextSpan(children: [
-                        TextSpan(
-                            text: (widget.stories[i].readTime ?? "").toString(),
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(fontSize: 13, color: Constants.green, fontWeight: FontWeight.bold)),
-                        TextSpan(
-                            text: " min read", style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 13)),
-                      ]),
-                    )
-                  : const SizedBox.shrink()),
-        ]),
-        onTap: () async {
-          //TODO: modify this and the one in preview cell to actually get the story
-          var story = await widget.stories[i].getStoryFromPreview();
-
-          Navigator.of(context).push(NoAnimationRoute(
-              child: EntireArticlePage(
-            main: story,
-            relatedStories: [],
-          )));
-        },
-      ));
+          subtitle: Column(children: [
+            Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  widget.stories[i].blurb ?? "",
+                  style: TextStyle(fontSize: 15, color: Constants.listArticleBlurbColor),
+                )),
+            widget.stories[i].readTime != null ? const SizedBox(height: 10) : const SizedBox.shrink(),
+            Align(
+                alignment: Alignment.bottomRight,
+                child: widget.stories[i].readTime != null
+                    ? RichText(
+                        text: TextSpan(children: [
+                          TextSpan(
+                              text: (widget.stories[i].readTime ?? "").toString(),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium
+                                  ?.copyWith(fontSize: 13, color: Constants.green, fontWeight: FontWeight.bold)),
+                          TextSpan(
+                              text: " min read", style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 13)),
+                        ]),
+                      )
+                    : const SizedBox.shrink()),
+          ]),
+          onTap: () {
+            pushFromPreviewToStory(widget.stories[i], context);
+          }));
 
       ret.add(const Divider());
     }

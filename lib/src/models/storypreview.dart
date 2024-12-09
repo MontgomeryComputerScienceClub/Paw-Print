@@ -91,7 +91,7 @@ class StoryPreview {
 
   Future<Story> getStoryFromPreview() async {
     //TODO: implement story getting logic
-    print(id);
+    // print(id);
     if (id == 696) {
       return defaultStory;
     } else {
