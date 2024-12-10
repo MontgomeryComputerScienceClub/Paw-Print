@@ -3,6 +3,7 @@ import 'package:myapp/src/constants.dart';
 import 'package:myapp/src/models/storypreview.dart';
 import 'package:myapp/src/utils/stories.dart';
 
+// https://www.youtube.com/watch?v=Gsfjcpo6wcA
 // ignore: must_be_immutable
 class Perspectives extends StatefulWidget {
   Perspectives({super.key, required this.stories});
@@ -94,6 +95,7 @@ class _PerspectivesState extends State<Perspectives> {
   }
 
   Future<void> _scrollListener() async {
+    if (isLoadingMore) return;
     if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
       setState(() {
         isLoadingMore = true;
