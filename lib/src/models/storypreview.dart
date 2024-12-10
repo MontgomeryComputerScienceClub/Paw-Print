@@ -44,6 +44,15 @@ class StoryPreview {
     return false;
   }
 
+  static void removeIndexFromDisk(int index) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> savedStories = prefs.getStringList(Constants.diskStoryPreviewKey) ?? [];
+    if (savedStories.isNotEmpty && index + 1 <= savedStories.length && index >= 0) {
+      savedStories.removeAt(index);
+    }
+    prefs.setStringList(Constants.diskStoryPreviewKey, savedStories);
+  }
+
   static void clearDisk() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setStringList(Constants.diskStoryPreviewKey, []);
@@ -59,7 +68,7 @@ class StoryPreview {
     return ret;
   }
 
-  Future<void> toDisk() async {
+  Future<void> addToDisk() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     List<String> savedStories = prefs.getStringList(Constants.diskStoryPreviewKey) ?? [];
     savedStories.add(jsonEncode(toJson()));

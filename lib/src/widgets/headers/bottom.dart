@@ -55,7 +55,7 @@ class _CustomBottomAppBarState extends State<CustomBottomAppBar> {
                         ? snapshot.data ?? false
                             ? null
                             : () async {
-                                await widget.linkedStory.titleImageAndID.toDisk();
+                                await widget.linkedStory.titleImageAndID.addToDisk();
                                 setState(() {
                                   isSaved = widget.linkedStory.titleImageAndID.isSaved();
                                 });

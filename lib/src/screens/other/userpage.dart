@@ -22,9 +22,56 @@ class _UserPageState extends State<UserPage> {
 
   List<Widget> _genSavedStories(BuildContext context) {
     List<Widget> ret = [];
-    for (StoryPreview prev in widget.previews) {
-      ret.add(Padding(padding: const EdgeInsets.symmetric(horizontal: 10), child: ImagedPreviewCell(s: prev)));
+    for (int i = 0; i < widget.previews.length; i++) {
+      ret.add(InkWell(
+        onLongPress: () {
+          showModalBottomSheet(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)), //for the round edges
+              builder: (context) {
+                return Container(
+                    height: 200,
+                    child: const Column(children: [
+                      Row(children: [Text("Actions")])
+                    ]) //what you want to have inside, I suggest using a column
+                    );
+              },
+              context: context,
+              isDismissible: true);
+        },
+        child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10), child: ImagedPreviewCell(s: widget.previews[i])),
+      ));
+      //TODO: adsfaklsf
+      ret.add(Dismissible(
+        background: Container(decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.circular(25))),
+        key: ValueKey(i),
+        child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10), child: ImagedPreviewCell(s: widget.previews[i])),
+        onDismissed: (DismissDirection direction) async {
+          var previewToUndo = widget.previews[i];
+          setState(() {
+            widget.previews.removeAt(i);
+            StoryPreview.removeIndexFromDisk(i);
+          });
+
+          SnackBar snackbar = SnackBar(
+            content: const Text("Successfully Deleted Saved Article"),
+            action: SnackBarAction(
+              label: "Undo?",
+              onPressed: () async {
+                setState(() {
+                  widget.previews.add(previewToUndo);
+                  previewToUndo.addToDisk();
+                });
+              },
+            ),
+          );
+          if (!mounted) return;
+          ScaffoldMessenger.of(context).showSnackBar(snackbar);
+        },
+      ));
     }
+
     return ret;
   }
 
