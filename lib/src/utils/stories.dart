@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/src/models/storypreview.dart';
 import 'package:myapp/src/routes/noanimation.dart';
 import 'package:myapp/src/screens/article/entirearticle.dart';
+import 'package:share_plus/share_plus.dart';
 
 void pushFromPreviewToStory(StoryPreview preview, BuildContext context) async {
   var story = await preview.getStoryFromPreview();
@@ -14,4 +15,10 @@ void pushFromPreviewToStory(StoryPreview preview, BuildContext context) async {
     main: story,
     relatedStories: [],
   )));
+}
+
+void shareStory(StoryPreview s) {
+  //TODO implement shareStory
+  //TODO: implement share url has to link to website url somehow? so modify model later
+  Share.share('https://example.com', subject: 'Share article');
 }

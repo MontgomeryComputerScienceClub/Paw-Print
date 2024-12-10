@@ -9,6 +9,7 @@ class Constants {
   static Color listArticleBlurbColor = const Color.fromARGB(255, 100, 100, 100);
   static Color bottomAppBarColor = const Color.fromARGB(255, 251, 251, 249);
   static Color authorProfilePicBGColor = const Color.fromARGB(255, 230, 230, 224);
+  static Color savedStoriesBottomModalBGColor = const Color.fromARGB(255, 230, 230, 224);
 
   static Size bannerPaintSize = const Size(100, 100);
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/src/constants.dart';
 import 'package:myapp/src/models/story.dart';
-import 'package:share_plus/share_plus.dart';
+import 'package:myapp/src/utils/stories.dart';
 
 import 'saved_success_widget.dart';
 
@@ -37,8 +37,7 @@ class _CustomBottomAppBarState extends State<CustomBottomAppBar> {
             tooltip: 'Share',
             icon: const Icon(Icons.ios_share),
             onPressed: () {
-              //TODO: implement share url has to link to website url somehow? so modify model later
-              Share.share('https://example.com', subject: 'Share article');
+              shareStory(widget.linkedStory.titleImageAndID);
             },
           ),
           FutureBuilder<bool>(

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp/src/constants.dart';
 import 'package:myapp/src/models/storypreview.dart';
+import 'package:myapp/src/utils/stories.dart';
 import 'package:myapp/src/widgets/headers/header.dart';
 import 'package:myapp/src/widgets/navbar.dart';
 import 'package:myapp/src/widgets/preview_cell.dart';
@@ -20,56 +23,71 @@ class _UserPageState extends State<UserPage> {
     super.initState();
   }
 
+  Widget _genSavedStoryWidget(StoryPreview preview, int index, BuildContext context) {
+    return InkWell(
+      onLongPress: () {
+        showModalBottomSheet(
+            backgroundColor: Constants.savedStoriesBottomModalBGColor,
+            useSafeArea: true,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)), //for the round edges
+            builder: (context) {
+              return Column(mainAxisAlignment: MainAxisAlignment.center, mainAxisSize: MainAxisSize.min, children: [
+                ListTile(
+                  leading: const Icon(Icons.delete),
+                  title: Text(
+                    "Delete article?",
+                    style: GoogleFonts.aBeeZee(),
+                  ),
+                  onTap: () {
+                    var previewToUndo = preview;
+                    setState(() {
+                      widget.previews.removeAt(index);
+                      StoryPreview.removeIndexFromDisk(index);
+                    });
+                    Navigator.of(context).pop();
+
+                    SnackBar snackbar = SnackBar(
+                      backgroundColor: Colors.black54,
+                      content: const Text("Successfully deleted saved article"),
+                      action: SnackBarAction(
+                        label: "Undo?",
+                        onPressed: () async {
+                          setState(() {
+                            widget.previews.add(previewToUndo);
+                            previewToUndo.addToDisk();
+                          });
+                        },
+                      ),
+                    );
+                    if (!mounted) return;
+                    ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                  },
+                ),
+                ListTile(
+                  title: Text(
+                    "Share article?",
+                    style: GoogleFonts.aBeeZee(),
+                  ),
+                  leading: const Icon(Icons.share),
+                  onTap: () {
+                    shareStory(widget.previews[index]);
+                  },
+                ),
+                const SizedBox(height: 20),
+              ]);
+            },
+            context: context,
+            isDismissible: true);
+      },
+      child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10), child: ImagedPreviewCell(s: widget.previews[index])),
+    );
+  }
+
   List<Widget> _genSavedStories(BuildContext context) {
     List<Widget> ret = [];
     for (int i = 0; i < widget.previews.length; i++) {
-      ret.add(InkWell(
-        onLongPress: () {
-          showModalBottomSheet(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)), //for the round edges
-              builder: (context) {
-                return Container(
-                    height: 200,
-                    child: const Column(children: [
-                      Row(children: [Text("Actions")])
-                    ]) //what you want to have inside, I suggest using a column
-                    );
-              },
-              context: context,
-              isDismissible: true);
-        },
-        child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10), child: ImagedPreviewCell(s: widget.previews[i])),
-      ));
-      //TODO: adsfaklsf
-      ret.add(Dismissible(
-        background: Container(decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.circular(25))),
-        key: ValueKey(i),
-        child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10), child: ImagedPreviewCell(s: widget.previews[i])),
-        onDismissed: (DismissDirection direction) async {
-          var previewToUndo = widget.previews[i];
-          setState(() {
-            widget.previews.removeAt(i);
-            StoryPreview.removeIndexFromDisk(i);
-          });
-
-          SnackBar snackbar = SnackBar(
-            content: const Text("Successfully Deleted Saved Article"),
-            action: SnackBarAction(
-              label: "Undo?",
-              onPressed: () async {
-                setState(() {
-                  widget.previews.add(previewToUndo);
-                  previewToUndo.addToDisk();
-                });
-              },
-            ),
-          );
-          if (!mounted) return;
-          ScaffoldMessenger.of(context).showSnackBar(snackbar);
-        },
-      ));
+      ret.add(_genSavedStoryWidget(widget.previews[i], i, context));
     }
 
     return ret;
