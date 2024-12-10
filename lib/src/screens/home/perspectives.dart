@@ -3,16 +3,27 @@ import 'package:myapp/src/constants.dart';
 import 'package:myapp/src/models/storypreview.dart';
 import 'package:myapp/src/utils/stories.dart';
 
+// ignore: must_be_immutable
 class Perspectives extends StatefulWidget {
-  const Perspectives({super.key, required this.stories});
+  Perspectives({super.key, required this.stories});
 
-  final List<StoryPreview> stories;
+  List<StoryPreview> stories;
 
   @override
   State<Perspectives> createState() => _PerspectivesState();
 }
 
 class _PerspectivesState extends State<Perspectives> {
+  ScrollController scrollController = ScrollController();
+  int page = 0;
+  bool isLoadingMore = false;
+
+  @override
+  void initState() {
+    super.initState();
+    scrollController.addListener(_scrollListener);
+  }
+
   List<Widget> _generateChildren() {
     List<Widget> ret = [];
     ret.add(const SizedBox(height: 10));
@@ -26,10 +37,10 @@ class _PerspectivesState extends State<Perspectives> {
       }
       ret.add(ListTile(
           title: Padding(
-              padding: EdgeInsets.symmetric(vertical: 10),
+              padding: const EdgeInsets.symmetric(vertical: 10),
               child: Text(
                 widget.stories[i].title,
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
+                style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
               )),
           subtitle: Column(children: [
             Align(
@@ -67,9 +78,35 @@ class _PerspectivesState extends State<Perspectives> {
 
   @override
   Widget build(BuildContext context) {
+    var e = _generateChildren();
     return SafeArea(
-        child: SingleChildScrollView(
-            //TODO: implement scroll down update logic -> should query first 10 and then append children
-            child: Column(mainAxisAlignment: MainAxisAlignment.start, children: _generateChildren())));
+        child: ListView.builder(
+      itemBuilder: (context, index) {
+        if (isLoadingMore && index == e.length) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+        return e[index];
+      },
+      itemCount: isLoadingMore ? e.length : e.length,
+    ));
+  }
+
+  Future<void> _scrollListener() async {
+    if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
+      setState(() {
+        isLoadingMore = true;
+      });
+      page = page + 1;
+      await fetchArticles();
+      setState(() {
+        isLoadingMore = false;
+      });
+    }
+  }
+
+  Future<void> fetchArticles() async {
+    //TODO: just add to the widget.stories variable...
   }
 }
