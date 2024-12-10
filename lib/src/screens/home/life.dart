@@ -1,9 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/src/models/storypreview.dart';
 
-class Life extends StatelessWidget {
-  const Life({super.key});
+class Life extends StatefulWidget {
+  const Life({super.key, required this.stories});
 
-  _generateChildren() {}
+  final List<StoryPreview> stories;
+
+  @override
+  State<Life> createState() => _LifeState();
+}
+
+class _LifeState extends State<Life> {
+  _generateChildren() {
+    List<Widget> ret = [];
+
+    return ret;
+  }
 
   @override
   Widget build(BuildContext context) {
