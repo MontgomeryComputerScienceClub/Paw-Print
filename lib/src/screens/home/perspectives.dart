@@ -15,6 +15,8 @@ class Perspectives extends StatefulWidget {
 }
 
 class _PerspectivesState extends State<Perspectives> {
+  final String column = Constants.columns[2];
+
   ScrollController scrollController = ScrollController();
   int page = 0;
   bool isLoadingMore = false;
@@ -109,6 +111,7 @@ class _PerspectivesState extends State<Perspectives> {
   }
 
   Future<void> fetchArticles() async {
-    //TODO: just add to the widget.stories variable...
+    List<StoryPreview> l = await StoryPreview.getStoriesFromColumn(page, column);
+    widget.stories.addAll(l);
   }
 }

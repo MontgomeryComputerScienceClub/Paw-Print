@@ -19,7 +19,7 @@ Map<String, dynamic> storyJson = {
   "authors": [author1],
   "month": 6,
   "year": 2024,
-  "column": "Other",
+  "column": "World/Politics",
   "saved": false,
   "blurb":
       "Oscar nominations spark debate over snubs and sexism allegations, with Oppenheimer and Poor Things leading the pack for Best Picture, while fans lament the absence of Margot Robbie and Greta Gerwig.",
@@ -34,7 +34,7 @@ Map<String, dynamic> storyJson2 = {
   "year": 2024,
   "saved": false,
   "imgUrl": "https://thespokesman.net/wp-content/uploads/2024/05/class.png",
-  "column": "People",
+  "column": "This Issue",
   "blurb": "Eddie is hot",
 };
 
@@ -47,7 +47,7 @@ Map<String, dynamic> pawprintex = {
   "month": 11,
   "saved": false,
   "year": 2025,
-  "column": "People",
+  "column": "Perspectives",
   "readTime": 6,
   "blurb":
       "Oscar nominations spark debate over snubs and sexism allegations, with Oppenheimer and Poor Things leading the pack for Best Picture, while fans lament the absence of Margot Robbie and Greta Gerwig.",

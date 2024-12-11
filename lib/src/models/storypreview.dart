@@ -98,6 +98,12 @@ class StoryPreview {
     );
   }
 
+  static Future<List<StoryPreview>> getStoriesFromColumn(int page, String column) async {
+    List<StoryPreview> ret = [];
+    //TODO: call api and use pagination to get columns, sorting by most recent.
+    return ret;
+  }
+
   Future<Story> getStoryFromPreview() async {
     //TODO: implement story getting logic
     // print(id);
