@@ -47,33 +47,13 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       body: TabBarView(
         controller: _tabController,
         children: [
-          Perspectives(
-            stories: [previewStory2],
-          ),
-          Perspectives(
-            stories: [
-              previewStory2,
-              previewStory,
-              previewStory2,
-              previewStory,
-              previewStory2,
-              previewStory,
-              previewStory2
-            ],
-          ),
-          Perspectives(
-            stories: [previewStory2, previewStory, previewStory2],
-          ),
+          const Perspectives(),
+          const Perspectives(),
+          const Perspectives(),
           const ThisIssue(),
-          Perspectives(
-            stories: [previewStory],
-          ),
-          Perspectives(
-            stories: [previewStory2, previewStory],
-          ),
-          Perspectives(
-            stories: [previewStory2, previewStory, previewStory2],
-          ),
+          const Perspectives(),
+          const Perspectives(),
+          const Perspectives(),
         ],
       ),
     );

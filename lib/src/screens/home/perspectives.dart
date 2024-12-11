@@ -3,63 +3,61 @@ import 'package:myapp/src/constants.dart';
 import 'package:myapp/src/models/storypreview.dart';
 import 'package:myapp/src/utils/stories.dart';
 
-// https://www.youtube.com/watch?v=Gsfjcpo6wcA
-// ignore: must_be_immutable
 class Perspectives extends StatefulWidget {
-  Perspectives({super.key, required this.stories});
-
-  List<StoryPreview> stories;
+  const Perspectives({super.key});
 
   @override
   State<Perspectives> createState() => _PerspectivesState();
 }
 
 class _PerspectivesState extends State<Perspectives> {
-  final String column = Constants.columns[2];
+  final String column = Constants.columns[Constants.columnsPrintEditionsIndex];
 
   ScrollController scrollController = ScrollController();
   int page = 0;
   bool isLoadingMore = false;
+  List<StoryPreview> storyPreviews = [];
 
   @override
   void initState() {
     super.initState();
     scrollController.addListener(_scrollListener);
+    fetchArticles();
   }
 
   List<Widget> _generateChildren() {
     List<Widget> ret = [];
     ret.add(const SizedBox(height: 10));
-    for (int i = 0; i < widget.stories.length; i++) {
+    for (int i = 0; i < storyPreviews.length; i++) {
       if (i == 0) {
         ret.add(InkWell(
             onTap: () {
-              pushFromPreviewToStory(widget.stories[i], context);
+              pushFromPreviewToStory(storyPreviews[i], context);
             },
-            child: SizedBox(width: MediaQuery.of(context).size.width, child: widget.stories[i].getImageWidget())));
+            child: SizedBox(width: MediaQuery.of(context).size.width, child: storyPreviews[i].getImageWidget())));
       }
       ret.add(ListTile(
           title: Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: Text(
-                widget.stories[i].title,
+                storyPreviews[i].title,
                 style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
               )),
           subtitle: Column(children: [
             Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  widget.stories[i].blurb ?? "",
+                  storyPreviews[i].blurb ?? "",
                   style: TextStyle(fontSize: 15, color: Constants.listArticleBlurbColor),
                 )),
-            widget.stories[i].readTime != null ? const SizedBox(height: 10) : const SizedBox.shrink(),
+            storyPreviews[i].readTime != null ? const SizedBox(height: 10) : const SizedBox.shrink(),
             Align(
                 alignment: Alignment.bottomRight,
-                child: widget.stories[i].readTime != null
+                child: storyPreviews[i].readTime != null
                     ? RichText(
                         text: TextSpan(children: [
                           TextSpan(
-                              text: (widget.stories[i].readTime ?? "").toString(),
+                              text: (storyPreviews[i].readTime ?? "").toString(),
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium
@@ -71,7 +69,7 @@ class _PerspectivesState extends State<Perspectives> {
                     : const SizedBox.shrink()),
           ]),
           onTap: () {
-            pushFromPreviewToStory(widget.stories[i], context);
+            pushFromPreviewToStory(storyPreviews[i], context);
           }));
 
       ret.add(const Divider());
@@ -84,21 +82,17 @@ class _PerspectivesState extends State<Perspectives> {
     var e = _generateChildren();
     return SafeArea(
         child: ListView.builder(
+      controller: scrollController,
       itemBuilder: (context, index) {
-        if (isLoadingMore && index == e.length) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
         return e[index];
       },
-      itemCount: isLoadingMore ? e.length : e.length,
+      itemCount: e.length,
     ));
   }
 
   Future<void> _scrollListener() async {
     if (isLoadingMore) return;
-    if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
+    if (scrollController.position.pixels >= scrollController.position.maxScrollExtent - 200) {
       setState(() {
         isLoadingMore = true;
       });
@@ -112,6 +106,9 @@ class _PerspectivesState extends State<Perspectives> {
 
   Future<void> fetchArticles() async {
     List<StoryPreview> l = await StoryPreview.getStoriesFromColumn(page, column);
-    widget.stories.addAll(l);
+    print(l);
+    setState(() {
+      storyPreviews.addAll(l);
+    });
   }
 }

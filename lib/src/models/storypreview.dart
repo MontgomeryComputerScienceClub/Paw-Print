@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:myapp/src/constants.dart';
@@ -101,6 +102,17 @@ class StoryPreview {
   static Future<List<StoryPreview>> getStoriesFromColumn(int page, String column) async {
     List<StoryPreview> ret = [];
     //TODO: call api and use pagination to get columns, sorting by most recent.
+
+    //DEBUG stuff
+    int target = Random().nextInt(5);
+    for (int i = 0; i < target; i++) {
+      if (Random().nextBool()) {
+        ret.add(previewStory);
+      } else {
+        ret.add(previewStory2);
+      }
+    }
+
     return ret;
   }
 
@@ -112,5 +124,10 @@ class StoryPreview {
     } else {
       return defaultStory2;
     }
+  }
+
+  @override
+  String toString() {
+    return "Story Preview for $id";
   }
 }
