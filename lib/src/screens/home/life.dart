@@ -1,9 +1,7 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:myapp/src/constants.dart';
 import 'package:myapp/src/models/storypreview.dart';
-import 'package:myapp/src/utils/stories.dart';
+import 'package:myapp/src/widgets/preview_cell.dart';
 
 class Life extends StatefulWidget {
   const Life({super.key});
@@ -31,33 +29,7 @@ class _LifeState extends State<Life> {
     List<Widget> ret = [];
     for (int i = 0; i < storyPreviews.length; i++) {
       ret.add(
-        Container(
-            color: Constants.lifePreviewBackgroundColor,
-            child: GestureDetector(
-              onTap: () {
-                pushFromPreviewToStory(storyPreviews[i], context);
-              },
-              child: Stack(
-                children: [
-                  Positioned(
-                      top: 10,
-                      left: 10,
-                      right: 10,
-                      child: SizedBox(
-                          width: MediaQuery.sizeOf(context).width / 2.15, child: storyPreviews[i].getImageWidget())),
-                  Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Align(
-                        alignment: Alignment.bottomLeft,
-                        child: Text(
-                          "${storyPreviews[i].title} >",
-                          // style: TextStyle(color: Colors.grey.shade300),
-                        ),
-                      )),
-                ],
-              ),
-            )),
-      );
+          ImageBackgroundPreviewCell(imageWidth: MediaQuery.sizeOf(context).width / 2.15, preview: storyPreviews[i]));
     }
 
     return ret;

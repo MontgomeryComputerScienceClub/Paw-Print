@@ -17,7 +17,7 @@ class _AuthorDisplayScreenState extends State<AuthorDisplayScreen> {
   List<Widget> _buildPreviews(List<StoryPreview> stories) {
     List<Widget> ret = [];
     for (StoryPreview story in stories) {
-      ret.add(ImagedPreviewCell(s: story));
+      ret.add(PreviewCellWithImage(s: story));
     }
     return ret;
   }

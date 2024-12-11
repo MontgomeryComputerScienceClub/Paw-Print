@@ -9,6 +9,7 @@ import 'package:myapp/src/routes/noanimation.dart';
 import 'package:myapp/src/screens/profiles/authorpage.dart';
 import 'package:myapp/src/widgets/headers/bottom.dart';
 import 'package:intl/intl.dart';
+import 'package:myapp/src/widgets/preview_cell.dart';
 
 class EntireArticlePage extends StatefulWidget {
   const EntireArticlePage({super.key, required this.main, required this.relatedStories});
@@ -179,7 +180,6 @@ class _EntireArticlePageState extends State<EntireArticlePage> {
                       )),
                   const SizedBox(height: 10),
                   SizedBox(height: 200, child: widget.main.titleImageAndID.getImageWidget()),
-
                   const Divider(),
                   SizedBox(
                       width: 300,
@@ -208,20 +208,24 @@ class _EntireArticlePageState extends State<EntireArticlePage> {
                     "Related Articles",
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 20),
                   ),
-                  // SizedBox(
-                  //   width: MediaQuery.sizeOf(context).width,
-                  //   height: 100,
-                  //   child: ListView(
-                  //     scrollDirection: Axis.horizontal,
-                  //     children: [
-                  //       Container(
-                  //         height: 10,
-                  //       )
-                  //     ],
-                  //   ),
-                  // )
-
-                  //TODO: display related articles in horizontal scrol view thingy
+                  const SizedBox(height: 10),
+                  SizedBox(
+                    height: 200,
+                    child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: widget.relatedStories
+                                .map((Story story) => Row(children: [
+                                      SizedBox(
+                                          width: 100,
+                                          child: ImageBackgroundPreviewCell(
+                                              imageWidth: 50, preview: story.titleImageAndID)),
+                                      const SizedBox(width: 5)
+                                    ]))
+                                .toList())),
+                  ),
+                  const SizedBox(height: 50),
                 ])
               ]))),
       bottomNavigationBar: AnimatedContainer(

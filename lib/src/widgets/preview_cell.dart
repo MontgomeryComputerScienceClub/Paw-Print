@@ -150,8 +150,8 @@ class HomeArticleRestPreviewCell extends StatelessWidget {
   }
 }
 
-class ImagedPreviewCell extends StatelessWidget {
-  const ImagedPreviewCell({super.key, required this.s});
+class PreviewCellWithImage extends StatelessWidget {
+  const PreviewCellWithImage({super.key, required this.s});
 
   final StoryPreview s;
 
@@ -179,5 +179,42 @@ class ImagedPreviewCell extends StatelessWidget {
         pushFromPreviewToStory(s, context);
       },
     );
+  }
+}
+
+class ImageBackgroundPreviewCell extends StatelessWidget {
+  const ImageBackgroundPreviewCell({super.key, required this.preview, required this.imageWidth});
+
+  final StoryPreview preview;
+  final double imageWidth;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        color: Constants.lifePreviewBackgroundColor,
+        child: GestureDetector(
+          onTap: () {
+            pushFromPreviewToStory(preview, context);
+          },
+          child: Stack(
+            children: [
+              Positioned(
+                top: 10,
+                left: 10,
+                right: 10,
+                child: SizedBox(width: imageWidth, child: preview.getImageWidget()),
+              ),
+              Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Align(
+                    alignment: Alignment.bottomLeft,
+                    child: Text(
+                      "${preview.title} >",
+                      // style: TextStyle(color: Colors.grey.shade300),
+                    ),
+                  )),
+            ],
+          ),
+        ));
   }
 }

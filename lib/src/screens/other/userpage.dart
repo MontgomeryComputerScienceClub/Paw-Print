@@ -80,7 +80,7 @@ class _UserPageState extends State<UserPage> {
             isDismissible: true);
       },
       child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10), child: ImagedPreviewCell(s: widget.previews[index])),
+          padding: const EdgeInsets.symmetric(horizontal: 10), child: PreviewCellWithImage(s: widget.previews[index])),
     );
   }
 
