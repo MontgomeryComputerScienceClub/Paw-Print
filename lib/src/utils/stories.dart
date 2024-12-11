@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/src/models/storypreview.dart';
+import 'package:myapp/src/models/test.dart';
 import 'package:myapp/src/routes/noanimation.dart';
 import 'package:myapp/src/screens/article/entirearticle.dart';
 import 'package:share_plus/share_plus.dart';
@@ -13,7 +14,7 @@ void pushFromPreviewToStory(StoryPreview preview, BuildContext context) async {
   Navigator.of(context).push(NoAnimationRoute(
       child: EntireArticlePage(
     main: story,
-    relatedStories: [],
+    relatedStories: [defaultStory2, defaultStory, defaultStory2, defaultStory],
   )));
 }
 

@@ -208,6 +208,18 @@ class _EntireArticlePageState extends State<EntireArticlePage> {
                     "Related Articles",
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 20),
                   ),
+                  // SizedBox(
+                  //   width: MediaQuery.sizeOf(context).width,
+                  //   height: 100,
+                  //   child: ListView(
+                  //     scrollDirection: Axis.horizontal,
+                  //     children: [
+                  //       Container(
+                  //         height: 10,
+                  //       )
+                  //     ],
+                  //   ),
+                  // )
 
                   //TODO: display related articles in horizontal scrol view thingy
                 ])
