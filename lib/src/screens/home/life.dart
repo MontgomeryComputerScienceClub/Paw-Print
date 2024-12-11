@@ -21,7 +21,6 @@ class _LifeState extends State<Life> {
   Widget build(BuildContext context) {
     var e = _generateChildren();
     return SafeArea(
-        //TODO: implement scroll down update logic -> should query first 10 and then append children
         child: ListView.builder(
       itemBuilder: (context, index) {
         return e[index];
