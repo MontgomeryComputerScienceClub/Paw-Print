@@ -4,6 +4,7 @@ import 'package:myapp/src/models/test.dart';
 import 'package:myapp/src/screens/home/life.dart';
 import 'package:myapp/src/screens/home/perspectives.dart';
 import 'package:myapp/src/screens/home/thisissue.dart';
+import 'package:myapp/src/screens/home/worldpolitics.dart';
 import 'package:myapp/src/widgets/headers/header.dart';
 import 'package:myapp/src/widgets/navbar.dart';
 
@@ -52,7 +53,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           const Life(),
           const Perspectives(),
           const ThisIssue(),
-          const Perspectives(),
+          const WorldPolitics(),
           const Perspectives(),
           const Perspectives(),
         ],
