@@ -35,6 +35,7 @@ class Author {
   }
 
   List<StoryPreview> getStories() {
+    // use retrofit: ^4.4.1
     //TODO implement logic here
     return [StoryPreview.fromJson(storyJson), StoryPreview.fromJson(pawprintex), StoryPreview.fromJson(storyJson2)];
   }

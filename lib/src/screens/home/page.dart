@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/src/constants.dart';
-import 'package:myapp/src/models/test.dart';
 import 'package:myapp/src/screens/home/life.dart';
 import 'package:myapp/src/screens/home/perspectives.dart';
 import 'package:myapp/src/screens/home/thisissue.dart';
