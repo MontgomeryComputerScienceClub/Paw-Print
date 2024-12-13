@@ -54,6 +54,7 @@ class _WorldPoliticsState extends State<WorldPolitics> {
           isLabelVisible: true,
           onTap: () {
             Future.delayed(Duration.zero, () {
+              if (!mounted) return;
               showDialog(
                   context: context,
                   builder: (context) => const AlertDialog(

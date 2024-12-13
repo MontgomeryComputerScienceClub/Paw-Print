@@ -135,6 +135,7 @@ class _HeaderState extends State<Header> {
       centerTitle: true,
       bottom: widget.includeColumns
           ? TabBar(
+              tabAlignment: TabAlignment.start,
               isScrollable: true,
               // unselectedLabelColor: Colors.white.withOpacity(0.3),
               // indicatorColor: Colors.white,
