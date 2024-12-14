@@ -23,7 +23,7 @@ class _WorldPoliticsState extends State<WorldPolitics> {
     _controller = FlutterEarthGlobeController(
         rotationSpeed: 0.05,
         isBackgroundFollowingSphereRotation: true,
-        background: Image.asset('assets/2k_stars.jpg').image,
+        //   background: Image.asset('assets/2k_stars.jpg').image,
         surface: Image.asset('assets/2k_earth-day.jpg').image);
 
     List<Point> points = [
@@ -54,7 +54,9 @@ class _WorldPoliticsState extends State<WorldPolitics> {
           isLabelVisible: true,
           onTap: () {
             Future.delayed(Duration.zero, () {
+              print("hi");
               if (!mounted) return;
+              print("hi");
               showDialog(
                   context: context,
                   builder: (context) => const AlertDialog(
@@ -64,7 +66,7 @@ class _WorldPoliticsState extends State<WorldPolitics> {
             });
           },
           coordinates: const GlobeCoordinates(0, 0),
-          style: const PointStyle(color: Colors.yellow),
+          style: const PointStyle(size: 10, color: Colors.yellow),
           label: 'Center'),
     ];
 
@@ -76,10 +78,28 @@ class _WorldPoliticsState extends State<WorldPolitics> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: FlutterEarthGlobe(
-      alignment: Alignment.center,
-      controller: _controller,
-      radius: 80,
+        child: Stack(
+      children: [
+        // ElevatedButton(
+        //     onPressed: () {
+        //       showDialog(
+        //           context: context,
+        //           builder: (context) {
+        //             return AlertDialog(
+        //                 content: SizedBox(
+        //               height: 250,
+        //               width: 100,
+        //               child: ,
+        //             ));
+        //           });
+        //     },
+        //     child: Text("hi"))
+        FlutterEarthGlobe(
+          alignment: Alignment(0, -0.55),
+          controller: _controller,
+          radius: 75,
+        )
+      ],
     ));
   }
 }

@@ -11,6 +11,7 @@ class Constants {
   static Color authorProfilePicBGColor = const Color.fromARGB(255, 230, 230, 224);
   static Color savedStoriesBottomModalBGColor = const Color.fromARGB(255, 230, 230, 224);
   static Color lifePreviewBackgroundColor = Colors.black12;
+  static Color homePagePreviewBlockBGColor = const Color.fromARGB(255, 234, 232, 232);
 
   static Size bannerPaintSize = const Size(100, 100);
 

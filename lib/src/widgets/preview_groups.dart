@@ -169,7 +169,7 @@ class _HomePagePreviewState extends State<HomePagePreview> {
             children: [
               Card(
                   shadowColor: Colors.transparent,
-                  color: const Color.fromARGB(255, 243, 242, 242),
+                  color: Constants.homePagePreviewBlockBGColor,
                   child: Column(children: generateContent())),
               Align(
                   alignment: Alignment.centerRight,
