@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/src/constants.dart';
 import 'package:myapp/src/models/storypreview.dart';
+import 'package:myapp/src/providers/storypreview_provider.dart';
 import 'package:myapp/src/utils/stories.dart';
 import 'package:myapp/src/widgets/headers/header.dart';
 import 'package:myapp/src/widgets/navbar.dart';
@@ -42,7 +43,7 @@ class _UserPageState extends State<UserPage> {
                     var previewToUndo = preview;
                     setState(() {
                       widget.previews.removeAt(index);
-                      StoryPreview.removeIndexFromDisk(index);
+                      StoryPreviewProvider.removeIndexFromDisk(index);
                     });
                     Navigator.of(context).pop();
 
@@ -116,7 +117,7 @@ class _UserPageState extends State<UserPage> {
         floatingActionButton: FloatingActionButton(
             onPressed: () {
               setState(() {
-                StoryPreview.clearDisk();
+                StoryPreviewProvider.clearDisk();
                 widget.previews = [];
               });
             },

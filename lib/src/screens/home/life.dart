@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/src/constants.dart';
 import 'package:myapp/src/models/storypreview.dart';
+import 'package:myapp/src/providers/storypreview_provider.dart';
 import 'package:myapp/src/widgets/preview_cell.dart';
 
 class Life extends StatefulWidget {
@@ -63,7 +64,7 @@ class _LifeState extends State<Life> {
   }
 
   Future<void> fetchArticles() async {
-    List<StoryPreview> l = await StoryPreview.getStoriesFromColumn(page, column);
+    List<StoryPreview> l = await StoryPreviewProvider.getStoriesFromColumn(page, column);
     print(l);
     setState(() {
       storyPreviews.addAll(l);

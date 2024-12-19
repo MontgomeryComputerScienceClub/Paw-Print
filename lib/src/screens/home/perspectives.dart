@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/src/constants.dart';
 import 'package:myapp/src/models/storypreview.dart';
+import 'package:myapp/src/providers/storypreview_provider.dart';
 import 'package:myapp/src/utils/stories.dart';
 import 'package:myapp/src/widgets/preview_cell.dart';
 
@@ -71,7 +72,7 @@ class _PerspectivesState extends State<Perspectives> {
   }
 
   Future<void> fetchArticles() async {
-    List<StoryPreview> l = await StoryPreview.getStoriesFromColumn(page, column);
+    List<StoryPreview> l = await StoryPreviewProvider.getStoriesFromColumn(page, column);
     print(l);
     setState(() {
       storyPreviews.addAll(l);

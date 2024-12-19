@@ -1,10 +1,10 @@
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:myapp/src/constants.dart';
 import 'package:myapp/src/models/story.dart';
 import 'package:myapp/src/models/test.dart';
+import 'package:myapp/src/providers/storypreview_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class StoryPreview {
@@ -36,37 +36,13 @@ class StoryPreview {
   }
 
   Future<bool> isSaved() async {
-    List<StoryPreview> previews = await fromDisk();
+    List<StoryPreview> previews = await StoryPreviewProvider.fromDisk();
     for (StoryPreview preview in previews) {
       if (preview.id == id) {
         return true;
       }
     }
     return false;
-  }
-
-  static void removeIndexFromDisk(int index) async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    List<String> savedStories = prefs.getStringList(Constants.diskStoryPreviewKey) ?? [];
-    if (savedStories.isNotEmpty && index + 1 <= savedStories.length && index >= 0) {
-      savedStories.removeAt(index);
-    }
-    prefs.setStringList(Constants.diskStoryPreviewKey, savedStories);
-  }
-
-  static void clearDisk() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setStringList(Constants.diskStoryPreviewKey, []);
-  }
-
-  static Future<List<StoryPreview>> fromDisk() async {
-    List<StoryPreview> ret = [];
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    List<String> savedStories = prefs.getStringList(Constants.diskStoryPreviewKey) ?? [];
-    for (String storyJson in savedStories) {
-      ret.add(StoryPreview.fromJson(jsonDecode(storyJson)));
-    }
-    return ret;
   }
 
   Future<void> addToDisk() async {
@@ -99,26 +75,8 @@ class StoryPreview {
     );
   }
 
-  static Future<List<StoryPreview>> getStoriesFromColumn(int page, String column) async {
-    List<StoryPreview> ret = [];
-    //TODO: call api and use pagination to get columns, sorting by most recent.
-
-    //DEBUG stuff
-    int target = Random().nextInt(5);
-    for (int i = 0; i < target; i++) {
-      if (Random().nextBool()) {
-        ret.add(previewStory);
-      } else {
-        ret.add(previewStory2);
-      }
-    }
-
-    return ret;
-  }
-
   Future<Story> getStoryFromPreview() async {
     //TODO: implement story getting logic
-    // print(id);
     if (id == 696) {
       return defaultStory;
     } else {

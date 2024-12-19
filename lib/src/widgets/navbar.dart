@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/src/models/storypreview.dart';
-// import 'package:myapp/src/routes/leftrightroute.dart';
+import 'package:myapp/src/providers/storypreview_provider.dart';
 import 'package:myapp/src/routes/noanimation.dart';
 import 'package:myapp/src/screens/games/games.dart';
 import 'package:myapp/src/screens/home/page.dart';
@@ -32,7 +31,7 @@ class NavBarState extends State<Navbar> {
       case 1:
         Navigator.of(context).pushReplacement(NoAnimationRoute(child: const GamesScreen()));
       case 2:
-        StoryPreview.fromDisk()
+        StoryPreviewProvider.fromDisk()
             // ignore: use_build_context_synchronously
             .then((value) => Navigator.of(context).pushReplacement(NoAnimationRoute(child: UserPage(previews: value))));
     }
