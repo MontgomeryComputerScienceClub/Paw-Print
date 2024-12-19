@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/src/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/src/models/info.dart';
+import 'package:myapp/src/providers/info_provider.dart';
 import 'package:myapp/src/widgets/search/searchdelegate.dart';
 
 class Header extends StatefulWidget implements PreferredSizeWidget {
@@ -36,7 +37,7 @@ class _HeaderState extends State<Header> {
   void initState() {
     super.initState();
 
-    Info.syncInfo().then((value) {
+    InfoProvider.syncInfo().then((value) {
       setState(() {
         info = value;
       });
