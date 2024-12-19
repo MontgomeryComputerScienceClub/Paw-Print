@@ -33,6 +33,7 @@ class NavBarState extends State<Navbar> {
         Navigator.of(context).pushReplacement(NoAnimationRoute(child: const GamesScreen()));
       case 2:
         StoryPreview.fromDisk()
+            // ignore: use_build_context_synchronously
             .then((value) => Navigator.of(context).pushReplacement(NoAnimationRoute(child: UserPage(previews: value))));
     }
   }

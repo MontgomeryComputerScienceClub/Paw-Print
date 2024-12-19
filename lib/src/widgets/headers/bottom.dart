@@ -58,8 +58,10 @@ class _CustomBottomAppBarState extends State<CustomBottomAppBar> {
                                 setState(() {
                                   isSaved = widget.linkedStory.titleImageAndID.isSaved();
                                 });
-                                // ignore: use_build_context_synchronously
+
+                                if (!mounted) return;
                                 showDialog(
+                                    // ignore: use_build_context_synchronously
                                     context: context,
                                     builder: (context) {
                                       return SavedSuccessfully(story: widget.linkedStory);

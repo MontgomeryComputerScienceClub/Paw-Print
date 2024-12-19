@@ -60,12 +60,10 @@ class _AuthorDisplayScreenState extends State<AuthorDisplayScreen> {
     return Scaffold(
         appBar: AppBar(),
         body: SafeArea(
-            child: SingleChildScrollView(
-                child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: _buildBody())))));
+            child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: ListView(
+                  children: _buildBody(),
+                ))));
   }
 }

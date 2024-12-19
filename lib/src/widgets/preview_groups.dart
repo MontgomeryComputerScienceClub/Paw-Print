@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/src/constants.dart';
 import 'package:myapp/src/models/storypreview.dart';
+import 'package:myapp/src/models/test.dart';
+import 'package:myapp/src/routes/noanimation.dart';
+import 'package:myapp/src/screens/article/listarticles.dart';
 import 'package:myapp/src/widgets/preview_cell.dart';
 
 class MultiArticlePreview extends StatefulWidget {
@@ -174,13 +177,16 @@ class _HomePagePreviewState extends State<HomePagePreview> {
               Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        //TODO: view more page probbaly shouold be part of listarticles. Also get previews
+                        Navigator.of(context).push(NoAnimationRoute(
+                            child: ListArticlesOfCategory(title: "Featured", previews: [previewStory, previewStory2])));
+                      },
                       child: Row(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.end,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            //TODO: view more page probbaly shouold be part of listarticles
                             const Text(
                               "View More on ",
                               textAlign: TextAlign.center,

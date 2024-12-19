@@ -182,6 +182,84 @@ class PreviewCellWithImage extends StatelessWidget {
   }
 }
 
+class PreviewCellWithReadTime extends StatelessWidget {
+  const PreviewCellWithReadTime({super.key, required this.s});
+  final StoryPreview s;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+        title: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: Text(
+              s.title,
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
+            )),
+        subtitle: Column(children: [
+          Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                s.blurb ?? "",
+                style: TextStyle(fontSize: 15, color: Constants.listArticleBlurbColor),
+              )),
+          s.readTime != null ? const SizedBox(height: 10) : const SizedBox.shrink(),
+          Align(
+              alignment: Alignment.bottomRight,
+              child: s.readTime != null
+                  ? RichText(
+                      text: TextSpan(children: [
+                        TextSpan(
+                            text: (s.readTime ?? "").toString(),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.copyWith(fontSize: 13, color: Constants.green, fontWeight: FontWeight.bold)),
+                        TextSpan(
+                            text: " min read", style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 13)),
+                      ]),
+                    )
+                  : const SizedBox.shrink()),
+        ]),
+        onTap: () {
+          pushFromPreviewToStory(s, context);
+        });
+  }
+}
+
+class PreviewCellWithImageInShape extends StatelessWidget {
+  const PreviewCellWithImageInShape({super.key, required this.s, required this.left});
+
+  //TODO: Create something fun
+
+  final StoryPreview s;
+  final bool left;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      trailing: SizedBox(
+        child: Padding(
+          padding: const EdgeInsets.only(right: 10),
+          child: s.getImageWidget(),
+        ),
+      ),
+      title: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: Text(
+            s.title,
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          )),
+      subtitle: Text(
+        s.blurb ?? "",
+        style: TextStyle(fontSize: 15, color: Constants.listArticleBlurbColor, height: 1.4),
+      ),
+      onTap: () {
+        pushFromPreviewToStory(s, context);
+      },
+    );
+  }
+}
+
 class ImageBackgroundPreviewCell extends StatelessWidget {
   const ImageBackgroundPreviewCell({super.key, required this.preview, required this.imageWidth});
 

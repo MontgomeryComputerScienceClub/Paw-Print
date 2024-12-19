@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/src/constants.dart';
 import 'package:myapp/src/models/storypreview.dart';
 import 'package:myapp/src/utils/stories.dart';
+import 'package:myapp/src/widgets/preview_cell.dart';
 
 class Perspectives extends StatefulWidget {
   const Perspectives({super.key});
@@ -36,42 +37,7 @@ class _PerspectivesState extends State<Perspectives> {
             },
             child: SizedBox(width: MediaQuery.of(context).size.width, child: storyPreviews[i].getImageWidget())));
       }
-      ret.add(ListTile(
-          title: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: Text(
-                storyPreviews[i].title,
-                style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
-              )),
-          subtitle: Column(children: [
-            Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  storyPreviews[i].blurb ?? "",
-                  style: TextStyle(fontSize: 15, color: Constants.listArticleBlurbColor),
-                )),
-            storyPreviews[i].readTime != null ? const SizedBox(height: 10) : const SizedBox.shrink(),
-            Align(
-                alignment: Alignment.bottomRight,
-                child: storyPreviews[i].readTime != null
-                    ? RichText(
-                        text: TextSpan(children: [
-                          TextSpan(
-                              text: (storyPreviews[i].readTime ?? "").toString(),
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
-                                  ?.copyWith(fontSize: 13, color: Constants.green, fontWeight: FontWeight.bold)),
-                          TextSpan(
-                              text: " min read", style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 13)),
-                        ]),
-                      )
-                    : const SizedBox.shrink()),
-          ]),
-          onTap: () {
-            pushFromPreviewToStory(storyPreviews[i], context);
-          }));
-
+      ret.add(PreviewCellWithReadTime(s: storyPreviews[i]));
       ret.add(const Divider());
     }
     return ret;
