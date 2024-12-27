@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -294,7 +295,7 @@ class _FirstImageInPreviewListState extends State<FirstImageInPreviewList> {
                     amplitude: 8500,
                     circleColors: [Constants.gold.withAlpha(76)],
                     colors: [Constants.gold.withAlpha(76), Constants.gold.withAlpha(76)],
-                    child: widget.s.getImageWidget())
+                    child: Padding(padding: EdgeInsets.symmetric(horizontal: 20), child: widget.s.getImageWidget()))
                 : widget.s.getImageWidget()));
   }
 }
@@ -361,28 +362,24 @@ class ImageBackgroundPreviewCell extends StatelessWidget {
   const ImageBackgroundPreviewCell({super.key, required this.preview, required this.imageWidth});
 
   final StoryPreview preview;
-  final double imageWidth;
+  final double? imageWidth;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Constants.lifePreviewBackgroundColor,
+        color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withAlpha(20),
         child: GestureDetector(
           onTap: () {
             pushFromPreviewToStory(preview, context);
           },
-          child: Stack(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Positioned(
-                top: 10,
-                left: 10,
-                right: 10,
-                child: SizedBox(width: imageWidth, child: preview.getImageWidget()),
-              ),
-              Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Align(
-                    alignment: Alignment.bottomLeft,
+              SizedBox(height: imageWidth, child: preview.getImageWidget()),
+              Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
                     child: Text(
                       "${preview.title} >",
                       // style: TextStyle(color: Colors.grey.shade300),

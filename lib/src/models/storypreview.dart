@@ -52,10 +52,11 @@ class StoryPreview {
     prefs.setStringList(Constants.diskStoryPreviewKey, savedStories);
   }
 
-  //TODO: try to implement Cached network image  with cached image network library
-  Widget getImageWidget() {
+  Image getImageWidget() {
     if (imageUrl == null) {
       return Image.asset("assets/paw.png");
+      //return Image.asset("assets/test.png");
+      //return Image.asset("assets/2k_earth-day.jpg");
     }
     return Image.network(
       imageUrl ?? "",

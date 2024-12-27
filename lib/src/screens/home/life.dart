@@ -30,7 +30,7 @@ class _LifeState extends State<Life> {
     List<Widget> ret = [];
     for (int i = 0; i < storyPreviews.length; i++) {
       ret.add(
-          ImageBackgroundPreviewCell(imageWidth: MediaQuery.sizeOf(context).width / 2.15, preview: storyPreviews[i]));
+          ImageBackgroundPreviewCell(imageWidth: MediaQuery.sizeOf(context).width / 2.5, preview: storyPreviews[i]));
     }
 
     return ret;
