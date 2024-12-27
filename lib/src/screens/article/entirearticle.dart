@@ -153,10 +153,7 @@ class _EntireArticlePageState extends State<EntireArticlePage> {
               child: Stack(clipBehavior: Clip.none, children: [
                 Align(
                     alignment: Alignment.topRight,
-                    child: CustomPaint(
-                        size: Constants.bannerPaintSize,
-                        painter: EntireArticleBanner(
-                            w: Constants.bannerPaintSize.width, h: Constants.bannerPaintSize.height))),
+                    child: CustomPaint(size: Constants.bannerPaintSize, painter: EntireArticleBanner())),
                 Column(mainAxisAlignment: MainAxisAlignment.start, children: [
                   const SizedBox(height: 10),
                   Align(

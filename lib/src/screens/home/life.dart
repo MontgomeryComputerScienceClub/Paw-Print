@@ -65,7 +65,6 @@ class _LifeState extends State<Life> {
 
   Future<void> fetchArticles() async {
     List<StoryPreview> l = await StoryPreviewProvider.getStoriesFromColumn(page, column);
-    print(l);
     setState(() {
       storyPreviews.addAll(l);
     });

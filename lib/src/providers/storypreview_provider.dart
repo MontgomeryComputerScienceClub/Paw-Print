@@ -12,7 +12,7 @@ class StoryPreviewProvider {
     //TODO: call api and use pagination to get columns, sorting by most recent.
 
     //DEBUG stuff
-    int target = Random().nextInt(5);
+    int target = Random().nextInt(10);
     for (int i = 0; i < target; i++) {
       if (Random().nextBool()) {
         ret.add(previewStory);

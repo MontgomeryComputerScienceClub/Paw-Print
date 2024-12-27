@@ -1,9 +1,11 @@
-// ignore: file_names
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:myapp/src/constants.dart';
 import 'package:myapp/src/models/storypreview.dart';
 import 'package:myapp/src/painters/painter.dart';
 import 'package:myapp/src/utils/stories.dart';
+import 'package:wave_blob/wave_blob.dart';
 
 class ArticlePreviewCell extends StatelessWidget {
   const ArticlePreviewCell({super.key, required this.s, required this.index});
@@ -226,35 +228,63 @@ class PreviewCellWithReadTime extends StatelessWidget {
   }
 }
 
-class PreviewCellWithImageInShape extends StatelessWidget {
+class PreviewCellWithImageInShape extends StatefulWidget {
   const PreviewCellWithImageInShape({super.key, required this.s, required this.left});
-
-  //TODO: Create something fun
 
   final StoryPreview s;
   final bool left;
 
   @override
+  State<PreviewCellWithImageInShape> createState() => _PreviewCellWithImageInShapeState();
+}
+
+class _PreviewCellWithImageInShapeState extends State<PreviewCellWithImageInShape> {
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Timer.periodic(const Duration(milliseconds: 50), (timer) {
+        setState(() {});
+      });
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ListTile(
-      trailing: SizedBox(
-        child: Padding(
-          padding: const EdgeInsets.only(right: 10),
-          child: s.getImageWidget(),
-        ),
-      ),
+      leading: widget.left
+          ? SizedBox(
+              height: Constants.worldPoliticsBlobSize.height,
+              width: Constants.worldPoliticsBlobSize.width,
+              child: WaveBlob(
+                  scale: 2,
+                  amplitude: 7500,
+                  colors: [Constants.green, Constants.green],
+                  child: widget.s.getImageWidget()))
+          : null,
+      trailing: widget.left
+          ? null
+          : SizedBox(
+              height: Constants.worldPoliticsBlobSize.height,
+              width: Constants.worldPoliticsBlobSize.width,
+              child: WaveBlob(
+                  scale: 2,
+                  amplitude: 7500,
+                  colors: [Constants.gold, Constants.gold],
+                  child: widget.s.getImageWidget())),
       title: Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),
           child: Text(
-            s.title,
+            widget.s.title,
             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           )),
       subtitle: Text(
-        s.blurb ?? "",
+        widget.s.blurb ?? "",
         style: TextStyle(fontSize: 15, color: Constants.listArticleBlurbColor, height: 1.4),
       ),
       onTap: () {
-        pushFromPreviewToStory(s, context);
+        pushFromPreviewToStory(widget.s, context);
       },
     );
   }

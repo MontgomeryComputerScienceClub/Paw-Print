@@ -2,50 +2,47 @@ import 'package:flutter/material.dart';
 import 'package:myapp/src/constants.dart';
 
 class EntireArticleBanner extends CustomPainter {
-  final double w;
-  final double h;
-  EntireArticleBanner({required this.w, required this.h});
+  EntireArticleBanner();
 
   @override
   void paint(Canvas canvas, Size size) {
-    //canvas.drawRect(const Rect.fromLTRB(0, 0, 100, 100), Paint()..color = Constants.black);
     Paint paint = Paint()..color = Constants.green;
     var path = Path();
 
-    path.moveTo(w - 25, 0);
-    path.lineTo(w - 35, 0);
-    path.lineTo(w, 35);
-    path.lineTo(w, 25);
-    path.lineTo(w - 25, 0);
+    path.moveTo(size.width - 25, 0);
+    path.lineTo(size.width - 35, 0);
+    path.lineTo(size.width, 35);
+    path.lineTo(size.width, 25);
+    path.lineTo(size.width - 25, 0);
 
-    path.moveTo(w - 65, 0);
-    path.lineTo(w - 75, 0);
-    path.lineTo(w, 75);
-    path.lineTo(w, 65);
-    path.lineTo(w - 65, 0);
+    path.moveTo(size.width - 65, 0);
+    path.lineTo(size.width - 75, 0);
+    path.lineTo(size.width, 75);
+    path.lineTo(size.width, 65);
+    path.lineTo(size.width - 65, 0);
 
     canvas.drawPath(path, paint);
 
     paint = Paint()..color = Constants.gold;
     path = Path();
 
-    path.moveTo(w - 5, 0);
-    path.lineTo(w - 15, 0);
-    path.lineTo(w, 15);
-    path.lineTo(w, 5);
-    path.lineTo(w - 5, 0);
+    path.moveTo(size.width - 5, 0);
+    path.lineTo(size.width - 15, 0);
+    path.lineTo(size.width, 15);
+    path.lineTo(size.width, 5);
+    path.lineTo(size.width - 5, 0);
 
-    path.moveTo(w - 45, 0);
-    path.lineTo(w - 55, 0);
-    path.lineTo(w, 55);
-    path.lineTo(w, 45);
-    path.lineTo(w - 45, 0);
+    path.moveTo(size.width - 45, 0);
+    path.lineTo(size.width - 55, 0);
+    path.lineTo(size.width, 55);
+    path.lineTo(size.width, 45);
+    path.lineTo(size.width - 45, 0);
 
-    path.moveTo(w - 85, 0);
-    path.lineTo(w - 95, 0);
-    path.lineTo(w, 95);
-    path.lineTo(w, 85);
-    path.lineTo(w - 85, 0);
+    path.moveTo(size.width - 85, 0);
+    path.lineTo(size.width - 95, 0);
+    path.lineTo(size.width, 95);
+    path.lineTo(size.width, 85);
+    path.lineTo(size.width - 85, 0);
     canvas.drawPath(path, paint);
     path.close();
   }
