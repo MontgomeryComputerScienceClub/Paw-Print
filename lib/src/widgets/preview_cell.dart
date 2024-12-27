@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/src/constants.dart';
 import 'package:myapp/src/models/storypreview.dart';
 import 'package:myapp/src/painters/painter.dart';
@@ -228,11 +229,81 @@ class PreviewCellWithReadTime extends StatelessWidget {
   }
 }
 
-class PreviewCellWithImageInShape extends StatefulWidget {
-  const PreviewCellWithImageInShape({super.key, required this.s, required this.left});
+class PreviewCell extends StatelessWidget {
+  const PreviewCell({super.key, required this.s});
 
   final StoryPreview s;
-  final bool left;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: Text(
+            s.title,
+            style: GoogleFonts.noticiaText(fontSize: 25, fontWeight: FontWeight.bold),
+          )),
+      subtitle: Text(
+        s.blurb ?? "",
+        style: TextStyle(fontSize: 15, color: Constants.listArticleBlurbColor, height: 1.4),
+      ),
+      onTap: () {
+        pushFromPreviewToStory(s, context);
+      },
+    );
+  }
+}
+
+class FirstImageInPreviewList extends StatefulWidget {
+  const FirstImageInPreviewList({super.key, required this.s, required this.animate});
+
+  final StoryPreview s;
+  final bool animate;
+
+  @override
+  State<FirstImageInPreviewList> createState() => _FirstImageInPreviewListState();
+}
+
+class _FirstImageInPreviewListState extends State<FirstImageInPreviewList> {
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Timer.periodic(const Duration(milliseconds: 25), (timer) {
+        if (!mounted) return;
+        setState(() {});
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+        onTap: () {
+          pushFromPreviewToStory(widget.s, context);
+        },
+        child: SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: widget.animate ? MediaQuery.of(context).size.width : null,
+            child: widget.animate
+                ? WaveBlob(
+                    scale: 1,
+                    blobCount: 3,
+                    speed: 1,
+                    amplitude: 8500,
+                    circleColors: [Constants.gold.withAlpha(76)],
+                    colors: [Constants.gold.withAlpha(76), Constants.gold.withAlpha(76)],
+                    child: widget.s.getImageWidget())
+                : widget.s.getImageWidget()));
+  }
+}
+
+class PreviewCellWithImageInShape extends StatefulWidget {
+  const PreviewCellWithImageInShape({super.key, required this.s, required this.index});
+
+  final StoryPreview s;
+  final int index;
 
   @override
   State<PreviewCellWithImageInShape> createState() => _PreviewCellWithImageInShapeState();
@@ -244,7 +315,8 @@ class _PreviewCellWithImageInShapeState extends State<PreviewCellWithImageInShap
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Timer.periodic(const Duration(milliseconds: 50), (timer) {
+      Timer.periodic(const Duration(milliseconds: 25), (timer) {
+        if (!mounted) return;
         setState(() {});
       });
     });
@@ -252,41 +324,36 @@ class _PreviewCellWithImageInShapeState extends State<PreviewCellWithImageInShap
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: widget.left
-          ? SizedBox(
-              height: Constants.worldPoliticsBlobSize.height,
-              width: Constants.worldPoliticsBlobSize.width,
-              child: WaveBlob(
-                  scale: 2,
-                  amplitude: 7500,
-                  colors: [Constants.green, Constants.green],
-                  child: widget.s.getImageWidget()))
-          : null,
-      trailing: widget.left
-          ? null
-          : SizedBox(
-              height: Constants.worldPoliticsBlobSize.height,
-              width: Constants.worldPoliticsBlobSize.width,
-              child: WaveBlob(
-                  scale: 2,
-                  amplitude: 7500,
-                  colors: [Constants.gold, Constants.gold],
-                  child: widget.s.getImageWidget())),
-      title: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10),
-          child: Text(
-            widget.s.title,
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          )),
-      subtitle: Text(
-        widget.s.blurb ?? "",
-        style: TextStyle(fontSize: 15, color: Constants.listArticleBlurbColor, height: 1.4),
-      ),
-      onTap: () {
-        pushFromPreviewToStory(widget.s, context);
-      },
-    );
+    return widget.index == 0
+        ? Padding(padding: EdgeInsets.only(left: 10), child: PreviewCell(s: widget.s))
+        : ListTile(
+            leading: SizedBox(
+                height: Constants.worldPoliticsBlobSize.height,
+                width: Constants.worldPoliticsBlobSize.width,
+                child: WaveBlob(
+                    scale: 2,
+                    speed: 0.5,
+                    amplitude: 7500,
+                    circleColors:
+                        widget.index % 2 == 1 ? [Constants.green.withAlpha(76)] : [Constants.gold.withAlpha(76)],
+                    colors: widget.index % 2 == 1
+                        ? [Constants.green.withAlpha(76), Constants.green.withAlpha(76)]
+                        : [Constants.gold.withAlpha(76), Constants.gold.withAlpha(20)],
+                    child: widget.s.getImageWidget())),
+            title: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: Text(
+                  widget.s.title,
+                  style: GoogleFonts.noticiaText(fontSize: 25, fontWeight: FontWeight.bold),
+                )),
+            subtitle: Text(
+              widget.s.blurb ?? "",
+              style: TextStyle(fontSize: 15, color: Constants.listArticleBlurbColor, height: 1.4),
+            ),
+            onTap: () {
+              pushFromPreviewToStory(widget.s, context);
+            },
+          );
   }
 }
 

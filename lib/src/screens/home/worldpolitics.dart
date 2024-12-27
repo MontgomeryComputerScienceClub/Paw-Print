@@ -29,8 +29,14 @@ class _WorldPoliticsState extends State<WorldPolitics> {
   List<Widget> _generateChildren() {
     List<Widget> ret = [];
 
+    if (storyPreviews.isNotEmpty) {
+      ret.add(FirstImageInPreviewList(
+        s: storyPreviews.first,
+        animate: true,
+      ));
+    }
     for (int i = 0; i < storyPreviews.length; i++) {
-      ret.add(PreviewCellWithImageInShape(s: storyPreviews[i], left: i % 2 == 1));
+      ret.add(PreviewCellWithImageInShape(s: storyPreviews[i], index: i));
       ret.add(const Divider());
     }
     return ret;
